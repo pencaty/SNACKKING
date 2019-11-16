@@ -1,6 +1,7 @@
 package com.example.snackking;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -64,6 +65,15 @@ public class DB_snack_get extends AppCompatActivity {
 
                 GetData task = new GetData();
                 task.execute(IP_ADDRESS + "/getdata.php", "");
+            }
+        });
+
+        Button buttonGo_search = (Button)findViewById(R.id.button_go_search);
+        buttonGo_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Search.class);
+                startActivity(intent);
             }
         });
     }

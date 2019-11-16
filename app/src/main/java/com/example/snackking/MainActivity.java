@@ -24,7 +24,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
-    private static String TAG = "phptest";
+    private static String TAG = "Insert_data";
 
     private EditText mEditTextName;
     private TextView mTextViewResult;
