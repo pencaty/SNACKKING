@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/getdata_with_id.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbcon.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbcon.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/getdata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/DB_snack_get.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/DB_snack_get.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Show_Snacks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Show_Snacks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/SnackDataStruct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/SnackDataStruct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_db_snack_get.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_db_snack_get.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/item_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/item_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getdata_with_id.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/insertdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/insertdata.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +59,7 @@
       <workItem from="1573799156149" duration="1219000" />
       <workItem from="1573800623552" duration="8370000" />
       <workItem from="1573886638338" duration="820000" />
-      <workItem from="1573888213079" duration="4944000" />
+      <workItem from="1573888213079" duration="5596000" />
     </task>
     <servers />
   </component>

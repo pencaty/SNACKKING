@@ -17,7 +17,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
 
     if(!isset($errMSG)) {
         try {
-            $stmt = $con->prepare('INSERT INTO Snack_List(name) VALUES(:name)');
+            $stmt = $con->prepare('INSERT INTO Snack_Score(name) VALUES(:name)');
             $stmt->bindParam(':name', $name);
 
             if($stmt->execute()) {

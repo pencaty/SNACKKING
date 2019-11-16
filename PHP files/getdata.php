@@ -6,7 +6,7 @@ ini_set('display_errors',1);
 
 include('dbcon.php');
 
-$stmt = $con->prepare('select * from Snack_List');
+$stmt = $con->prepare('select * from Snack_Score');
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
