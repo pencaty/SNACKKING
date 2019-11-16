@@ -173,9 +173,6 @@ public class DB_snack_get extends AppCompatActivity {
         String TAG_COST = "cost";
         String TAG_NUMBER_OF_RATE  = "number_of_rate";
 
-        Button btnTest = (Button) findViewById(R.id.button_go_search);
-        btnTest.setText("Hello World");
-
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
