@@ -1,45 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".Search">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search Snack"
-        android:id="@+id/textView_search_name" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText_search_name" />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go"
-        android:id="@+id/button_search" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:layout_margin="5dp"
-        android:padding="5dp"
-        android:scrollbars="vertical"
-        android:id="@+id/recycler_search">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/search_text"
-            android:textSize="32sp"/>
-        />
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

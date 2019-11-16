@@ -33,7 +33,7 @@ public class DB_snack_get extends AppCompatActivity {
     private static String TAG = "snack_arrange";
 
     private TextView mTextViewResult;
-    private ArrayList<SnackDataStruct> mArrayList;
+    private ArrayList<Snack_DataStructure> mArrayList;
     private Show_Snacks mAdapter;
     private RecyclerView mRecyclerView;
     private String mJsonString;
@@ -168,24 +168,33 @@ public class DB_snack_get extends AppCompatActivity {
     private void showResult(){
 
         String TAG_JSON="snack_json";
-//        String TAG_ID = "id";
         String TAG_NAME = "name";
+        String TAG_TASTE = "taste";
+        String TAG_COST = "cost";
+        String TAG_NUMBER_OF_RATE  = "number_of_rate";
+
+        Button btnTest = (Button) findViewById(R.id.button_go_search);
+        btnTest.setText("Hello World");
+
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for(int i=0;i<jsonArray.length();i++){
 
-
                 JSONObject item = jsonArray.getJSONObject(i);
 
-//                String id = item.getString(TAG_ID);
                 String name = item.getString(TAG_NAME);
+                String taste = item.getString(TAG_TASTE);
+                String cost = item.getString(TAG_COST);
+                String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
 
-                SnackDataStruct snackdata = new SnackDataStruct();
+                Snack_DataStructure snackdata = new Snack_DataStructure();
 
-//                snackdata.setMember_id(id);
-                snackdata.setMember_name(name);
+                snackdata.setSnack_name(name);
+                snackdata.setSnack_taste(taste);
+                snackdata.setSnack_cost(cost);
+                snackdata.setSnack_number_of_rate(number_of_rate);
 
                 mArrayList.add(snackdata);
                 mAdapter.notifyDataSetChanged();

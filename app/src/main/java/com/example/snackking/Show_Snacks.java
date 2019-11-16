@@ -13,22 +13,27 @@ import java.util.ArrayList;
 
 public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHolder> { // show snacks stored in DB through PHP file
 
-    private ArrayList<SnackDataStruct> mList = null;
+    private ArrayList<Snack_DataStructure> mList = null;
     private Activity context = null;
 
-    public Show_Snacks(Activity context, ArrayList<SnackDataStruct> list) {
+    public Show_Snacks(Activity context, ArrayList<Snack_DataStructure> list) {
         this.context = context;
         this.mList = list;
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-//        protected TextView id;
+
         protected TextView name;
+        protected TextView taste;
+        protected TextView cost;
+        protected TextView number_of_rate;
 
         public CustomViewHolder(View view) {
             super(view);
-//            this.id = (TextView) view.findViewById(R.id.textView_list_id);
             this.name = (TextView) view.findViewById(R.id.textView_list_name);
+            this.taste = (TextView) view.findViewById(R.id.textView_list_taste);
+            this.cost = (TextView) view.findViewById(R.id.textView_list_cost);
+            this.number_of_rate = (TextView) view.findViewById(R.id.textView_list_number_of_rate);
         }
     }
 
@@ -43,8 +48,10 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
 
-//        viewholder.id.setText(mList.get(position).getMember_id());
-        viewholder.name.setText(mList.get(position).getMember_name());
+        viewholder.name.setText(mList.get(position).getSnack_name());
+        viewholder.taste.setText(mList.get(position).getSnack_taste());
+        viewholder.cost.setText(mList.get(position).getSnack_cost());
+        viewholder.number_of_rate.setText(mList.get(position).getSnack_number_of_rate());
     }
 
     @Override
