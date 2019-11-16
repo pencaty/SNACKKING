@@ -21,11 +21,11 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class Search extends AppCompatActivity {
 
-    private List<String> list;          // 데이터를 넣은 리스트변수
+    private List<Snack_DataStructure> list;          // 데이터를 넣은 리스트변수
     private ListView listView;          // 검색을 보여줄 리스트변수
     private EditText editSearch;        // 검색어를 입력할 Input 창
     private Search_Adapter adapter;      // 리스트뷰에 연결할 아답터
-    private ArrayList<String> arraylist;
+    private ArrayList<Snack_DataStructure> arraylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +36,13 @@ public class Search extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.Search_listView);
 
         // 리스트를 생성한다.
-        list = new ArrayList<String>();
+        list = new ArrayList<Snack_DataStructure>();
 
         // 검색에 사용할 데이터을 미리 저장한다.   --> 여기서 과자 이름 데이터를 넣어야함. 과자 struct를 그대로 넣는 것이 낫을 듯
         settingList();
 
         // 리스트의 모든 데이터를 arraylist에 복사한다.// list 복사본을 만든다.
-        arraylist = new ArrayList<String>();
+        arraylist = new ArrayList<Snack_DataStructure>();
         arraylist.addAll(list);
 
         // 리스트에 연동될 아답터를 생성한다.
@@ -90,7 +90,7 @@ public class Search extends AppCompatActivity {
             for(int i = 0;i < arraylist.size(); i++)
             {
                 // arraylist의 모든 데이터에 입력받은 단어(charText)가 포함되어 있으면 true를 반환한다.
-                if (arraylist.get(i).toLowerCase().contains(charText))
+                if (arraylist.get(i).getSnack_name().toLowerCase().contains(charText))
                 {
                     // 검색된 데이터를 리스트에 추가한다.
                     list.add(arraylist.get(i));
@@ -103,32 +103,12 @@ public class Search extends AppCompatActivity {
 
     // 검색에 사용될 데이터를 리스트에 추가한다.
     private void settingList(){
-        list.add("Chae");
-        list.add("park");
-        list.add("Sue");
-        list.add("eeeee");
-        list.add("kyong");
-        list.add("kim");
-        list.add("kang");
-        list.add("sonson");
-        list.add("namnam");
-        list.add("ruby");
-        list.add("jin");
-        list.add("seulgi");
-        list.add("leeleelee");
-        list.add("koonehee");
-        list.add("seul");
-        list.add("kong");
-        list.add("kimeueu");
-        list.add("hye");
-        list.add("wendy");
-        list.add("parkhye");
-        list.add("kai");
-        list.add("jinja");
-        list.add("dong");
-        list.add("parksae");
-        list.add("dodo");
-        list.add("chang");
-        list.add("hue");
+        Snack_DataStructure ekyong = new Snack_DataStructure();
+        ekyong.setSnack_name("cute");
+        ekyong.setSnack_taste("0");
+        ekyong.setSnack_cost("1");
+        ekyong.setSnack_number_of_rate("2");
+        list.add(ekyong);
+
     }
 }

@@ -12,11 +12,11 @@ import java.util.List;
 public class Search_Adapter extends BaseAdapter {
 
     private Context context;
-    private List<String> list;
+    private List<Snack_DataStructure> list;
     private LayoutInflater inflate;
     private ViewHolder viewHolder;
 
-    public Search_Adapter(List<String> list, Context context){
+    public Search_Adapter(List<Snack_DataStructure> list, Context context){
         this.list = list;
         this.context = context;
         this.inflate = LayoutInflater.from(context);
@@ -50,7 +50,7 @@ public class Search_Adapter extends BaseAdapter {
         }
 
         // 리스트에 있는 데이터를 리스트뷰 셀에 뿌린다.
-        viewHolder.label.setText(list.get(position));
+        viewHolder.label.setText(list.get(position).getSnack_name());
 
         return convertView;
     }
