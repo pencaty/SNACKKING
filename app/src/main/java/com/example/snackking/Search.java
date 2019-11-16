@@ -71,7 +71,6 @@ public class Search extends AppCompatActivity {
             }
         });
 
-
     }
 
     // 검색을 수행하는 메소드
@@ -104,32 +103,32 @@ public class Search extends AppCompatActivity {
 
     // 검색에 사용될 데이터를 리스트에 추가한다.
     private void settingList(){
-        list.add("채수빈");
-        list.add("박지현");
-        list.add("수지");
-        list.add("남태현");
-        list.add("하성운");
-        list.add("크리스탈");
-        list.add("강승윤");
-        list.add("손나은");
-        list.add("남주혁");
-        list.add("루이");
-        list.add("진영");
-        list.add("슬기");
-        list.add("이해인");
-        list.add("고원희");
-        list.add("설리");
-        list.add("공명");
-        list.add("김예림");
-        list.add("혜리");
-        list.add("웬디");
-        list.add("박혜수");
-        list.add("카이");
-        list.add("진세연");
-        list.add("동호");
-        list.add("박세완");
-        list.add("도희");
-        list.add("창모");
-        list.add("허영지");
+        list.add("Chae");
+        list.add("park");
+        list.add("Sue");
+        list.add("eeeee");
+        list.add("kyong");
+        list.add("kim");
+        list.add("kang");
+        list.add("sonson");
+        list.add("namnam");
+        list.add("ruby");
+        list.add("jin");
+        list.add("seulgi");
+        list.add("leeleelee");
+        list.add("koonehee");
+        list.add("seul");
+        list.add("kong");
+        list.add("kimeueu");
+        list.add("hye");
+        list.add("wendy");
+        list.add("parkhye");
+        list.add("kai");
+        list.add("jinja");
+        list.add("dong");
+        list.add("parksae");
+        list.add("dodo");
+        list.add("chang");
+        list.add("hue");
     }
 }
