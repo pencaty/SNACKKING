@@ -21,7 +21,7 @@ if ($stmt->rowCount() > 0) {
     }
 
     header('Content-Type: application/json; charset=utf8');
-    $json = json_encode(array("webnautes"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+    $json = json_encode(array("snack_json"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
     echo $json;
 }
 

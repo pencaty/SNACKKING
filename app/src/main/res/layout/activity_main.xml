@@ -10,28 +10,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:id="@+id/textView_main_name" />
+        android:id="@+id/textView_main_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="20dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_main_name" />
+        android:id="@+id/editText_main_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/button_main_insert" />
+        android:id="@+id/button_main_insert"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Go"
-        android:id="@+id/button_main_go" />
+        android:id="@+id/button_main_go"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:id="@+id/textView_main_result" />
+        android:id="@+id/textView_main_result"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
 
 </LinearLayout>

@@ -22,12 +22,12 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView id;
+//        protected TextView id;
         protected TextView name;
 
         public CustomViewHolder(View view) {
             super(view);
-            this.id = (TextView) view.findViewById(R.id.textView_list_id);
+//            this.id = (TextView) view.findViewById(R.id.textView_list_id);
             this.name = (TextView) view.findViewById(R.id.textView_list_name);
         }
     }
@@ -43,7 +43,7 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
 
-        viewholder.id.setText(mList.get(position).getMember_id());
+//        viewholder.id.setText(mList.get(position).getMember_id());
         viewholder.name.setText(mList.get(position).getMember_name());
     }
 

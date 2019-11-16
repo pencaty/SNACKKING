@@ -8,7 +8,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,14 +30,12 @@ import java.util.ArrayList;
 public class DB_snack_get extends AppCompatActivity {
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
-    private static String TAG = "phptest";
+    private static String TAG = "snack_arrange";
 
-    private EditText mEditTextName;
     private TextView mTextViewResult;
     private ArrayList<SnackDataStruct> mArrayList;
     private Show_Snacks mAdapter;
     private RecyclerView mRecyclerView;
-    private EditText mEditTextSearchKeyword;
     private String mJsonString;
 
     @Override
@@ -46,7 +44,7 @@ public class DB_snack_get extends AppCompatActivity {
         setContentView(R.layout.activity_db_snack_get);
 
         mTextViewResult = (TextView)findViewById(R.id.textView_result);
-        mRecyclerView = (RecyclerView) findViewById(R.id.listView_list);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_match);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
@@ -167,27 +165,26 @@ public class DB_snack_get extends AppCompatActivity {
         }
     }
 
-
     private void showResult(){
 
-        String TAG_JSON="webnautes";
-        String TAG_ID = "id";
+        String TAG_JSON="snack_json";
+//        String TAG_ID = "id";
         String TAG_NAME = "name";
-
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for(int i=0;i<jsonArray.length();i++){
 
+
                 JSONObject item = jsonArray.getJSONObject(i);
 
-                String id = item.getString(TAG_ID);
+//                String id = item.getString(TAG_ID);
                 String name = item.getString(TAG_NAME);
 
                 SnackDataStruct snackdata = new SnackDataStruct();
 
-                snackdata.setMember_id(id);
+//                snackdata.setMember_id(id);
                 snackdata.setMember_name(name);
 
                 mArrayList.add(snackdata);
@@ -195,7 +192,6 @@ public class DB_snack_get extends AppCompatActivity {
             }
 
         } catch (JSONException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
 

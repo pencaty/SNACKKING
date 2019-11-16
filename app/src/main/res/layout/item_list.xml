@@ -6,18 +6,22 @@
     android:layout_margin="5dp"
     android:padding="5dp">
 
-    <TextView
+    />
+ <!--   <TextView
         android:id="@+id/textView_list_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:padding="5dp" />
+        android:padding="5dp" />-->
 
     <TextView
         android:id="@+id/textView_list_name"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="5dp" />
+        android:padding="5dp"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp">
+
+    </TextView>
 
 </LinearLayout>
