@@ -38,7 +38,7 @@ public class Search extends AppCompatActivity {
         // 리스트를 생성한다.
         list = new ArrayList<Snack_DataStructure>();
 
-        // 검색에 사용할 데이터을 미리 저장한다.   --> 여기서 과자 이름 데이터를 넣어야함. 과자 struct를 그대로 넣는 것이 낫을 듯
+        // 검색에 사용할 데이터을 미리 저장한다.   --> 여기서 과자 이름 데이터를 넣어야함.
         settingList();
 
         // 리스트의 모든 데이터를 arraylist에 복사한다.// list 복사본을 만든다.
@@ -103,12 +103,13 @@ public class Search extends AppCompatActivity {
 
     // 검색에 사용될 데이터를 리스트에 추가한다.
     private void settingList(){
-        Snack_DataStructure ekyong = new Snack_DataStructure();
-        ekyong.setSnack_name("cute");
-        ekyong.setSnack_taste("0");
-        ekyong.setSnack_cost("1");
-        ekyong.setSnack_number_of_rate("2");
-        list.add(ekyong);
+    
+        Snack_DataStructure test = new Snack_DataStructure();
+        test.setSnack_name("test123");
+        test.setSnack_taste("0");
+        test.setSnack_cost("1");
+        test.setSnack_number_of_rate("2");
+        list.add(test);
 
     }
 }

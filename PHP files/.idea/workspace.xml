@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable-v24/chips.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/getdata.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Score_Table_from_DB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/DB_snack_get.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/DB_snack_get.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Show_Snacks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Show_Snacks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/SnackDataStruct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/SnackDataStruct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/item_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/item_list.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +58,7 @@
       <workItem from="1573799156149" duration="1219000" />
       <workItem from="1573800623552" duration="8370000" />
       <workItem from="1573886638338" duration="820000" />
-      <workItem from="1573888213079" duration="6464000" />
+      <workItem from="1573888213079" duration="7080000" />
     </task>
     <servers />
   </component>

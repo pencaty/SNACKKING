@@ -4,16 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,59 +22,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class DB_snack_get extends AppCompatActivity {
+public class Snack_Score_Table_from_DB extends AppCompatActivity {
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";
 
-    private TextView mTextViewResult;
     public ArrayList<Snack_DataStructure> mArrayList;
-    private Show_Snacks mAdapter;
-    private RecyclerView mRecyclerView;
-    private String mJsonString;
+    public String mJsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db_snack_get);
 
-        mTextViewResult = (TextView)findViewById(R.id.textView_result);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_match);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
-
         mArrayList = new ArrayList<>();
-
-        mAdapter = new Show_Snacks(this, mArrayList);
-        mRecyclerView.setAdapter(mAdapter);
-
         mArrayList.clear();
-        mAdapter.notifyDataSetChanged();
 
         GetData task = new GetData();
         task.execute(IP_ADDRESS + "/getdata.php", "");
 
-//        Button button_all = (Button) findViewById(R.id.button_all);
-//        button_all.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                mArrayList.clear();
-//                mAdapter.notifyDataSetChanged();
-//
-//                GetData task = new GetData();
-//                task.execute(IP_ADDRESS + "/getdata.php", "");
-//            }
-//        });
-
-        Button buttonGo_search = (Button)findViewById(R.id.button_go_search);
-        buttonGo_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Search.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private class GetData extends AsyncTask<String, Void, String>{
@@ -91,7 +52,7 @@ public class DB_snack_get extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(DB_snack_get.this,
+            progressDialog = ProgressDialog.show(Snack_Score_Table_from_DB.this,
                     "Please Wait", null, true, true);
         }
 
@@ -100,13 +61,9 @@ public class DB_snack_get extends AppCompatActivity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            mTextViewResult.setText(result);
             Log.d(TAG, "response - " + result);
 
-            if (result == null){
-                mTextViewResult.setText(errorString);
-            }
-            else {
+            if (result != null){
                 mJsonString = result;
                 showResult();
             }
@@ -199,14 +156,13 @@ public class DB_snack_get extends AppCompatActivity {
                 snackdata.setSnack_number_of_rate(number_of_rate);
 
                 mArrayList.add(snackdata);
-                mAdapter.notifyDataSetChanged();
-
             }
         } catch (JSONException e) {
             Log.d(TAG, "showResult : ", e);
         }
-//        mTextViewResult.setText("name : "+mArrayList.get(15).getSnack_name());
-
+    }
+    public ArrayList<Snack_DataStructure> returnArray(){
+        return mArrayList;
     }
 
 }
