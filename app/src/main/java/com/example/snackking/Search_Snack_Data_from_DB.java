@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -82,10 +83,55 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
                 intent.putExtra(("name"), list.get(position).getSnack_name());
                 intent.putExtra(("taste"), list.get(position).getSnack_taste());
                 intent.putExtra(("cost"), list.get(position).getSnack_cost());
+                intent.putExtra(("number"), list.get(position).getSnack_number_of_rate());
                 startActivity(intent);
             }
         });
+    }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        editSearch = (EditText) findViewById(R.id.editSearch);
+        listView = (ListView) findViewById(R.id.Search_listView);
+
+        list = new ArrayList<>(); // 리스트를 생성한다.
+
+        settingList(); // 검색에 사용할 데이터을 미리 저장한다.   --> 여기서 과자 이름 데이터를 넣어야함.
+
+        arraylist = new ArrayList<Snack_DataStructure>(); // 리스트의 모든 데이터를 arraylist에 복사한다.// list 복사본을 만든다.
+        arraylist.addAll(list);
+
+        adapter = new Search_Adapter(list, this); // 리스트에 연동될 아답터를 생성한다.
+        listView.setAdapter(adapter); // 리스트뷰에 아답터를 연결한다.
+
+        editSearch.addTextChangedListener(new TextWatcher() { // input창에 검색어를 입력시 "addTextChangedListener" 이벤트 리스너를 정의한다.
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { // input창에 문자를 입력할때마다 호출된다.
+                String text = editSearch.getText().toString();
+                search(text);  // search 메소드를 호출한다.
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), Snack_Info.class);
+                intent.putExtra(("name"), list.get(position).getSnack_name());
+                intent.putExtra(("taste"), list.get(position).getSnack_taste());
+                intent.putExtra(("cost"), list.get(position).getSnack_cost());
+                intent.putExtra(("number"), list.get(position).getSnack_number_of_rate());
+                startActivity(intent);
+            }
+        });
     }
 
     public void search(String charText) { // 검색을 수행하는 메소드
