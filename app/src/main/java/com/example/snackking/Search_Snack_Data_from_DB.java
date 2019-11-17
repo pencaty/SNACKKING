@@ -40,8 +40,6 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
     private static String TAG = "snack_arrange";
     public String mJsonString;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

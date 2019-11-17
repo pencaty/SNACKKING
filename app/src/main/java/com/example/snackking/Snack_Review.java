@@ -64,9 +64,7 @@ public class Snack_Review extends AppCompatActivity {
                 double double_cost_score = Double.parseDouble(cost_score);
                 double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
 
-                //String average_taste = Double.toString(Math.round((Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score) / (double_number_of_rate + 1) * 100) / 100);
                 String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score) / (double_number_of_rate + 1));
-                //String average_cost = Double.toString(Math.round((Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score) / (double_number_of_rate + 1) * 100) / 100);
                 String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score) / (double_number_of_rate + 1));
 
                 UpdateData task = new UpdateData();
@@ -77,10 +75,6 @@ public class Snack_Review extends AppCompatActivity {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                EditTaste.setText("");
-                EditCost.setText("");
-
             }
         });
 
@@ -96,7 +90,6 @@ public class Snack_Review extends AppCompatActivity {
             progressDialog = ProgressDialog.show(Snack_Review.this,
                     "Please Wait", null, true, true);
         }
-
 
         @Override
         protected void onPostExecute(String result) {

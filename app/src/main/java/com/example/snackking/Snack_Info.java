@@ -61,5 +61,7 @@ public class Snack_Info extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        /*Button button_review = (Button)findViewById(R.id.button_write_review);
+        button_review.setText("Revise Review");*/
     }
 }
