@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".Search">
+    tools:context=".Search_Snack_Data_from_DB">
 
     <LinearLayout
         android:layout_width="match_parent"

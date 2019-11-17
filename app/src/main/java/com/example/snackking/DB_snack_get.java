@@ -57,26 +57,32 @@ public class DB_snack_get extends AppCompatActivity {
         mArrayList.clear();
         mAdapter.notifyDataSetChanged();
 
-        GetData task = new GetData();
-        task.execute(IP_ADDRESS + "/getdata.php", "");
 
-//        Button button_all = (Button) findViewById(R.id.button_all);
-//        button_all.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                mArrayList.clear();
-//                mAdapter.notifyDataSetChanged();
-//
-//                GetData task = new GetData();
-//                task.execute(IP_ADDRESS + "/getdata.php", "");
-//            }
-//        });
+/*        GetData task = new GetData();
+        task.execute(IP_ADDRESS + "/getdata.php", "");
+        try {
+            String res = task.execute(IP_ADDRESS + "/getdata.php", "").get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        Button button_all = (Button) findViewById(R.id.button_all);
+        button_all.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                mArrayList.clear();
+                mAdapter.notifyDataSetChanged();
+
+                GetData task = new GetData();
+                task.execute(IP_ADDRESS + "/getdata.php", "");
+            }
+        });
 
         Button buttonGo_search = (Button)findViewById(R.id.button_go_search);
         buttonGo_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Search.class);
+                Intent intent = new Intent(getApplicationContext(), Search_Snack_Data_from_DB.class);
                 startActivity(intent);
             }
         });
@@ -110,6 +116,7 @@ public class DB_snack_get extends AppCompatActivity {
                 mJsonString = result;
                 showResult();
             }
+            System.out.println("postexecute side size = " + mArrayList.size());
         }
 
         @Override
@@ -200,7 +207,6 @@ public class DB_snack_get extends AppCompatActivity {
 
                 mArrayList.add(snackdata);
                 mAdapter.notifyDataSetChanged();
-
             }
         } catch (JSONException e) {
             Log.d(TAG, "showResult : ", e);
@@ -208,5 +214,7 @@ public class DB_snack_get extends AppCompatActivity {
 //        mTextViewResult.setText("name : "+mArrayList.get(15).getSnack_name());
 
     }
-
+    private void PrintList(ArrayList<Snack_DataStructure> mAL) {
+        System.out.println("size : " + mAL.size());
+    }
 }
