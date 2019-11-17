@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.content.Intent;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -34,6 +38,8 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";
     public String mJsonString;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +74,18 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
                 search(text);  // search 메소드를 호출한다.
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), Snack_Info.class);
+                intent.putExtra(("name"), list.get(position).getSnack_name());
+                intent.putExtra(("taste"), list.get(position).getSnack_taste());
+                intent.putExtra(("cost"), list.get(position).getSnack_cost());
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void search(String charText) { // 검색을 수행하는 메소드
@@ -215,4 +233,6 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
             Log.d(TAG, "showResult : ", e);
         }
     }
+
+
 }

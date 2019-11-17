@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:layout_margin="5dp"
-    android:padding="5dp">
+    android:padding="5dp"
+    tools:context=".Search_Snack_Data_from_DB">
+
+
 
     <TextView
-        android:id="@+id/label_snack_name"
+        android:id="@+id/info_snack_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -16,7 +20,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/label_snack_taste"
+        android:id="@+id/info_snack_taste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -25,7 +29,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/label_snack_cost"
+        android:id="@+id/info_snack_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"

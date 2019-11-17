@@ -42,7 +42,9 @@ public class Search_Adapter extends BaseAdapter {
             convertView = inflate.inflate(R.layout.search_snack_row_view,null);
 
             viewHolder = new ViewHolder();
-            viewHolder.label = (TextView) convertView.findViewById(R.id.label_snack_name);
+            viewHolder.label_name = (TextView) convertView.findViewById(R.id.label_snack_name);
+            viewHolder.label_taste = (TextView) convertView.findViewById(R.id.label_snack_taste);
+            viewHolder.label_cost = (TextView) convertView.findViewById(R.id.label_snack_cost);
 
             convertView.setTag(viewHolder);
         }else{
@@ -50,13 +52,17 @@ public class Search_Adapter extends BaseAdapter {
         }
 
         // 리스트에 있는 데이터를 리스트뷰 셀에 뿌린다.
-        viewHolder.label.setText(list.get(position).getSnack_name());
+        viewHolder.label_name.setText(list.get(position).getSnack_name());
+        viewHolder.label_taste.setText(list.get(position).getSnack_taste());
+        viewHolder.label_cost.setText(list.get(position).getSnack_cost());
 
         return convertView;
     }
 
     class ViewHolder{
-        public TextView label;
+        public TextView label_name;
+        public TextView label_taste;
+        public TextView label_cost;
     }
 
 }
