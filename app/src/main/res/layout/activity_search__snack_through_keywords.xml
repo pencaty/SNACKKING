@@ -90,4 +90,12 @@
             android:textSize="15dp" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/button_search_back"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp" />
+
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class Search_Snack_through_keywords extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
 
-    private int count;
+    private int count = 0;
     private CheckBox cb1;
     private CheckBox cb2;
     private CheckBox cb3;
@@ -60,8 +61,25 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(getApplicationContext(), Search_Snack_through_keywords.class);
-                //startActivity(intent);
+                if(count==0){
+                    Toast.makeText(getApplicationContext(), "Select keywords", Toast.LENGTH_LONG);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), Search_keyword_result.class);
+                    intent.putExtra(("number"), count);
+                    intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
+                    intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
+                    intent.putExtra(("third"), keyword_list.get(2).toLowerCase());
+                    startActivity(intent);
+                }
+            }
+        });
+
+        Button button_back = (Button)findViewById(R.id.button_search_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

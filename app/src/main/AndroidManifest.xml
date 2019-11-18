@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Search_Snack_through_keywords"></activity>
+        <activity android:name=".Search_keyword_result"></activity>
+        <activity android:name=".Search_Snack_through_keywords" />
         <activity android:name=".Snack_Review" />
         <activity android:name=".Snack_Info" />
         <activity android:name=".Search_Snack_Data_from_DB" />
