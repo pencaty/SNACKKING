@@ -50,12 +50,10 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
         tv_list.add(tv2);
         tv_list.add(tv3);
 
-
         cb1.setOnCheckedChangeListener(this);
         cb2.setOnCheckedChangeListener(this);
         cb3.setOnCheckedChangeListener(this);
         cb4.setOnCheckedChangeListener(this);
-
 
         Button button_search = (Button)findViewById(R.id.button_search);
         button_search.setOnClickListener(new View.OnClickListener() {

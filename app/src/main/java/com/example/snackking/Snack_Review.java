@@ -96,7 +96,7 @@ public class Snack_Review extends AppCompatActivity {
                 UpdateData task = new UpdateData();
 
                 try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                    String res = task.execute(IP_ADDRESS + "/updatedata.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
+                    String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
                 }
                 catch (Exception e) {
                     e.printStackTrace();
