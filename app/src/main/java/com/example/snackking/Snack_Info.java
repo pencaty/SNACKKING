@@ -55,7 +55,6 @@ public class Snack_Info extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     @Override

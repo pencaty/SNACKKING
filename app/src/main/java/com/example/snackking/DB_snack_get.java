@@ -86,6 +86,15 @@ public class DB_snack_get extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button buttonGo_key = (Button)findViewById(R.id.button_keyword);
+        buttonGo_key.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Search_Snack_through_keywords.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class GetData extends AsyncTask<String, Void, String>{
