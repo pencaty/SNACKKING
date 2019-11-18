@@ -6,7 +6,7 @@ ini_set('display_errors',1);
 
 include('dbcon.php');
 
-$stmt = $con->prepare('select * from Snack_Score');
+$stmt = $con->prepare('select * from Snack_Score'); // DB에서 Snack_Score tablel의 정보를 가져와 json 파일로 변환하는 파일
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {

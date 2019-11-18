@@ -21,7 +21,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     }
 
     //$get_past_data = $con->prepare('select * from'.$name);
-    $stmt = $con->prepare('select * from Snack_Score');
+    $stmt = $con->prepare('select * from Snack_Score');  // 과자의 review에서 고른 3가지 keyword의 점수를 1씩 올리는 파일.
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         $data = array();

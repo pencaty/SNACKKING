@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/create_snack.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/create_user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/update_snack.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_snack.php" beforeDir="false" afterPath="$PROJECT_DIR$/create_snack.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_user.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbcon.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbcon.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/getdata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/DB_snack_get.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/DB_snack_get.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Snack_Data_from_DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Snack_Data_from_DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Show_Snacks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Show_Snacks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_DataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_DataStructure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/item_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/item_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/search_snack_row_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/search_snack_row_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insertdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/insertdata.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_snack.php" beforeDir="false" afterPath="$PROJECT_DIR$/update_snack.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/updatedata.php" beforeDir="false" afterPath="$PROJECT_DIR$/updatedata.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +66,7 @@
       <workItem from="1573886638338" duration="820000" />
       <workItem from="1573888213079" duration="7080000" />
       <workItem from="1573984245564" duration="3673000" />
-      <workItem from="1574075220351" duration="9030000" />
+      <workItem from="1574075220351" duration="9860000" />
     </task>
     <servers />
   </component>

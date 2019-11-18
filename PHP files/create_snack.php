@@ -11,7 +11,7 @@ $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
     $data = array();
-    while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    while($row=$stmt->fetch(PDO::FETCH_ASSOC))  // 각 과자의 이름으로 table을 만드는 파일
     {
         $snack_name = preg_replace("/\s+/", "", $row['Name']);
 

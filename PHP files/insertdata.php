@@ -7,7 +7,7 @@ include('dbcon.php');
 
 $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
-if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )
+if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )  // Database (Snack_Score)에 새로운 과자를 추가해보는 파일
 {
     $name=$_POST['name'];
 
@@ -15,8 +15,8 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
         $errMSG = "이름을 입력하세요.";
     }
 
-    if(!isset($errMSG)) {
-        try {
+    if(!isset($errMSG)) {  // 이 밑에 있는 주석을 풀어야 작동한다
+        /*try {
             $stmt = $con->prepare('INSERT INTO Snack_Score(Name) VALUES(:name)');
             $stmt->bindParam(':name', $name);
 
@@ -29,7 +29,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
         }
         catch(PDOException $e) {
             die("Database error: " . $e->getMessage());
-        }
+        }*/
     }
 }
 ?>

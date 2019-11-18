@@ -8,7 +8,7 @@ $dbname = 'snack';  # DATABASE 이름
 
 $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
-try {
+try {  // 데이터베이스 연결을 위한 기본적인 세팅을 하는 페이지
     $con = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8",$username, $password);
 } catch(PDOException $e) {
     die("Failed to connect to the database: " . $e->getMessage());
