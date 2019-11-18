@@ -34,6 +34,12 @@ public class Snack_Review extends AppCompatActivity {
     private EditText EditCost;
     private TextView Text_SnackName;
 
+    private TextView Text_taste;
+    private TextView Text_cost;
+    private TextView Text_keyword1;
+    private TextView Text_keyword2;
+    private TextView Text_keyword3;
+
     private EditText Editkeyword1;
     private EditText Editkeyword2;
     private EditText Editkeyword3;
@@ -49,6 +55,12 @@ public class Snack_Review extends AppCompatActivity {
         Intent intent = getIntent();
 
         Text_SnackName = (TextView)findViewById(R.id.review_snack_name);
+        Text_taste = (TextView)findViewById(R.id.review_taste_name);
+        Text_cost = (TextView)findViewById(R.id.review_cost_name);
+        Text_keyword1 = (TextView)findViewById(R.id.review_keyword1_name);
+        Text_keyword2 = (TextView)findViewById(R.id.review_keyword2_name);
+        Text_keyword3 = (TextView)findViewById(R.id.review_keyword3_name);
+
         EditTaste = (EditText)findViewById(R.id.review_taste);
         EditCost = (EditText)findViewById(R.id.review_cost);
 

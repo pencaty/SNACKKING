@@ -14,12 +14,28 @@
         android:fontFamily="@font/my_font_family"
         android:textSize="20dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Taste 1~5 정수 입력"
+        android:id="@+id/review_taste_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="10dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/review_taste"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost 1~5 정수 입력"
+        android:id="@+id/review_cost_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="10dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -28,6 +44,14 @@
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="keyword1: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
+        android:id="@+id/review_keyword1_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="10dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,12 +59,28 @@
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="keyword2: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
+        android:id="@+id/review_keyword2_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="10dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/review_keyword2"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="keyword3: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
+        android:id="@+id/review_keyword3_name"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="10dp"/>
 
     <EditText
         android:layout_width="match_parent"
