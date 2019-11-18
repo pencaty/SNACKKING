@@ -27,6 +27,10 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
         protected TextView taste;
         protected TextView cost;
         protected TextView number_of_rate;
+        protected TextView keyword1;
+        protected TextView keyword2;
+        protected TextView keyword3;
+
 
         public CustomViewHolder(View view) {
             super(view);
@@ -34,6 +38,9 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
             this.taste = (TextView) view.findViewById(R.id.textView_list_taste);
             this.cost = (TextView) view.findViewById(R.id.textView_list_cost);
             this.number_of_rate = (TextView) view.findViewById(R.id.textView_list_number_of_rate);
+            this.keyword1 = (TextView) view.findViewById((R.id.textView_list_keyword1));
+            this.keyword2 = (TextView) view.findViewById((R.id.textView_list_keyword2));
+            this.keyword3 = (TextView) view.findViewById((R.id.textView_list_keyword3));
         }
     }
 
@@ -52,6 +59,9 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
         viewholder.taste.setText(mList.get(position).getSnack_taste());
         viewholder.cost.setText(mList.get(position).getSnack_cost());
         viewholder.number_of_rate.setText(mList.get(position).getSnack_number_of_rate());
+        viewholder.keyword1.setText(mList.get(position).getSnack_keyword_1());
+        viewholder.keyword2.setText(mList.get(position).getSnack_keyword_2());
+        viewholder.keyword3.setText(mList.get(position).getSnack_keyword_3());
     }
 
     @Override

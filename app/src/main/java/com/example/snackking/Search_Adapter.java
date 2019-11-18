@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+// 검색했을 때 나오는 목록의 한 칸씩 다루는 부분 with search_snack_row_view.xml
+
 public class Search_Adapter extends BaseAdapter {
 
     private Context context;
@@ -45,6 +47,9 @@ public class Search_Adapter extends BaseAdapter {
             viewHolder.label_name = (TextView) convertView.findViewById(R.id.label_snack_name);
             viewHolder.label_taste = (TextView) convertView.findViewById(R.id.label_snack_taste);
             viewHolder.label_cost = (TextView) convertView.findViewById(R.id.label_snack_cost);
+            viewHolder.label_keyword1 = (TextView) convertView.findViewById((R.id.label_snack_keyword_1));
+            viewHolder.label_keyword2 = (TextView) convertView.findViewById((R.id.label_snack_keyword_2));
+            viewHolder.label_keyword3 = (TextView) convertView.findViewById((R.id.label_snack_keyword_3));
 
             convertView.setTag(viewHolder);
         }else{
@@ -55,6 +60,10 @@ public class Search_Adapter extends BaseAdapter {
         viewHolder.label_name.setText(list.get(position).getSnack_name());
         viewHolder.label_taste.setText(list.get(position).getSnack_taste());
         viewHolder.label_cost.setText(list.get(position).getSnack_cost());
+        viewHolder.label_keyword1.setText(list.get(position).getSnack_keyword_1());
+        viewHolder.label_keyword2.setText(list.get(position).getSnack_keyword_2());
+        viewHolder.label_keyword3.setText(list.get(position).getSnack_keyword_3());
+
 
         return convertView;
     }
@@ -63,6 +72,9 @@ public class Search_Adapter extends BaseAdapter {
         public TextView label_name;
         public TextView label_taste;
         public TextView label_cost;
+        public TextView label_keyword1;
+        public TextView label_keyword2;
+        public TextView label_keyword3;
     }
 
 }

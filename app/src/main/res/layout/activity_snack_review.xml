@@ -28,6 +28,27 @@
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/review_keyword1"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/review_keyword2"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/review_keyword3"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

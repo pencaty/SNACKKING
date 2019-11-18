@@ -184,6 +184,9 @@ public class DB_snack_get extends AppCompatActivity {
         String TAG_TASTE = "taste";
         String TAG_COST = "cost";
         String TAG_NUMBER_OF_RATE  = "number_of_rate";
+        String TAG_KEYWORD1 = "keyword1";
+        String TAG_KEYWORD2 = "keyword2";
+        String TAG_KEYWORD3 = "keyword3";
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -197,6 +200,9 @@ public class DB_snack_get extends AppCompatActivity {
                 String taste = item.getString(TAG_TASTE);
                 String cost = item.getString(TAG_COST);
                 String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
+                String keyword_1 = item.getString(TAG_KEYWORD1);
+                String keyword_2 = item.getString(TAG_KEYWORD2);
+                String keyword_3 = item.getString(TAG_KEYWORD3);
 
                 Snack_DataStructure snackdata = new Snack_DataStructure();
 
@@ -204,6 +210,9 @@ public class DB_snack_get extends AppCompatActivity {
                 snackdata.setSnack_taste(taste);
                 snackdata.setSnack_cost(cost);
                 snackdata.setSnack_number_of_rate(number_of_rate);
+                snackdata.setSnack_keyword_1(keyword_1);
+                snackdata.setSnack_keyword_2(keyword_2);
+                snackdata.setSnack_keyword_3(keyword_3);
 
                 mArrayList.add(snackdata);
                 mAdapter.notifyDataSetChanged();

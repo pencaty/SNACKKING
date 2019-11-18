@@ -44,4 +44,31 @@
         android:textSize="15dp">
     </TextView>
 
+    <TextView
+        android:id="@+id/textView_list_keyword1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView_list_keyword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView_list_keyword3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp">
+    </TextView>
+
 </LinearLayout>

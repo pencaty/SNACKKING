@@ -7,6 +7,10 @@ public class Snack_DataStructure {
     private String snack_cost;
     private String snack_number_of_rate;
 
+    private String snack_keyword_1;
+    private String snack_keyword_2;
+    private String snack_keyword_3;
+
     public String getSnack_name() {
         return snack_name;
     }
@@ -20,6 +24,14 @@ public class Snack_DataStructure {
         return snack_number_of_rate;
     }
 
+    public String getSnack_keyword_1() { return snack_keyword_1; }
+    public String getSnack_keyword_2() {
+        return snack_keyword_2;
+    }
+    public String getSnack_keyword_3() {
+        return snack_keyword_3;
+    }
+
     public void setSnack_name(String snack_name) {
         this.snack_name = snack_name;
     }
@@ -31,5 +43,15 @@ public class Snack_DataStructure {
     }
     public void setSnack_number_of_rate(String snack_number_of_rate) {
         this.snack_number_of_rate = snack_number_of_rate;
+    }
+
+    public void setSnack_keyword_1(String snack_keyword_1) {
+        this.snack_keyword_1 = snack_keyword_1;
+    }
+    public void setSnack_keyword_2(String snack_keyword_2) {
+        this.snack_keyword_2 = snack_keyword_2;
+    }
+    public void setSnack_keyword_3(String snack_keyword_3) {
+        this.snack_keyword_3 = snack_keyword_3;
     }
 }

@@ -82,6 +82,9 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
                 intent.putExtra(("taste"), list.get(position).getSnack_taste());
                 intent.putExtra(("cost"), list.get(position).getSnack_cost());
                 intent.putExtra(("number"), list.get(position).getSnack_number_of_rate());
+                intent.putExtra(("keyword_1"), list.get(position).getSnack_keyword_1());
+                intent.putExtra(("keyword_2"), list.get(position).getSnack_keyword_2());
+                intent.putExtra(("keyword_3"), list.get(position).getSnack_keyword_3());
                 startActivity(intent);
             }
         });
@@ -127,6 +130,9 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
                 intent.putExtra(("taste"), list.get(position).getSnack_taste());
                 intent.putExtra(("cost"), list.get(position).getSnack_cost());
                 intent.putExtra(("number"), list.get(position).getSnack_number_of_rate());
+                intent.putExtra(("keyword_1"), list.get(position).getSnack_keyword_1());
+                intent.putExtra(("keyword_2"), list.get(position).getSnack_keyword_2());
+                intent.putExtra(("keyword_3"), list.get(position).getSnack_keyword_3());
                 startActivity(intent);
             }
         });
@@ -137,6 +143,24 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
         list.clear(); // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
         if (charText.length() == 0) {         // 문자 입력이 없을때는 모든 데이터를 보여준다.
             list.addAll(arraylist);
+
+            // 키워드 검색
+            // 키워드를 하나의 list처럼 주고, 모든 과자 돌면서 각 키워드의 지분을 더한 후 ~% 이상이면 list에 add.
+            /*for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
+                if (arraylist.get(i).getSnack_keyword_1().toLowerCase().contains(charText)) {
+                    list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.
+                }
+            }
+            for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
+                if (arraylist.get(i).getSnack_keyword_2().toLowerCase().contains(charText)) {
+                    if(!list.contains(i))list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.
+                }
+            }
+            for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
+                if (arraylist.get(i).getSnack_keyword_3().toLowerCase().contains(charText)) {
+                    if(!list.contains(i))list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.
+                }
+            }*/
         }
         else { // 문자 입력을 할때..
             for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
@@ -158,9 +182,6 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
             e.printStackTrace();
         }
         showResult();
-
-
-        //System.out.println("list size = " + list.size());
     }
 
     private class GetData extends AsyncTask<String, Void, String> {
@@ -250,6 +271,10 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
         String TAG_TASTE = "taste";
         String TAG_COST = "cost";
         String TAG_NUMBER_OF_RATE  = "number_of_rate";
+        String TAG_KEYWORD1 = "keyword1";
+        String TAG_KEYWORD2 = "keyword2";
+        String TAG_KEYWORD3 = "keyword3";
+
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -263,6 +288,9 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
                 String taste = item.getString(TAG_TASTE);
                 String cost = item.getString(TAG_COST);
                 String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
+                String keyword_1 = item.getString(TAG_KEYWORD1);
+                String keyword_2 = item.getString(TAG_KEYWORD2);
+                String keyword_3 = item.getString(TAG_KEYWORD3);
 
                 Snack_DataStructure snackdata = new Snack_DataStructure();
 
@@ -270,6 +298,9 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
                 snackdata.setSnack_taste(taste);
                 snackdata.setSnack_cost(cost);
                 snackdata.setSnack_number_of_rate(number_of_rate);
+                snackdata.setSnack_keyword_1(keyword_1);
+                snackdata.setSnack_keyword_2(keyword_2);
+                snackdata.setSnack_keyword_3(keyword_3);
 
                 list.add(snackdata);
             }

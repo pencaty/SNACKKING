@@ -16,7 +16,7 @@ if ($stmt->rowCount() > 0) {
         extract($row);
 
         array_push($data,
-            array('name'=>$Name, 'taste'=>$Taste, 'cost'=>$Cost, 'number_of_rate'=>$NumberOfRate
+            array('name'=>$Name, 'taste'=>$Taste, 'cost'=>$Cost, 'number_of_rate'=>$NumberOfRate, 'keyword1'=>$Keyword_One, 'keyword2'=>$Keyword_Two, 'keyword3'=>$Keyword_Three
             ));
     }
 
