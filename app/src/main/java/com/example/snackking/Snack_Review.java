@@ -116,7 +116,7 @@ public class Snack_Review extends AppCompatActivity {
                 if(keyword_list.contains("sour")) sour_score = "1";
                 if(keyword_list.contains("bitter")) bitter_score = "1";
 
-                UpdateKey task_key = new UpdateKey();
+                UpdateKeyScore task_key = new UpdateKeyScore();
 
                 try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
                     String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score).get();
@@ -124,6 +124,11 @@ public class Snack_Review extends AppCompatActivity {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                // keyword 별 개수 가장 많은 순으로 3개를 Keyword_One, Two, Three에 넣자.
+                // --> UpdateKeyScore 관련 php에서 모두 다 끝난 후 하는 것으로.
+
+
 
             }
         });
@@ -209,7 +214,7 @@ public class Snack_Review extends AppCompatActivity {
         }
     }
 
-    class UpdateKey extends AsyncTask<String, Void, String> {
+    class UpdateKeyScore extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
 
         @Override
