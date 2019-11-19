@@ -42,6 +42,25 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 else {
                     $errMSG = "유저 추가 에러";
                 }
+
+                $create_individual_user_table = $con->prepare('CREATE TABLE '.$user.' (
+                    id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    Reviewed_snack VARCHAR(45),
+                    Taste INT(10) UNSIGNED DEFAULT 1,
+                    Cost INT(10) UNSIGNED DEFAULT 1,
+                    Sweet DOUBLE(7,2) UNSIGNED DEFAULT 0, 
+                    Spicy DOUBLE(7,2) UNSIGNED DEFAULT 0,
+                    Sour DOUBLE(7,2) UNSIGNED DEFAULT 0,
+                    Bitter DOUBLE(7,2) UNSIGNED DEFAULT 0
+                    )');
+
+                if($create_individual_user_table->execute()) {
+                    $successMSG = $successMSG + "각 유저 테이블 생성했습니다";
+                }
+                else {
+                    $errMSG = $errMSG + "각 유저 테이블 생성 실패";
+                }
+
             }
             catch(PDOException $e) {
                 die("Database error: " . $e->getMessage());

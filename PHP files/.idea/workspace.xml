@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/insert_user_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insertdata.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insert_user_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/insert_user_data.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +60,8 @@
       <workItem from="1573888213079" duration="7080000" />
       <workItem from="1573984245564" duration="3673000" />
       <workItem from="1574075220351" duration="12977000" />
-      <workItem from="1574140056202" duration="1261000" />
+      <workItem from="1574140056202" duration="1578000" />
+      <workItem from="1574171575132" duration="886000" />
     </task>
     <servers />
   </component>

@@ -50,6 +50,10 @@ public class login extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DB_snack_get.class);
                 intent.putExtra("id", mEditText_login.getText().toString());
                 startActivity(intent);
+
+                // login 버튼을 눌러서 다음 페이지로 갈 때
+                // 이미 있는 유저면 그 아이디를 가지고 디비 데이터 가져오기 가능
+                // 신규유저면 그 아이디로 새로 테이블을 만든다
             }
         });
     }
