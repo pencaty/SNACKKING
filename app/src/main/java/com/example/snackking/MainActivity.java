@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String name = mEditTextName.getText().toString();
 
-                InsertData task = new InsertData();
-                task.execute(IP_ADDRESS + "/insertdata.php", name);
+                Insert_User_Data task = new Insert_User_Data();
+                task.execute(IP_ADDRESS + "/insert_user_data.php", name);
 
                 mEditTextName.setText("");
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    class InsertData extends AsyncTask<String, Void, String>{
+    class Insert_User_Data extends AsyncTask<String, Void, String>{
         ProgressDialog progressDialog;
 
         @Override
