@@ -11,6 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.content.Intent;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -29,11 +31,15 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
 
     private ArrayList<String> keyword_list;
     private ArrayList<TextView> tv_list;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__snack_through_keywords);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         keyword_list = new ArrayList<>();
         tv_list = new ArrayList<>();
@@ -63,11 +69,17 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
                     Toast.makeText(getApplicationContext(), "Select keywords", Toast.LENGTH_LONG);
                 }
                 else {
+
+                    while(keyword_list.size() < 3) {
+                        keyword_list.add("-");
+                    }
+
                     Intent intent = new Intent(getApplicationContext(), Search_keyword_result.class);
                     intent.putExtra(("number"), count);
                     intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
                     intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
                     intent.putExtra(("third"), keyword_list.get(2).toLowerCase());
+                    intent.putExtra("user_id", user_id);
                     startActivity(intent);
                 }
             }

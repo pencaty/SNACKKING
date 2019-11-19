@@ -45,13 +45,12 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
 
                 $create_individual_user_table = $con->prepare('CREATE TABLE '.$user.' (
                     id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                    Reviewed_snack VARCHAR(45),
+                    Name VARCHAR(45),
                     Taste INT(10) UNSIGNED DEFAULT 1,
                     Cost INT(10) UNSIGNED DEFAULT 1,
-                    Sweet DOUBLE(7,2) UNSIGNED DEFAULT 0, 
-                    Spicy DOUBLE(7,2) UNSIGNED DEFAULT 0,
-                    Sour DOUBLE(7,2) UNSIGNED DEFAULT 0,
-                    Bitter DOUBLE(7,2) UNSIGNED DEFAULT 0
+                    Keyword_One VARCHAR(45), 
+                    Keyword_Two VARCHAR(45),
+                    Keyword_Three VARCHAR(45)
                     )');
 
                 if($create_individual_user_table->execute()) {

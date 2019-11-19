@@ -28,7 +28,7 @@ if ($stmt->rowCount() > 0) {
 
         /*$zero = 0;
         $insert_default = $con->prepare('INSERT INTO '.$snack_name.'(id) VALUES :id');
-        $stmt->bindParam(':id', $zero);
+        $insert_default->bindParam(':id', $zero);
         $insert_default->execute();*/
 
 

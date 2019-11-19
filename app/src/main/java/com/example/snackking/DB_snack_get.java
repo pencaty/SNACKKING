@@ -37,6 +37,7 @@ public class DB_snack_get extends AppCompatActivity {
     private Show_Snacks mAdapter;
     private RecyclerView mRecyclerView;
     private String mJsonString;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,8 @@ public class DB_snack_get extends AppCompatActivity {
         mArrayList.clear();
         mAdapter.notifyDataSetChanged();
 
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
 /*        GetData task = new GetData();
         task.execute(IP_ADDRESS + "/getdata.php", "");
@@ -83,6 +86,7 @@ public class DB_snack_get extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Search_Snack_Data_from_DB.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });
@@ -92,6 +96,7 @@ public class DB_snack_get extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Search_Snack_through_keywords.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });
@@ -229,10 +234,6 @@ public class DB_snack_get extends AppCompatActivity {
         } catch (JSONException e) {
             Log.d(TAG, "showResult : ", e);
         }
-//        mTextViewResult.setText("name : "+mArrayList.get(15).getSnack_name());
 
-    }
-    private void PrintList(ArrayList<Snack_DataStructure> mAL) {
-        System.out.println("size : " + mAL.size());
     }
 }

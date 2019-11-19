@@ -48,7 +48,7 @@ public class login extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(getApplicationContext(), DB_snack_get.class);
-                intent.putExtra("id", mEditText_login.getText().toString());
+                intent.putExtra("user_id", mEditText_login.getText().toString());
                 startActivity(intent);
 
                 // login 버튼을 눌러서 다음 페이지로 갈 때

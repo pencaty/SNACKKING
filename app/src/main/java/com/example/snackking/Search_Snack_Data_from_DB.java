@@ -39,6 +39,7 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";
     public String mJsonString;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,9 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
 
         editSearch = (EditText) findViewById(R.id.editSearch);
         listView = (ListView) findViewById(R.id.Search_listView);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         list = new ArrayList<>(); // 리스트를 생성한다.
 
@@ -78,6 +82,7 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), Snack_Info.class);
+                intent.putExtra("user_id", user_id);
                 intent.putExtra(("name"), list.get(position).getSnack_name());
                 intent.putExtra(("taste"), list.get(position).getSnack_taste());
                 intent.putExtra(("cost"), list.get(position).getSnack_cost());
@@ -126,6 +131,7 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), Snack_Info.class);
+                intent.putExtra("user_id", user_id);
                 intent.putExtra(("name"), list.get(position).getSnack_name());
                 intent.putExtra(("taste"), list.get(position).getSnack_taste());
                 intent.putExtra(("cost"), list.get(position).getSnack_cost());
@@ -143,24 +149,6 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
         list.clear(); // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
         if (charText.length() == 0) {         // 문자 입력이 없을때는 모든 데이터를 보여준다.
             list.addAll(arraylist);
-
-            // 키워드 검색
-            // 키워드를 하나의 list처럼 주고, 모든 과자 돌면서 각 키워드의 지분을 더한 후 ~% 이상이면 list에 add.
-            /*for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
-                if (arraylist.get(i).getSnack_keyword_1().toLowerCase().contains(charText)) {
-                    list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.
-                }
-            }
-            for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
-                if (arraylist.get(i).getSnack_keyword_2().toLowerCase().contains(charText)) {
-                    if(!list.contains(i))list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.
-                }
-            }
-            for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
-                if (arraylist.get(i).getSnack_keyword_3().toLowerCase().contains(charText)) {
-                    if(!list.contains(i))list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.
-                }
-            }*/
         }
         else { // 문자 입력을 할때..
             for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
@@ -277,6 +265,10 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
 
 
         try {
+
+            System.out.println(mJsonString);
+            System.out.println("dfdfdfd in Snack Data from DB");
+
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 

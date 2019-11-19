@@ -46,6 +46,8 @@ public class Search_keyword_result extends AppCompatActivity {
     private static String TAG = "snack_arrange";
     public String mJsonString;
 
+    private String user_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,7 @@ public class Search_keyword_result extends AppCompatActivity {
         first_keyword = intent.getStringExtra("first");
         second_keyword = intent.getStringExtra("second");
         third_keyword = intent.getStringExtra("third");
+        user_id = intent.getStringExtra("user_id");
 
         keyword_list = new ArrayList<>();
         keyword_list.add(first_keyword);
@@ -87,6 +90,7 @@ public class Search_keyword_result extends AppCompatActivity {
                 intent.putExtra(("keyword_1"), list.get(position).getSnack_keyword_1());
                 intent.putExtra(("keyword_2"), list.get(position).getSnack_keyword_2());
                 intent.putExtra(("keyword_3"), list.get(position).getSnack_keyword_3());
+                intent.putExtra(("user_id"), user_id);
                 startActivity(intent);
             }
         });
