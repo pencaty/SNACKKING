@@ -91,11 +91,6 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
                     intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
                     intent.putExtra(("third"), keyword_list.get(2).toLowerCase());
                     intent.putExtra("user_id", user_id);
-                    System.out.println("end of through keywordddddddddddd");
-                    System.out.println(keyword_list.get(0));
-                    System.out.println(keyword_list.get(1));
-                    System.out.println(keyword_list.get(2));
-                    System.out.println("end of through keywordddddddddddd");
                     startActivity(intent);
                 }
             }

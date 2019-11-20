@@ -56,7 +56,8 @@ public class login extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Intent intent = new Intent(getApplicationContext(), DB_snack_get.class);
+                    //Intent intent = new Intent(getApplicationContext(), DB_snack_get.class);
+                    Intent intent = new Intent(getApplicationContext(), Search_Combined.class);
                     intent.putExtra("user_id", user_id);
                     startActivity(intent);
 

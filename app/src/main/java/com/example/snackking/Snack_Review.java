@@ -115,7 +115,15 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         int offSetY = 0;
                         toast.setGravity(Gravity.CENTER, offSetX, offSetY);
                         toast.show();
-                    } else {
+                    }
+                    else if(count == 0){ // 키워드를 1개 이상 고르지 않으면 버튼이 비활성화되므로 필요없는 부분이긴 하다.
+                        Toast toast = Toast.makeText(getApplicationContext(), "Please choose at least one keyword", Toast.LENGTH_SHORT);
+                        int offSetX = 0;
+                        int offSetY = 0;
+                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                        toast.show();
+                    }
+                    else {
                         String taste_score = EditTaste.getText().toString();
                         String cost_score = EditCost.getText().toString();
 
@@ -197,7 +205,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             if(past_rate.length >= 4) past_key.add(past_rate[3]);
             if(past_rate.length >= 5) past_key.add(past_rate[4]);
 
-            int count = 0;  // 과거에 체크했던 키워드 체크하는 부분
+            count = 0;  // 과거에 체크했던 키워드 체크하는 부분
             if(past_key.contains("sweet")){
                 cb1.setChecked(true);
                 count ++;
@@ -263,7 +271,15 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         int offSetY = 0;
                         toast.setGravity(Gravity.CENTER, offSetX, offSetY);
                         toast.show();
-                    } else {
+                    }
+                    else if(count == 0){ // 키워드를 1개 이상 고르지 않으면 버튼이 비활성화되므로 필요없는 부분이긴 하다.
+                        Toast toast = Toast.makeText(getApplicationContext(), "Please choose at least one keyword", Toast.LENGTH_SHORT);
+                        int offSetX = 0;
+                        int offSetY = 0;
+                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                        toast.show();
+                    }
+                    else{
                         String taste_score = EditTaste.getText().toString();
                         String cost_score = EditCost.getText().toString();
 
