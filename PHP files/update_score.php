@@ -15,11 +15,11 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     $number_of_rate=$_POST['number_of_rate'];
 
     if(empty($taste)) {
-        $errMSG = "맛 점수를 입력하세요.";
+        $errMSG = "update_score 점수를 입력하세요.";
     }
 
     if(empty($cost)) {
-        $errMSG = "가성비 점수를 입력하세요.";
+        $errMSG = "update_score 점수를 입력하세요.";
     }
 
     if(!isset($errMSG)) { // review에서 입력한 taste, cost 점수를 데이터베이스에 올리는 파일. 기존 점수와 합산하여 평균내는 과정은 Snack_Review.java에 있음

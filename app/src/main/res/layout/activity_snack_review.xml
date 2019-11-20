@@ -43,51 +43,91 @@
         android:id="@+id/review_cost"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
+    <!--    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keyword1: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
+            android:id="@+id/review_keyword1_name"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="10dp"/>
 
-    <TextView
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_keyword1"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keyword2: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
+            android:id="@+id/review_keyword2_name"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_keyword2"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keyword3: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
+            android:id="@+id/review_keyword3_name"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/review_keyword3"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="15dp"/>-->
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="keyword1: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
-        android:id="@+id/review_keyword1_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"/>
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/checkbox_review_key1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/my_font_family"
+            android:text="Sweet"
+            android:textSize="15dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/review_keyword1"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"/>
+        <CheckBox
+            android:id="@+id/checkbox_review_key2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/my_font_family"
+            android:text="Spicy"
+            android:textSize="15dp" />
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="keyword2: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
-        android:id="@+id/review_keyword2_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"/>
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/checkbox_review_key3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/my_font_family"
+            android:text="Sour"
+            android:textSize="15dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/review_keyword2"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="keyword3: sweet/spicy/sour/bitter 중 하나 입력. 대소문자 상관 없음"
-        android:id="@+id/review_keyword3_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/review_keyword3"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"/>
+        <CheckBox
+            android:id="@+id/checkbox_review_key4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/my_font_family"
+            android:text="Bitter"
+            android:textSize="15dp" />
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"

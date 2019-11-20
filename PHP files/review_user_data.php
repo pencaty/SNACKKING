@@ -7,9 +7,14 @@ include('dbcon.php');
 
 $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
+echo "review_user_data.php";
+
 if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )
 {
     //$name=preg_replace("/\s+/", "", $_POST['name']);;
+
+    echo "<br>starting point of if loop<br>";
+
     $user_id = $_POST['user_id'];
     $name = $_POST['name'];
     $taste = $_POST['taste'];
@@ -24,14 +29,19 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     }
 
     //$get_past_data = $con->prepare('select * from'.$name);
+
+
     $stmt = $con->prepare('select * from '.$user_id);  // 과자의 review에서 고른 3가지 keyword의 점수를 1씩 올리는 파일.
     $stmt->execute();
+
+
     if ($stmt->rowCount() > 0 && (int)$have_reviewed == 1) { // 과거에 리뷰를 단 적 있음 -> update
         $data = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { // $row[] : 기존 각 keyword 별 점수
             if ($row['Name'] == $name) {
 
-                $update_review = $con->prepare('UPDATE ' . $user_id . ' SET Taste = :taste, Cost = :cost, Keyword_One = :key1, Keyword_Two = :key2, Keyword_Three = :key3 WHERE Name = :name');
+                $update_review = $con->prepare('UPDATE ' . $user_id . ' SET Taste = :taste, Cost = :cost, Keyword_One = :keyword1, Keyword_Two = :keyword2, Keyword_Three = :keyword3 WHERE Name = :name');
+                $update_review->bindParam(':name', $name);
                 $update_review->bindParam(':taste', $taste);
                 $update_review->bindParam(':cost', $cost);
                 $update_review->bindParam(':keyword1', $key1);

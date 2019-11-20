@@ -20,6 +20,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
+
         $data = array();
         while($row=$stmt->fetch(PDO::FETCH_ASSOC))
         {
@@ -33,6 +34,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 break;
             }
         }
+
         header('Content-Type: application/json; charset=utf8');
         $json = json_encode(array("snack_json"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
         echo $json;

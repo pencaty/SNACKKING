@@ -123,8 +123,6 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
             tv_list.get(count-1).setText(cb4.getText().toString());
         }
 
-        System.out.println("countcountcount  " + count);
-
         if(count == 3){
             if(!cb1.isChecked()) cb1.setEnabled(false);
             if(!cb2.isChecked()) cb2.setEnabled(false);

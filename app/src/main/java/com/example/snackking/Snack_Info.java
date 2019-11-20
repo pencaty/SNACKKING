@@ -159,13 +159,13 @@ public class Snack_Info extends AppCompatActivity {
         Get_user_individual_data task = new Get_user_individual_data();
         list = new ArrayList<>();
 
-        task.execute(IP_ADDRESS + "get_user_individual_data.php", user_id, snack_name);
-        /*try {
+        //task.execute(IP_ADDRESS + "get_user_individual_data.php", user_id, snack_name);
+        try {
             mJsonString = task.execute(IP_ADDRESS + "get_user_individual_data.php", user_id, snack_name).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        showResult();*/
+        showResult();
     }
 
     class Get_user_individual_data extends AsyncTask<String, Void, String> {
@@ -186,10 +186,10 @@ public class Snack_Info extends AppCompatActivity {
             progressDialog.dismiss();
             Log.d(TAG, "POST response  - " + result);
 
-            if(result != null) {
+            /*if(result != null) {
                 mJsonString = result;
                 showResult();
-            }
+            }*/
         }
 
 
@@ -261,41 +261,44 @@ public class Snack_Info extends AppCompatActivity {
         System.out.println("json from snack_info");
         System.out.println(mJsonString);
 
-        try {
-            JSONObject jsonObject = new JSONObject(mJsonString);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+        if(mJsonString != null) {
 
-            for(int i=0;i<jsonArray.length();i++){
-                JSONObject item = jsonArray.getJSONObject(i);
+            try {
+                JSONObject jsonObject = new JSONObject(mJsonString);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-                String taste = item.getString(TAG_TASTE);
-                String cost = item.getString(TAG_COST);
-                String keyword_1 = item.getString(TAG_KEYWORD1);
-                String keyword_2 = item.getString(TAG_KEYWORD2);
-                String keyword_3 = item.getString(TAG_KEYWORD3);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-                Snack_DataStructure snackdata = new Snack_DataStructure();
+                    String taste = item.getString(TAG_TASTE);
+                    String cost = item.getString(TAG_COST);
+                    String keyword_1 = item.getString(TAG_KEYWORD1);
+                    String keyword_2 = item.getString(TAG_KEYWORD2);
+                    String keyword_3 = item.getString(TAG_KEYWORD3);
 
-                snackdata.setSnack_taste(taste);
-                snackdata.setSnack_cost(cost);
-                snackdata.setSnack_keyword_1(keyword_1);
-                snackdata.setSnack_keyword_2(keyword_2);
-                snackdata.setSnack_keyword_3(keyword_3);
-                num = 1;
-                list.add(snackdata); // 유저가 각 과자에 매긴 점수가 다 담겨 있는 리스트
+                    Snack_DataStructure snackdata = new Snack_DataStructure();
 
-                Button button_review = (Button)findViewById(R.id.button_write_review);
-                have_reviewed = "1";
-                button_review.setText("Revise Review");
-                Snack_DataStructure past_snack = list.get(0);
-                past_data = past_snack.getSnack_taste() +"#"+past_snack.getSnack_cost()+"#"+past_snack.getSnack_keyword_1()+"#"+past_snack.getSnack_keyword_2()+"#"+past_snack.getSnack_keyword_3();
-                System.out.println(past_data);
-                System.out.println("bibibibibibibbibibibibibibibi");
-                // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
-                // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
+                    snackdata.setSnack_taste(taste);
+                    snackdata.setSnack_cost(cost);
+                    snackdata.setSnack_keyword_1(keyword_1);
+                    snackdata.setSnack_keyword_2(keyword_2);
+                    snackdata.setSnack_keyword_3(keyword_3);
+                    num = 1;
+                    list.add(snackdata); // 유저가 각 과자에 매긴 점수가 다 담겨 있는 리스트
+
+                    Button button_review = (Button) findViewById(R.id.button_write_review);
+                    have_reviewed = "1";
+                    button_review.setText("Revise Review");
+                    Snack_DataStructure past_snack = list.get(0); //이 과자에 대해 리뷰했다면 list에는 하나밖에 없고, 리뷰하지 않았다면 텅 빈 list이다
+                    past_data = past_snack.getSnack_taste() + "#" + past_snack.getSnack_cost() + "#" + past_snack.getSnack_keyword_1() + "#" + past_snack.getSnack_keyword_2() + "#" + past_snack.getSnack_keyword_3();
+                    System.out.println(past_data);
+                    System.out.println("end of Show_Result in Snack_info");
+                    // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
+                    // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
+                }
+            } catch (JSONException e) {
+                Log.d(TAG, "showResult : ", e);
             }
-        } catch (JSONException e) {
-            Log.d(TAG, "showResult : ", e);
         }
     }
 }

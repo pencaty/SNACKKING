@@ -17,7 +17,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     $bitter=(int)($_POST['bitter']);
 
     if(empty($sweet) && empty($spicy) && empty($sour) && empty($bitter)) {
-        $errMSG = "맛 점수를 입력하세요.";
+        $errMSG = "update_snack 점수를 입력하세요.";
     }
 
     //$get_past_data = $con->prepare('select * from'.$name);

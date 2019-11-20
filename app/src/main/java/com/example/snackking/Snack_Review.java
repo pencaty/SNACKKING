@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Snack_Review extends AppCompatActivity {
+public class Snack_Review extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "Insert_data";
@@ -48,6 +50,12 @@ public class Snack_Review extends AppCompatActivity {
     private String past_data;
     private String user_id;
 
+    private int count = 0;
+    private CheckBox cb1;
+    private CheckBox cb2;
+    private CheckBox cb3;
+    private CheckBox cb4;
+
     private ArrayList<String> keyword_list;
 
 
@@ -61,19 +69,28 @@ public class Snack_Review extends AppCompatActivity {
         Text_SnackName = (TextView)findViewById(R.id.review_snack_name);
         Text_taste = (TextView)findViewById(R.id.review_taste_name);
         Text_cost = (TextView)findViewById(R.id.review_cost_name);
-        Text_keyword1 = (TextView)findViewById(R.id.review_keyword1_name);
+        /*Text_keyword1 = (TextView)findViewById(R.id.review_keyword1_name);
         Text_keyword2 = (TextView)findViewById(R.id.review_keyword2_name);
-        Text_keyword3 = (TextView)findViewById(R.id.review_keyword3_name);
+        Text_keyword3 = (TextView)findViewById(R.id.review_keyword3_name);*/
 
+        keyword_list = new ArrayList<>();
+
+        cb1 = (CheckBox)findViewById(R.id.checkbox_review_key1);
+        cb2 = (CheckBox)findViewById(R.id.checkbox_review_key2);
+        cb3 = (CheckBox)findViewById(R.id.checkbox_review_key3);
+        cb4 = (CheckBox)findViewById(R.id.checkbox_review_key4);
+
+        cb1.setOnCheckedChangeListener(this);
+        cb2.setOnCheckedChangeListener(this);
+        cb3.setOnCheckedChangeListener(this);
+        cb4.setOnCheckedChangeListener(this);
 
         EditTaste = (EditText)findViewById(R.id.review_taste);
         EditCost = (EditText)findViewById(R.id.review_cost);
 
-        Editkeyword1 = (EditText)findViewById((R.id.review_keyword1));
+        /*Editkeyword1 = (EditText)findViewById((R.id.review_keyword1));
         Editkeyword2 = (EditText)findViewById((R.id.review_keyword2));
-        Editkeyword3 = (EditText)findViewById((R.id.review_keyword3));
-
-        keyword_list = new ArrayList<>();
+        Editkeyword3 = (EditText)findViewById((R.id.review_keyword3));*/
 
         snack_name = intent.getStringExtra("name");
         snack_taste = intent.getStringExtra("taste");
@@ -84,10 +101,15 @@ public class Snack_Review extends AppCompatActivity {
         past_data = intent.getStringExtra("past_data");
         user_id = intent.getStringExtra("user_id");
 
-
         Text_SnackName.setText(snack_name);
 
+        System.out.println("starto f snack review~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println(have_reviewed);
+
         final Button button_upload = (Button)findViewById(R.id.button_upload_review);
+
+        // 맨 처음에 버튼 비활성화 추가하기
+        button_upload.setEnabled(false);
 
         if(have_reviewed.equals("0")) { // 과거에 리뷰를 단 적이 없는 경우
             button_upload.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +117,8 @@ public class Snack_Review extends AppCompatActivity {
                 public void onClick(View v) {
                     String taste_score = EditTaste.getText().toString();
                     String cost_score = EditCost.getText().toString();
+
+                    System.out.println("past review no");
 
                     double double_taste_score = Double.parseDouble(taste_score);
                     double double_cost_score = Double.parseDouble(cost_score);
@@ -105,15 +129,21 @@ public class Snack_Review extends AppCompatActivity {
 
                     UpdateData task = new UpdateData();
 
+                    System.out.println("SNack review 126 ~~~~~~~~ " + average_taste);
+                    System.out.println("SNack review 126 ~~~~~~~~ " + average_cost);
+
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
                         String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-                    keyword_list.add(Editkeyword1.getText().toString().toLowerCase());
+                    System.out.println("wowowowwowowowowowowow");
+                    System.out.println(keyword_list.get(0));
+
+                    /*keyword_list.add(Editkeyword1.getText().toString().toLowerCase());
                     keyword_list.add(Editkeyword2.getText().toString().toLowerCase());
-                    keyword_list.add(Editkeyword3.getText().toString().toLowerCase());
+                    keyword_list.add(Editkeyword3.getText().toString().toLowerCase());*/
 
                     String sweet_score = "0";
                     String spicy_score = "0";
@@ -127,6 +157,11 @@ public class Snack_Review extends AppCompatActivity {
 
                     UpdateKeyScore task_key = new UpdateKeyScore();
 
+                    System.out.println("Sweet review 154 ~~~~~~~~ " + sweet_score);
+                    System.out.println("Spicyreview 154 ~~~~~~~~ " + spicy_score);
+                    System.out.println("Sour review 154 ~~~~~~~~ " + sour_score);
+                    System.out.println("Bitter review 154 ~~~~~~~~ " + bitter_score);
+
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
                         String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score).get();
                     } catch (Exception e) {
@@ -136,11 +171,15 @@ public class Snack_Review extends AppCompatActivity {
                     // keyword 별 개수 가장 많은 순으로 3개를 Keyword_One, Two, Three에 넣자.
                     // --> UpdateKeyScore 관련 php에서 모두 다 끝난 후 하는 것으로.
 
-                    // 이제 유저 개개인 테이블에 과자, 점수, 키워드를 저장.
+                    // 이제 유저 개개인 테이블에 과자, 점수, 키워드를 저장   .
+
+                    while(keyword_list.size() < 3) {
+                        keyword_list.add("-");
+                    }
 
                     Review_user_data review_data = new Review_user_data();
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), have_reviewed).get();
+                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "0").get();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -152,9 +191,49 @@ public class Snack_Review extends AppCompatActivity {
             final String[] past_rate = past_data.split("#"); // 앞에서부터 순서대로 과거의 taste, cost, keyword1, keyword2, keyword3이 들어감
             EditTaste.setText(past_rate[0]);
             EditCost.setText(past_rate[1]);
-            Editkeyword1.setText(past_rate[2]);
+            /*Editkeyword1.setText(past_rate[2]);
             if(past_rate.length >= 4) Editkeyword2.setText(past_rate[3]);
-            if(past_rate.length >= 5) Editkeyword3.setText(past_rate[4]);
+            if(past_rate.length >= 5) Editkeyword3.setText(past_rate[4]);*/
+
+            System.out.println("past review yes");
+            System.out.println(past_data);
+
+            final ArrayList<String> past_key;
+            past_key = new ArrayList<>();
+            past_key.add(past_rate[2]);
+            if(past_rate.length >= 4) past_key.add(past_rate[3]);
+            if(past_rate.length >= 5) past_key.add(past_rate[4]);
+
+            int cnt = 0;  // 과거에 체크했던 키워드 체크하는 부분
+            if(past_key.contains("sweet")){
+                cb1.setChecked(true);
+                cnt ++;
+            }
+            if(past_key.contains("spicy")) {
+                cb2.setChecked(true);
+                cnt ++;
+            }
+            if(past_key.contains("sour")) {
+                cb3.setChecked(true);
+                cnt ++;
+            }
+            if(past_key.contains("bitter")) {
+                cb4.setChecked(true);
+                cnt ++;
+            }
+
+            if (cnt == 3) { // 과거에 체크한 것이 이미 최대량이면 더이상 새로운 것을 체크하지 못하도록
+                if (!cb1.isChecked()) cb1.setEnabled(false);
+                if (!cb2.isChecked()) cb2.setEnabled(false);
+                if (!cb3.isChecked()) cb3.setEnabled(false);
+                if (!cb4.isChecked()) cb4.setEnabled(false);
+            } else {
+                cb1.setEnabled(true);
+                cb2.setEnabled(true);
+                cb3.setEnabled(true);
+                cb4.setEnabled(true);
+            }
+
             button_upload.setText("Revise Review");
 
             button_upload.setOnClickListener(new View.OnClickListener() {
@@ -180,9 +259,9 @@ public class Snack_Review extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    keyword_list.add(Editkeyword1.getText().toString().toLowerCase());
+                    /*keyword_list.add(Editkeyword1.getText().toString().toLowerCase());
                     keyword_list.add(Editkeyword2.getText().toString().toLowerCase());
-                    keyword_list.add(Editkeyword3.getText().toString().toLowerCase());
+                    keyword_list.add(Editkeyword3.getText().toString().toLowerCase());*/
 
                     String sweet_score = "0";
                     String spicy_score = "0";
@@ -194,16 +273,16 @@ public class Snack_Review extends AppCompatActivity {
                     if (keyword_list.contains("sour")) sour_score = "1";
                     if (keyword_list.contains("bitter")) bitter_score = "1";
 
-                    ArrayList<String> past_keyword_list;
+                    /*ArrayList<String> past_keyword_list;
                     past_keyword_list = new ArrayList<>();
                     past_keyword_list.add(past_rate[2]);
                     if(past_rate.length >= 4) past_keyword_list.add(past_rate[3]);
-                    if(past_rate.length >= 5) past_keyword_list.add(past_rate[4]);
+                    if(past_rate.length >= 5) past_keyword_list.add(past_rate[4]);*/
 
-                    if (past_keyword_list.contains("sweet")) sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
-                    if (past_keyword_list.contains("spicy")) spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
-                    if (past_keyword_list.contains("sour")) sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
-                    if (past_keyword_list.contains("bitter")) bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
+                    if (past_key.contains("sweet")) sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
+                    if (past_key.contains("spicy")) spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
+                    if (past_key.contains("sour")) sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
+                    if (past_key.contains("bitter")) bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
 
                     UpdateKeyScore task_key = new UpdateKeyScore();
 
@@ -213,10 +292,19 @@ public class Snack_Review extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    while(keyword_list.size() < 3) {
+                        keyword_list.add("-");
+                    }
+
                     // 이제 유저 테이블에 새로운 값, 키워드를 저장
                     Review_user_data review_data = new Review_user_data();
+                    System.out.println("Snack_review test");
+                    for(int i=0; i<3; i++)
+                        System.out.println(keyword_list.get(i));
+                    System.out.println("Snack_review test");
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), have_reviewed).get();
+                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "1").get();
+                        // have_reviewed는 항상 1이므로 그냥 1을 넣음
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -225,6 +313,57 @@ public class Snack_Review extends AppCompatActivity {
 
             });
         }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        keyword_list = new ArrayList<>();
+
+        cb1 = (CheckBox)findViewById(R.id.checkbox_review_key1);
+        cb2 = (CheckBox)findViewById(R.id.checkbox_review_key2);
+        cb3 = (CheckBox)findViewById(R.id.checkbox_review_key3);
+        cb4 = (CheckBox)findViewById(R.id.checkbox_review_key4);
+
+        count = 0;
+        if (cb1.isChecked()) {
+            count++;
+            keyword_list.add(cb1.getText().toString().toLowerCase());
+        }
+        if (cb2.isChecked()) {
+            count++;
+            keyword_list.add(cb2.getText().toString().toLowerCase());
+        }
+        if (cb3.isChecked()) {
+            count++;
+            keyword_list.add(cb3.getText().toString().toLowerCase());
+        }
+        if (cb4.isChecked()) {
+            count++;
+            keyword_list.add(cb4.getText().toString().toLowerCase());
+        }
+
+        if (count == 3) {
+            if (!cb1.isChecked()) cb1.setEnabled(false);
+            if (!cb2.isChecked()) cb2.setEnabled(false);
+            if (!cb3.isChecked()) cb3.setEnabled(false);
+            if (!cb4.isChecked()) cb4.setEnabled(false);
+        } else {
+            cb1.setEnabled(true);
+            cb2.setEnabled(true);
+            cb3.setEnabled(true);
+            cb4.setEnabled(true);
+        }
+
+        final Button button_upload = (Button)findViewById(R.id.button_upload_review);
+        if (count > 0) {
+            // 키워드를 1개 이상 선택하면 버튼 활성화
+            button_upload.setEnabled(true);
+        }
+        else {
+            button_upload.setEnabled(false);
+        }
+
     }
 
     class UpdateData extends AsyncTask<String, Void, String> {
@@ -420,7 +559,7 @@ public class Snack_Review extends AppCompatActivity {
             String have_reviewed = (String)params[8];
 
             String serverURL = (String)params[0];
-            String postParameters = "user_id=" + user_id + "&name=" + name + "&taste=" + taste + "&cost=" + cost + "&key1=" + key1 + "&key2=" + key2 + "&key3=" + key3 + "&have_reviewed" + have_reviewed;
+            String postParameters = "user_id=" + user_id + "&name=" + name + "&taste=" + taste + "&cost=" + cost + "&key1=" + key1 + "&key2=" + key2 + "&key3=" + key3 + "&have_reviewed=" + have_reviewed;
 
             try {
 

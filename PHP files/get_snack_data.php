@@ -23,6 +23,8 @@ if ($stmt->rowCount() > 0) {
     header('Content-Type: application/json; charset=utf8');
     $json = json_encode(array("snack_json"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
     echo $json;
+    
+    // json 파일을 echo하는 파일에서는 테스팅하려고 다른 것을 echo 하면 json에 섞여서 에러가 뜬다
 }
 
 ?>

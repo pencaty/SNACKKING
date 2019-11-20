@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_snack_data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_snack_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_snack_data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_user_individual_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_user_individual_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review_user_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/review_user_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Snack_Data_from_DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Snack_Data_from_DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_score.php" beforeDir="false" afterPath="$PROJECT_DIR$/update_score.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_snack.php" beforeDir="false" afterPath="$PROJECT_DIR$/update_snack.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Snack_through_keywords.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Snack_through_keywords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_snack_review.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_snack_review.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +69,8 @@
       <workItem from="1574075220351" duration="12977000" />
       <workItem from="1574140056202" duration="1578000" />
       <workItem from="1574171575132" duration="13813000" />
-      <workItem from="1574223296119" duration="948000" />
+      <workItem from="1574223296119" duration="1553000" />
+      <workItem from="1574249572319" duration="7223000" />
     </task>
     <servers />
   </component>
