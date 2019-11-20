@@ -165,7 +165,7 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
         GetData task = new GetData();
 
         try {
-            mJsonString = task.execute(IP_ADDRESS + "/getdata.php", "").get();
+            mJsonString = task.execute(IP_ADDRESS + "/get_snack_data.php", "").get();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -3,6 +3,7 @@ package com.example.snackking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.icu.text.SymbolTable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -288,6 +289,8 @@ public class Snack_Info extends AppCompatActivity {
                 button_review.setText("Revise Review");
                 Snack_DataStructure past_snack = list.get(0);
                 past_data = past_snack.getSnack_taste() +"#"+past_snack.getSnack_cost()+"#"+past_snack.getSnack_keyword_1()+"#"+past_snack.getSnack_keyword_2()+"#"+past_snack.getSnack_keyword_3();
+                System.out.println(past_data);
+                System.out.println("bibibibibibibbibibibibibibibi");
                 // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
                 // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
             }

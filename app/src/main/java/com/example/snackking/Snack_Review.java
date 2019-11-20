@@ -153,8 +153,8 @@ public class Snack_Review extends AppCompatActivity {
             EditTaste.setText(past_rate[0]);
             EditCost.setText(past_rate[1]);
             Editkeyword1.setText(past_rate[2]);
-            Editkeyword2.setText(past_rate[3]);
-            Editkeyword3.setText(past_rate[4]);
+            if(past_rate.length >= 4) Editkeyword2.setText(past_rate[3]);
+            if(past_rate.length >= 5) Editkeyword3.setText(past_rate[4]);
             button_upload.setText("Revise Review");
 
             button_upload.setOnClickListener(new View.OnClickListener() {
@@ -197,13 +197,13 @@ public class Snack_Review extends AppCompatActivity {
                     ArrayList<String> past_keyword_list;
                     past_keyword_list = new ArrayList<>();
                     past_keyword_list.add(past_rate[2]);
-                    past_keyword_list.add(past_rate[3]);
-                    past_keyword_list.add(past_rate[4]);
+                    if(past_rate.length >= 4) past_keyword_list.add(past_rate[3]);
+                    if(past_rate.length >= 5) past_keyword_list.add(past_rate[4]);
 
-                    if (keyword_list.contains("sweet")) sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
-                    if (keyword_list.contains("spicy")) spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
-                    if (keyword_list.contains("sour")) sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
-                    if (keyword_list.contains("bitter")) bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
+                    if (past_keyword_list.contains("sweet")) sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
+                    if (past_keyword_list.contains("spicy")) spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
+                    if (past_keyword_list.contains("sour")) sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
+                    if (past_keyword_list.contains("bitter")) bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
 
                     UpdateKeyScore task_key = new UpdateKeyScore();
 

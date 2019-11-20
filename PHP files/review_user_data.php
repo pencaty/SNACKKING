@@ -38,9 +38,9 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 $update_review->bindParam(':keyword2', $key2);
                 $update_review->bindParam(':keyword3', $key3);
                 if ($update_review->execute()) {
-                    $successMSG = "새로운!! 유저를 추가했습니다.";
+                    $successMSG = "유저의 리뷰를 수정했습니다.";
                 } else {
-                    $errMSG = "유저!! 추가 에러";
+                    $errMSG = "유저 리뷰 수정 에러";
                 }
                 break;
             }
@@ -55,10 +55,10 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
         $insert_review->bindParam(':keyword2', $key2);
         $insert_review->bindParam(':keyword3', $key3);
         if($insert_review->execute()) {
-            $successMSG = "새로운 유저를 추가했습니다.";
+            $successMSG = "유저의 리뷰를 수정했습니다.";
         }
         else {
-            $errMSG = "유저 추가 에러";
+            $errMSG = "유저 수정 에러";
         }
     }
 }
