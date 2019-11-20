@@ -15,8 +15,12 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     $spicy=(int)($_POST['spicy']);
     $sour=(int)($_POST['sour']);
     $bitter=(int)($_POST['bitter']);
+    $salty=(int)($_POST['salty']);
+    $greasy=(int)($_POST['greasy']);
+    $crispy=(int)($_POST['crispy']);
+    $moist=(int)($_POST['moist']);
 
-    if(empty($sweet) && empty($spicy) && empty($sour) && empty($bitter)) {
+    if(empty($sweet) && empty($spicy) && empty($sour) && empty($bitter) && empty($salty) && empty($greasy) && empty($crispy) && empty($moist)) {
         $errMSG = "update_snack 점수를 입력하세요.";
     }
 
@@ -31,11 +35,19 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 $spicy = $spicy + $row['Spicy'];
                 $sour = $sour + $row['Sour'];
                 $bitter = $bitter + $row['Bitter'];
+                $salty = $salty + $row['Salty'];
+                $greasy = $greasy + $row['Greasy'];
+                $crispy = $crispy + $row['Crispy'];
+                $moist = $moist + $row['Moisturized'];
 
                 $score_array[0] = $sweet;
                 $score_array[1] = $spicy;
                 $score_array[2] = $sour;
                 $score_array[3] = $bitter;
+                $score_array[4] = $salty;
+                $score_array[5] = $greasy;
+                $score_array[6] = $crispy;
+                $score_array[7] = $moist;
                 $first_index = -1;
                 $second_index = -1;
                 $third_index = -1;
@@ -73,6 +85,14 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                     break;
                     case 3 : $keyword_one = 'Bitter';
                     break;
+                    case 4 : $keyword_one = 'Salty';
+                    break;
+                    case 5 : $keyword_one = 'Greasy';
+                    break;
+                    case 6 : $keyword_one = 'Crispy';
+                    break;
+                    case 7 : $keyword_one = 'Moisturized';
+                    break;
                     default : $keyword_one = 'null';
                     break;
                 }
@@ -86,6 +106,14 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                         break;
                     case 3 : $keyword_two = 'Bitter';
                         break;
+                    case 4 : $keyword_two = 'Salty';
+                        break;
+                    case 5 : $keyword_two = 'Greasy';
+                        break;
+                    case 6 : $keyword_two = 'Crispy';
+                        break;
+                    case 7 : $keyword_two = 'Moisturized';
+                        break;
                     default : $keyword_two = 'null';
                         break;
                 }
@@ -98,6 +126,14 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                     case 2 : $keyword_three = 'Sour';
                         break;
                     case 3 : $keyword_three = 'Bitter';
+                        break;
+                    case 4 : $keyword_three = 'Salty';
+                        break;
+                    case 5 : $keyword_three = 'Greasy';
+                        break;
+                    case 6 : $keyword_three = 'Crispy';
+                        break;
+                    case 7 : $keyword_three = 'Moisturized';
                         break;
                     default : $keyword_three = 'null';
                         break;

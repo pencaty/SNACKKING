@@ -56,10 +56,10 @@ public class Show_Snacks extends RecyclerView.Adapter<Show_Snacks.CustomViewHold
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
 
         viewholder.name.setText(mList.get(position).getSnack_name());
-        viewholder.taste.setText(mList.get(position).getSnack_taste());
-        viewholder.cost.setText(mList.get(position).getSnack_cost());
-        viewholder.number_of_rate.setText(mList.get(position).getSnack_number_of_rate());
-        viewholder.keyword1.setText(mList.get(position).getSnack_keyword_1());
+        viewholder.taste.setText("Taste : " + mList.get(position).getSnack_taste() + " / 5 ");
+        viewholder.cost.setText("Cost : " + mList.get(position).getSnack_cost() + " / 5 ");
+        viewholder.number_of_rate.setText("Vote : " + mList.get(position).getSnack_number_of_rate());
+        viewholder.keyword1.setText("Keywords : " + mList.get(position).getSnack_keyword_1());
         viewholder.keyword2.setText(mList.get(position).getSnack_keyword_2());
         viewholder.keyword3.setText(mList.get(position).getSnack_keyword_3());
     }

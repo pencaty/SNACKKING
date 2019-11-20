@@ -58,9 +58,9 @@ public class Search_Adapter extends BaseAdapter {
 
         // 리스트에 있는 데이터를 리스트뷰 셀에 뿌린다.
         viewHolder.label_name.setText(list.get(position).getSnack_name());
-        viewHolder.label_taste.setText(list.get(position).getSnack_taste());
-        viewHolder.label_cost.setText(list.get(position).getSnack_cost());
-        viewHolder.label_keyword1.setText(list.get(position).getSnack_keyword_1());
+        viewHolder.label_taste.setText("Taste : " + list.get(position).getSnack_taste() + " / 5 ");
+        viewHolder.label_cost.setText("Cost : " + list.get(position).getSnack_cost() + " / 5");
+        viewHolder.label_keyword1.setText("Keywords : " + list.get(position).getSnack_keyword_1());
         viewHolder.label_keyword2.setText(list.get(position).getSnack_keyword_2());
         viewHolder.label_keyword3.setText(list.get(position).getSnack_keyword_3());
 

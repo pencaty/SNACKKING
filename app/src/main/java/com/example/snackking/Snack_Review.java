@@ -7,12 +7,16 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import java.io.BufferedReader;
@@ -36,16 +40,6 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private EditText EditCost;
     private TextView Text_SnackName;
 
-    private TextView Text_taste;
-    private TextView Text_cost;
-    private TextView Text_keyword1;
-    private TextView Text_keyword2;
-    private TextView Text_keyword3;
-
-    private EditText Editkeyword1;
-    private EditText Editkeyword2;
-    private EditText Editkeyword3;
-
     private String have_reviewed;
     private String past_data;
     private String user_id;
@@ -55,9 +49,12 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private CheckBox cb2;
     private CheckBox cb3;
     private CheckBox cb4;
+    private CheckBox cb5;
+    private CheckBox cb6;
+    private CheckBox cb7;
+    private CheckBox cb8;
 
     private ArrayList<String> keyword_list;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +64,6 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         Intent intent = getIntent();
 
         Text_SnackName = (TextView)findViewById(R.id.review_snack_name);
-        Text_taste = (TextView)findViewById(R.id.review_taste_name);
-        Text_cost = (TextView)findViewById(R.id.review_cost_name);
-        /*Text_keyword1 = (TextView)findViewById(R.id.review_keyword1_name);
-        Text_keyword2 = (TextView)findViewById(R.id.review_keyword2_name);
-        Text_keyword3 = (TextView)findViewById(R.id.review_keyword3_name);*/
 
         keyword_list = new ArrayList<>();
 
@@ -79,18 +71,22 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         cb2 = (CheckBox)findViewById(R.id.checkbox_review_key2);
         cb3 = (CheckBox)findViewById(R.id.checkbox_review_key3);
         cb4 = (CheckBox)findViewById(R.id.checkbox_review_key4);
+        cb5 = (CheckBox)findViewById(R.id.checkbox_review_key5);
+        cb6 = (CheckBox)findViewById(R.id.checkbox_review_key6);
+        cb7 = (CheckBox)findViewById(R.id.checkbox_review_key7);
+        cb8 = (CheckBox)findViewById(R.id.checkbox_review_key8);
 
         cb1.setOnCheckedChangeListener(this);
         cb2.setOnCheckedChangeListener(this);
         cb3.setOnCheckedChangeListener(this);
         cb4.setOnCheckedChangeListener(this);
+        cb5.setOnCheckedChangeListener(this);
+        cb6.setOnCheckedChangeListener(this);
+        cb7.setOnCheckedChangeListener(this);
+        cb8.setOnCheckedChangeListener(this);
 
         EditTaste = (EditText)findViewById(R.id.review_taste);
         EditCost = (EditText)findViewById(R.id.review_cost);
-
-        /*Editkeyword1 = (EditText)findViewById((R.id.review_keyword1));
-        Editkeyword2 = (EditText)findViewById((R.id.review_keyword2));
-        Editkeyword3 = (EditText)findViewById((R.id.review_keyword3));*/
 
         snack_name = intent.getStringExtra("name");
         snack_taste = intent.getStringExtra("taste");
@@ -103,9 +99,6 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
         Text_SnackName.setText(snack_name);
 
-        System.out.println("starto f snack review~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println(have_reviewed);
-
         final Button button_upload = (Button)findViewById(R.id.button_upload_review);
 
         // 맨 처음에 버튼 비활성화 추가하기
@@ -115,75 +108,81 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             button_upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String taste_score = EditTaste.getText().toString();
-                    String cost_score = EditCost.getText().toString();
+                    String standard = "12345";
+                    if (!standard.contains(EditTaste.getText().toString()) || !standard.contains(EditCost.getText().toString())) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost between 1 and 5", Toast.LENGTH_SHORT);
+                        int offSetX = 0;
+                        int offSetY = 0;
+                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                        toast.show();
+                    } else {
+                        String taste_score = EditTaste.getText().toString();
+                        String cost_score = EditCost.getText().toString();
 
-                    System.out.println("past review no");
+                        System.out.println("past review no");
 
-                    double double_taste_score = Double.parseDouble(taste_score);
-                    double double_cost_score = Double.parseDouble(cost_score);
-                    double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
+                        double double_taste_score = Double.parseDouble(taste_score);
+                        double double_cost_score = Double.parseDouble(cost_score);
+                        double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
 
-                    String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score) / (double_number_of_rate + 1));
-                    String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score) / (double_number_of_rate + 1));
+                        String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score) / (double_number_of_rate + 1));
+                        String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score) / (double_number_of_rate + 1));
 
-                    UpdateData task = new UpdateData();
+                        UpdateData task = new UpdateData();
 
-                    System.out.println("SNack review 126 ~~~~~~~~ " + average_taste);
-                    System.out.println("SNack review 126 ~~~~~~~~ " + average_cost);
+                        try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                            String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        String sweet_score = "0";
+                        String spicy_score = "0";
+                        String sour_score = "0";
+                        String bitter_score = "0";
+                        String salty_score = "0";
+                        String greasy_score = "0";
+                        String crispy_score = "0";
+                        String moist_score = "0";
+
+                        if (keyword_list.contains("sweet")) sweet_score = "1";
+                        if (keyword_list.contains("spicy")) spicy_score = "1";
+                        if (keyword_list.contains("sour")) sour_score = "1";
+                        if (keyword_list.contains("bitter")) bitter_score = "1";
+                        if (keyword_list.contains("salty")) salty_score = "1";
+                        if (keyword_list.contains("greasy")) greasy_score = "1";
+                        if (keyword_list.contains("crispy")) crispy_score = "1";
+                        if (keyword_list.contains("moisturized")) moist_score = "1";
+
+                        UpdateKeyScore task_key = new UpdateKeyScore();
+
+                        try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                            String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        // keyword 별 개수 가장 많은 순으로 3개를 Keyword_One, Two, Three에 넣자.
+                        // --> UpdateKeyScore 관련 php에서 모두 다 끝난 후 하는 것으로.
+
+                        // 이제 유저 개개인 테이블에 과자, 점수, 키워드를 저장   .
+
+                        while (keyword_list.size() < 3) {
+                            keyword_list.add("-");
+                        }
+
+                        Review_user_data review_data = new Review_user_data();
+                        try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                            String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "0").get();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Toast toast = Toast.makeText(getApplicationContext(), "The review is uploaded", Toast.LENGTH_SHORT);
+                        int offSetX = 0;
+                        int offSetY = 0;
+                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                        toast.show();
                     }
-
-                    System.out.println("wowowowwowowowowowowow");
-                    System.out.println(keyword_list.get(0));
-
-                    /*keyword_list.add(Editkeyword1.getText().toString().toLowerCase());
-                    keyword_list.add(Editkeyword2.getText().toString().toLowerCase());
-                    keyword_list.add(Editkeyword3.getText().toString().toLowerCase());*/
-
-                    String sweet_score = "0";
-                    String spicy_score = "0";
-                    String sour_score = "0";
-                    String bitter_score = "0";
-
-                    if (keyword_list.contains("sweet")) sweet_score = "1";
-                    if (keyword_list.contains("spicy")) spicy_score = "1";
-                    if (keyword_list.contains("sour")) sour_score = "1";
-                    if (keyword_list.contains("bitter")) bitter_score = "1";
-
-                    UpdateKeyScore task_key = new UpdateKeyScore();
-
-                    System.out.println("Sweet review 154 ~~~~~~~~ " + sweet_score);
-                    System.out.println("Spicyreview 154 ~~~~~~~~ " + spicy_score);
-                    System.out.println("Sour review 154 ~~~~~~~~ " + sour_score);
-                    System.out.println("Bitter review 154 ~~~~~~~~ " + bitter_score);
-
-                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score).get();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                    // keyword 별 개수 가장 많은 순으로 3개를 Keyword_One, Two, Three에 넣자.
-                    // --> UpdateKeyScore 관련 php에서 모두 다 끝난 후 하는 것으로.
-
-                    // 이제 유저 개개인 테이블에 과자, 점수, 키워드를 저장   .
-
-                    while(keyword_list.size() < 3) {
-                        keyword_list.add("-");
-                    }
-
-                    Review_user_data review_data = new Review_user_data();
-                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "0").get();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
                 }
             });
         }
@@ -191,12 +190,6 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             final String[] past_rate = past_data.split("#"); // 앞에서부터 순서대로 과거의 taste, cost, keyword1, keyword2, keyword3이 들어감
             EditTaste.setText(past_rate[0]);
             EditCost.setText(past_rate[1]);
-            /*Editkeyword1.setText(past_rate[2]);
-            if(past_rate.length >= 4) Editkeyword2.setText(past_rate[3]);
-            if(past_rate.length >= 5) Editkeyword3.setText(past_rate[4]);*/
-
-            System.out.println("past review yes");
-            System.out.println(past_data);
 
             final ArrayList<String> past_key;
             past_key = new ArrayList<>();
@@ -204,34 +197,58 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             if(past_rate.length >= 4) past_key.add(past_rate[3]);
             if(past_rate.length >= 5) past_key.add(past_rate[4]);
 
-            int cnt = 0;  // 과거에 체크했던 키워드 체크하는 부분
+            int count = 0;  // 과거에 체크했던 키워드 체크하는 부분
             if(past_key.contains("sweet")){
                 cb1.setChecked(true);
-                cnt ++;
+                count ++;
             }
             if(past_key.contains("spicy")) {
                 cb2.setChecked(true);
-                cnt ++;
+                count ++;
             }
             if(past_key.contains("sour")) {
                 cb3.setChecked(true);
-                cnt ++;
+                count ++;
             }
             if(past_key.contains("bitter")) {
                 cb4.setChecked(true);
-                cnt ++;
+                count ++;
+            }
+            if(past_key.contains("salty")){
+                cb5.setChecked(true);
+                count ++;
+            }
+            if(past_key.contains("greasy")) {
+                cb6.setChecked(true);
+                count ++;
+            }
+            if(past_key.contains("crispy")) {
+                cb7.setChecked(true);
+                count ++;
+            }
+            if(past_key.contains("moisturized")) {
+                cb8.setChecked(true);
+                count ++;
             }
 
-            if (cnt == 3) { // 과거에 체크한 것이 이미 최대량이면 더이상 새로운 것을 체크하지 못하도록
+            if (count == 3) { // 과거에 체크한 것이 이미 최대량이면 더이상 새로운 것을 체크하지 못하도록
                 if (!cb1.isChecked()) cb1.setEnabled(false);
                 if (!cb2.isChecked()) cb2.setEnabled(false);
                 if (!cb3.isChecked()) cb3.setEnabled(false);
                 if (!cb4.isChecked()) cb4.setEnabled(false);
+                if (!cb5.isChecked()) cb5.setEnabled(false);
+                if (!cb6.isChecked()) cb6.setEnabled(false);
+                if (!cb7.isChecked()) cb7.setEnabled(false);
+                if (!cb8.isChecked()) cb8.setEnabled(false);
             } else {
                 cb1.setEnabled(true);
                 cb2.setEnabled(true);
                 cb3.setEnabled(true);
                 cb4.setEnabled(true);
+                cb5.setEnabled(true);
+                cb6.setEnabled(true);
+                cb7.setEnabled(true);
+                cb8.setEnabled(true);
             }
 
             button_upload.setText("Revise Review");
@@ -239,78 +256,102 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             button_upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String taste_score = EditTaste.getText().toString();
-                    String cost_score = EditCost.getText().toString();
+                    String standard = "12345";
+                    if (!standard.contains(EditTaste.getText().toString()) || !standard.contains(EditCost.getText().toString())) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost between 1 and 5", Toast.LENGTH_SHORT);
+                        int offSetX = 0;
+                        int offSetY = 0;
+                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                        toast.show();
+                    } else {
+                        String taste_score = EditTaste.getText().toString();
+                        String cost_score = EditCost.getText().toString();
 
-                    double double_taste_score = Double.parseDouble(taste_score);
-                    double double_cost_score = Double.parseDouble(cost_score);
-                    double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
+                        double double_taste_score = Double.parseDouble(taste_score);
+                        double double_cost_score = Double.parseDouble(cost_score);
+                        double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
 
-                    String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score - Double.parseDouble(past_rate[0])) / double_number_of_rate);
-                    String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score - Double.parseDouble(past_rate[1])) / double_number_of_rate);
-                    // 이미 과거에 리뷰를 했던 것이므로 double_number_of_rate 은 1 증가하지 않고,
-                    // 분자에선 새로운 값으로 바꾸는 것이므로 기존의 값을 빼줘야 한다
+                        String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score - Double.parseDouble(past_rate[0])) / double_number_of_rate);
+                        String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score - Double.parseDouble(past_rate[1])) / double_number_of_rate);
+                        // 이미 과거에 리뷰를 했던 것이므로 double_number_of_rate 은 1 증가하지 않고,
+                        // 분자에선 새로운 값으로 바꾸는 것이므로 기존의 값을 빼줘야 한다
 
-                    UpdateData task = new UpdateData();
+                        UpdateData task = new UpdateData();
 
-                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                            String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                    /*keyword_list.add(Editkeyword1.getText().toString().toLowerCase());
-                    keyword_list.add(Editkeyword2.getText().toString().toLowerCase());
-                    keyword_list.add(Editkeyword3.getText().toString().toLowerCase());*/
 
-                    String sweet_score = "0";
-                    String spicy_score = "0";
-                    String sour_score = "0";
-                    String bitter_score = "0";
+                        String sweet_score = "0";
+                        String spicy_score = "0";
+                        String sour_score = "0";
+                        String bitter_score = "0";
+                        String salty_score = "0";
+                        String greasy_score = "0";
+                        String crispy_score = "0";
+                        String moist_score = "0";
 
-                    if (keyword_list.contains("sweet")) sweet_score = "1";
-                    if (keyword_list.contains("spicy")) spicy_score = "1";
-                    if (keyword_list.contains("sour")) sour_score = "1";
-                    if (keyword_list.contains("bitter")) bitter_score = "1";
+                        if (keyword_list.contains("sweet")) sweet_score = "1";
+                        if (keyword_list.contains("spicy")) spicy_score = "1";
+                        if (keyword_list.contains("sour")) sour_score = "1";
+                        if (keyword_list.contains("bitter")) bitter_score = "1";
+                        if (keyword_list.contains("salty")) salty_score = "1";
+                        if (keyword_list.contains("greasy")) greasy_score = "1";
+                        if (keyword_list.contains("crispy")) crispy_score = "1";
+                        if (keyword_list.contains("moisturized")) moist_score = "1";
 
-                    /*ArrayList<String> past_keyword_list;
-                    past_keyword_list = new ArrayList<>();
-                    past_keyword_list.add(past_rate[2]);
-                    if(past_rate.length >= 4) past_keyword_list.add(past_rate[3]);
-                    if(past_rate.length >= 5) past_keyword_list.add(past_rate[4]);*/
 
-                    if (past_key.contains("sweet")) sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
-                    if (past_key.contains("spicy")) spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
-                    if (past_key.contains("sour")) sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
-                    if (past_key.contains("bitter")) bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
+                        if (past_key.contains("sweet"))
+                            sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
+                        if (past_key.contains("spicy"))
+                            spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
+                        if (past_key.contains("sour"))
+                            sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
+                        if (past_key.contains("bitter"))
+                            bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
+                        if (past_key.contains("salty"))
+                            salty_score = String.valueOf(Integer.parseInt(salty_score) - 1);
+                        if (past_key.contains("greasy"))
+                            greasy_score = String.valueOf(Integer.parseInt(greasy_score) - 1);
+                        if (past_key.contains("crispy"))
+                            crispy_score = String.valueOf(Integer.parseInt(crispy_score) - 1);
+                        if (past_key.contains("moisturized"))
+                            moist_score = String.valueOf(Integer.parseInt(moist_score) - 1);
 
-                    UpdateKeyScore task_key = new UpdateKeyScore();
+                        UpdateKeyScore task_key = new UpdateKeyScore();
 
-                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score).get();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                            String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                    while(keyword_list.size() < 3) {
-                        keyword_list.add("-");
-                    }
+                        while (keyword_list.size() < 3) {
+                            keyword_list.add("-");
+                        }
 
-                    // 이제 유저 테이블에 새로운 값, 키워드를 저장
-                    Review_user_data review_data = new Review_user_data();
-                    System.out.println("Snack_review test");
-                    for(int i=0; i<3; i++)
-                        System.out.println(keyword_list.get(i));
-                    System.out.println("Snack_review test");
-                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "1").get();
-                        // have_reviewed는 항상 1이므로 그냥 1을 넣음
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        // 이제 유저 테이블에 새로운 값, 키워드를 저장
+                        Review_user_data review_data = new Review_user_data();
+                        System.out.println("Snack_review test");
+                        for (int i = 0; i < 3; i++)
+                            System.out.println(keyword_list.get(i));
+                        System.out.println("Snack_review test");
+                        try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                            String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "1").get();
+                            // have_reviewed는 항상 1이므로 그냥 1을 넣음
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Toast toast = Toast.makeText(getApplicationContext(), "The review is revised", Toast.LENGTH_SHORT);
+                        int offSetX = 0;
+                        int offSetY = 0;
+                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                        toast.show();
                     }
                 }
-
-
             });
         }
     }
@@ -324,6 +365,10 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         cb2 = (CheckBox)findViewById(R.id.checkbox_review_key2);
         cb3 = (CheckBox)findViewById(R.id.checkbox_review_key3);
         cb4 = (CheckBox)findViewById(R.id.checkbox_review_key4);
+        cb5 = (CheckBox)findViewById(R.id.checkbox_review_key5);
+        cb6 = (CheckBox)findViewById(R.id.checkbox_review_key6);
+        cb7 = (CheckBox)findViewById(R.id.checkbox_review_key7);
+        cb8 = (CheckBox)findViewById(R.id.checkbox_review_key8);
 
         count = 0;
         if (cb1.isChecked()) {
@@ -342,17 +387,41 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             count++;
             keyword_list.add(cb4.getText().toString().toLowerCase());
         }
+        if (cb5.isChecked()) {
+            count++;
+            keyword_list.add(cb5.getText().toString().toLowerCase());
+        }
+        if (cb6.isChecked()) {
+            count++;
+            keyword_list.add(cb6.getText().toString().toLowerCase());
+        }
+        if (cb7.isChecked()) {
+            count++;
+            keyword_list.add(cb7.getText().toString().toLowerCase());
+        }
+        if (cb8.isChecked()) {
+            count++;
+            keyword_list.add(cb8.getText().toString().toLowerCase());
+        }
 
-        if (count == 3) {
+        if (count == 3) { // 과거에 체크한 것이 이미 최대량이면 더이상 새로운 것을 체크하지 못하도록
             if (!cb1.isChecked()) cb1.setEnabled(false);
             if (!cb2.isChecked()) cb2.setEnabled(false);
             if (!cb3.isChecked()) cb3.setEnabled(false);
             if (!cb4.isChecked()) cb4.setEnabled(false);
+            if (!cb5.isChecked()) cb5.setEnabled(false);
+            if (!cb6.isChecked()) cb6.setEnabled(false);
+            if (!cb7.isChecked()) cb7.setEnabled(false);
+            if (!cb8.isChecked()) cb8.setEnabled(false);
         } else {
             cb1.setEnabled(true);
             cb2.setEnabled(true);
             cb3.setEnabled(true);
             cb4.setEnabled(true);
+            cb5.setEnabled(true);
+            cb6.setEnabled(true);
+            cb7.setEnabled(true);
+            cb8.setEnabled(true);
         }
 
         final Button button_upload = (Button)findViewById(R.id.button_upload_review);
@@ -474,9 +543,13 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             String spicy = (String)params[3];
             String sour = (String)params[4];
             String bitter = (String)params[5];
+            String salty = (String) params[6];
+            String greasy = (String)params[7];
+            String crispy = (String)params[8];
+            String moist = (String)params[9];
 
             String serverURL = (String)params[0];
-            String postParameters = "name=" + name + "&sweet=" + sweet + "&spicy=" + spicy + "&sour=" + sour + "&bitter=" + bitter;
+            String postParameters = "name=" + name + "&sweet=" + sweet + "&spicy=" + spicy + "&sour=" + sour + "&bitter=" + bitter + "&salty=" + salty + "&greasy=" + greasy + "&crispy=" + crispy + "&moist=" + moist;
 
             try {
 

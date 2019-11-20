@@ -24,6 +24,10 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
     private CheckBox cb2;
     private CheckBox cb3;
     private CheckBox cb4;
+    private CheckBox cb5;
+    private CheckBox cb6;
+    private CheckBox cb7;
+    private CheckBox cb8;
 
     private TextView tv1;
     private TextView tv2;
@@ -48,6 +52,10 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
         cb2 = (CheckBox)findViewById(R.id.checkbox_key2);
         cb3 = (CheckBox)findViewById(R.id.checkbox_key3);
         cb4 = (CheckBox)findViewById(R.id.checkbox_key4);
+        cb5 = (CheckBox)findViewById(R.id.checkbox_key5);
+        cb6 = (CheckBox)findViewById(R.id.checkbox_key6);
+        cb7 = (CheckBox)findViewById(R.id.checkbox_key7);
+        cb8 = (CheckBox)findViewById(R.id.checkbox_key8);
 
         tv1 = (TextView)findViewById(R.id.Text_first_key);
         tv2 = (TextView)findViewById(R.id.Text_second_key);
@@ -60,16 +68,19 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
         cb2.setOnCheckedChangeListener(this);
         cb3.setOnCheckedChangeListener(this);
         cb4.setOnCheckedChangeListener(this);
+        cb5.setOnCheckedChangeListener(this);
+        cb6.setOnCheckedChangeListener(this);
+        cb7.setOnCheckedChangeListener(this);
+        cb8.setOnCheckedChangeListener(this);
 
         Button button_search = (Button)findViewById(R.id.button_search);
         button_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(count==0){
-                    Toast.makeText(getApplicationContext(), "Select keywords", Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), "Select at least one keyword", Toast.LENGTH_LONG).show();
                 }
                 else {
-
                     while(keyword_list.size() < 3) {
                         keyword_list.add("-");
                     }
@@ -80,6 +91,11 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
                     intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
                     intent.putExtra(("third"), keyword_list.get(2).toLowerCase());
                     intent.putExtra("user_id", user_id);
+                    System.out.println("end of through keywordddddddddddd");
+                    System.out.println(keyword_list.get(0));
+                    System.out.println(keyword_list.get(1));
+                    System.out.println(keyword_list.get(2));
+                    System.out.println("end of through keywordddddddddddd");
                     startActivity(intent);
                 }
             }
@@ -95,7 +111,80 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        keyword_list = new ArrayList<>();
+        tv_list = new ArrayList<>();
+
+        cb1 = (CheckBox)findViewById(R.id.checkbox_key1);
+        cb2 = (CheckBox)findViewById(R.id.checkbox_key2);
+        cb3 = (CheckBox)findViewById(R.id.checkbox_key3);
+        cb4 = (CheckBox)findViewById(R.id.checkbox_key4);
+        cb5 = (CheckBox)findViewById(R.id.checkbox_key5);
+        cb6 = (CheckBox)findViewById(R.id.checkbox_key6);
+        cb7 = (CheckBox)findViewById(R.id.checkbox_key7);
+        cb8 = (CheckBox)findViewById(R.id.checkbox_key8);
+
+        tv1 = (TextView)findViewById(R.id.Text_first_key);
+        tv2 = (TextView)findViewById(R.id.Text_second_key);
+        tv3 = (TextView)findViewById(R.id.Text_third_key);
+        tv_list.add(tv1);
+        tv_list.add(tv2);
+        tv_list.add(tv3);
+
+        cb1.setOnCheckedChangeListener(this);
+        cb2.setOnCheckedChangeListener(this);
+        cb3.setOnCheckedChangeListener(this);
+        cb4.setOnCheckedChangeListener(this);
+        cb5.setOnCheckedChangeListener(this);
+        cb6.setOnCheckedChangeListener(this);
+        cb7.setOnCheckedChangeListener(this);
+        cb8.setOnCheckedChangeListener(this);
+
+        Button button_search = (Button)findViewById(R.id.button_search);
+        button_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(count==0){
+                    Toast.makeText(getApplicationContext(), "Select at least one keyword", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    while(keyword_list.size() < 3) {
+                        keyword_list.add("-");
+                    }
+
+                    Intent intent = new Intent(getApplicationContext(), Search_keyword_result.class);
+                    intent.putExtra(("number"), count);
+                    intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
+                    intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
+                    intent.putExtra(("third"), keyword_list.get(2).toLowerCase());
+                    intent.putExtra("user_id", user_id);
+                    System.out.println("end of through keywordddddddddddd");
+                    System.out.println(keyword_list.get(0));
+                    System.out.println(keyword_list.get(1));
+                    System.out.println(keyword_list.get(2));
+                    System.out.println("end of through keywordddddddddddd");
+                    startActivity(intent);
+                }
+            }
+        });
+
+        Button button_back = (Button)findViewById(R.id.button_search_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+    }
+
+    @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        keyword_list = new ArrayList<>();
 
         for(int i = 0; i < 3; i++) {
             tv_list.get(i).setText("");
@@ -122,19 +211,46 @@ public class Search_Snack_through_keywords extends AppCompatActivity implements 
             keyword_list.add(cb4.getText().toString());
             tv_list.get(count-1).setText(cb4.getText().toString());
         }
+        if(cb5.isChecked()) {
+            count++;
+            keyword_list.add(cb5.getText().toString());
+            tv_list.get(count-1).setText(cb5.getText().toString());
+        }
+        if(cb6.isChecked()) {
+            count++;
+            keyword_list.add(cb6.getText().toString());
+            tv_list.get(count-1).setText(cb6.getText().toString());
+        }
+        if(cb7.isChecked()) {
+            count++;
+            keyword_list.add(cb7.getText().toString());
+            tv_list.get(count-1).setText(cb7.getText().toString());
+        }
+        if(cb8.isChecked()) {
+            count++;
+            keyword_list.add(cb8.getText().toString());
+            tv_list.get(count-1).setText(cb8.getText().toString());
+        }
 
         if(count == 3){
             if(!cb1.isChecked()) cb1.setEnabled(false);
             if(!cb2.isChecked()) cb2.setEnabled(false);
             if(!cb3.isChecked()) cb3.setEnabled(false);
             if(!cb4.isChecked()) cb4.setEnabled(false);
+            if(!cb5.isChecked()) cb5.setEnabled(false);
+            if(!cb6.isChecked()) cb6.setEnabled(false);
+            if(!cb7.isChecked()) cb7.setEnabled(false);
+            if(!cb8.isChecked()) cb8.setEnabled(false);
         }
         else{
             cb1.setEnabled(true);
             cb2.setEnabled(true);
             cb3.setEnabled(true);
             cb4.setEnabled(true);
+            cb5.setEnabled(true);
+            cb6.setEnabled(true);
+            cb7.setEnabled(true);
+            cb8.setEnabled(true);
         }
-
     }
 }

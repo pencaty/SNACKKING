@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -42,6 +43,10 @@ public class Search_keyword_result extends AppCompatActivity {
     private int keyword_number = 0;
     private ArrayList<String> keyword_list;
 
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";
     public String mJsonString;
@@ -60,16 +65,23 @@ public class Search_keyword_result extends AppCompatActivity {
         third_keyword = intent.getStringExtra("third");
         user_id = intent.getStringExtra("user_id");
 
+        tv1 = (TextView)findViewById(R.id.Text_first_key_intent);
+        tv2 = (TextView)findViewById(R.id.Text_second_key_intent);
+        tv3 = (TextView)findViewById(R.id.Text_third_key_intent);
+        tv1.setText(first_keyword);
+        if(second_keyword != null) tv2.setText(second_keyword);
+        if(third_keyword != null) tv3.setText(third_keyword);
+
         keyword_list = new ArrayList<>();
-        keyword_list.add(first_keyword);
-        if(second_keyword != null) keyword_list.add(second_keyword);
-        if(third_keyword != null) keyword_list.add(third_keyword);
+        keyword_list.add(first_keyword.toLowerCase());
+        if(second_keyword != null) keyword_list.add(second_keyword.toLowerCase());
+        if(third_keyword != null) keyword_list.add(third_keyword.toLowerCase());
 
         listView = (ListView) findViewById(R.id.Search_listView_key);
 
         list = new ArrayList<>(); // 리스트를 생성한다.
 
-        settingList(); // 검색에 사용할 데이터을 미리 저장한다.
+        settingList(); // 검색에 사용할 데이터을 미리 저장한다.   --> 여기서 과자 이름 데이터를 넣어야함.
 
         arraylist = new ArrayList<Snack_DataStructure>(); // 리스트의 모든 데이터를 arraylist에 복사한다.// list 복사본을 만든다.
         arraylist.addAll(list);
@@ -110,20 +122,19 @@ public class Search_keyword_result extends AppCompatActivity {
         // 키워드 검색 --> keyword_list에 최대 3개 들어있음
         // 키워드를 하나의 list처럼 주고, 모든 과자 돌면서 각 키워드의 지분을 더한 후 ~% 이상이면 list에 add.
         int number_of_key_have;
-        int cnt=0;
         for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
             number_of_key_have = 0;
-
             if(keyword_list.contains(arraylist.get(i).getSnack_keyword_1().toLowerCase())) number_of_key_have++;
             if(keyword_list.contains(arraylist.get(i).getSnack_keyword_2().toLowerCase())) number_of_key_have++;
             if(keyword_list.contains(arraylist.get(i).getSnack_keyword_3().toLowerCase())) number_of_key_have++;
 
             if(number_of_key_have == keyword_number){
                 list.add(arraylist.get(i));    // 검색된 데이터를 리스트에 추가한다.
-                cnt++;
             }
         }
-
+        for(int i=0; i<list.size(); i++) {
+            System.out.println(list.get(i).getSnack_name());
+        }
         adapter.notifyDataSetChanged(); // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
     }
 
@@ -230,12 +241,11 @@ public class Search_keyword_result extends AppCompatActivity {
         String TAG_KEYWORD2 = "keyword2";
         String TAG_KEYWORD3 = "keyword3";
 
-
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            for(int i=0;i<jsonArray.length();i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 

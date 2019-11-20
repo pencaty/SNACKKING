@@ -15,6 +15,7 @@
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,9 +25,6 @@
         <activity android:name=".Snack_Info" />
         <activity android:name=".Search_Snack_Data_from_DB" />
         <activity android:name=".DB_snack_get" />
-        <activity android:name=".MainActivity">
-
-        </activity>
     </application>
 
 </manifest>

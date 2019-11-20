@@ -14,7 +14,7 @@
             android:id="@+id/editSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="검색어를 입력하세요."/>
+            android:hint="Search By Name"/>
 
         <ListView
             android:id="@+id/Search_listView"

@@ -73,7 +73,7 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) { // input창에 문자를 입력할때마다 호출된다.
-                String text = editSearch.getText().toString();
+                String text = editSearch.getText().toString().toLowerCase();
                 search(text);  // search 메소드를 호출한다.
             }
         });
@@ -122,7 +122,7 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) { // input창에 문자를 입력할때마다 호출된다.
-                String text = editSearch.getText().toString();
+                String text = editSearch.getText().toString().toLowerCase();
                 search(text);  // search 메소드를 호출한다.
             }
         });
@@ -248,7 +248,6 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
 
                 return null;
             }
-
         }
     }
 
@@ -263,43 +262,39 @@ public class Search_Snack_Data_from_DB extends AppCompatActivity {
         String TAG_KEYWORD2 = "keyword2";
         String TAG_KEYWORD3 = "keyword3";
 
+        if(mJsonString != null) {
+            try {
 
-        try {
+                JSONObject jsonObject = new JSONObject(mJsonString);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            System.out.println(mJsonString);
-            System.out.println("dfdfdfd in Snack Data from DB");
+                for (int i = 0; i < jsonArray.length(); i++) {
 
-            JSONObject jsonObject = new JSONObject(mJsonString);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-            for(int i=0;i<jsonArray.length();i++){
+                    String name = item.getString(TAG_NAME);
+                    String taste = item.getString(TAG_TASTE);
+                    String cost = item.getString(TAG_COST);
+                    String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
+                    String keyword_1 = item.getString(TAG_KEYWORD1);
+                    String keyword_2 = item.getString(TAG_KEYWORD2);
+                    String keyword_3 = item.getString(TAG_KEYWORD3);
 
-                JSONObject item = jsonArray.getJSONObject(i);
+                    Snack_DataStructure snackdata = new Snack_DataStructure();
 
-                String name = item.getString(TAG_NAME);
-                String taste = item.getString(TAG_TASTE);
-                String cost = item.getString(TAG_COST);
-                String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
-                String keyword_1 = item.getString(TAG_KEYWORD1);
-                String keyword_2 = item.getString(TAG_KEYWORD2);
-                String keyword_3 = item.getString(TAG_KEYWORD3);
+                    snackdata.setSnack_name(name);
+                    snackdata.setSnack_taste(taste);
+                    snackdata.setSnack_cost(cost);
+                    snackdata.setSnack_number_of_rate(number_of_rate);
+                    snackdata.setSnack_keyword_1(keyword_1);
+                    snackdata.setSnack_keyword_2(keyword_2);
+                    snackdata.setSnack_keyword_3(keyword_3);
 
-                Snack_DataStructure snackdata = new Snack_DataStructure();
-
-                snackdata.setSnack_name(name);
-                snackdata.setSnack_taste(taste);
-                snackdata.setSnack_cost(cost);
-                snackdata.setSnack_number_of_rate(number_of_rate);
-                snackdata.setSnack_keyword_1(keyword_1);
-                snackdata.setSnack_keyword_2(keyword_2);
-                snackdata.setSnack_keyword_3(keyword_3);
-
-                list.add(snackdata);
+                    list.add(snackdata);
+                }
+            } catch (JSONException e) {
+                Log.d(TAG, "showResult : ", e);
             }
-        } catch (JSONException e) {
-            Log.d(TAG, "showResult : ", e);
         }
     }
-
-
 }

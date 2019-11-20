@@ -61,15 +61,7 @@ public class DB_snack_get extends AppCompatActivity {
         Intent intent = getIntent();
         user_id = intent.getStringExtra("user_id");
 
-/*        GetData task = new GetData();
-        task.execute(IP_ADDRESS + "/getdata.php", "");
-        try {
-            String res = task.execute(IP_ADDRESS + "/getdata.php", "").get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-        Button button_all = (Button) findViewById(R.id.button_all);
+       /* Button button_all = (Button) findViewById(R.id.button_all);
         button_all.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -77,9 +69,9 @@ public class DB_snack_get extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
 
                 GetData task = new GetData();
-                task.execute(IP_ADDRESS + "/getdata.php", "");
+                task.execute(IP_ADDRESS + "/get_snack_data.php", "");
             }
-        });
+        });*/
 
         Button buttonGo_search = (Button)findViewById(R.id.button_go_search);
         buttonGo_search.setOnClickListener(new View.OnClickListener() {

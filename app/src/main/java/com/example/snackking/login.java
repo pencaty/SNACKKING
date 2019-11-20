@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -37,23 +39,31 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String user = mEditText_login.getText().toString();
+                String user_id = mEditText_login.getText().toString();
 
-                Insert_User_Data task = new Insert_User_Data();
-                try {
-                    String res = task.execute(IP_ADDRESS + "/insert_user_data.php", user).get();
+                if(user_id.length() < 4) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Please enter at least 4 letters", Toast.LENGTH_SHORT);
+                    int offSetX = 0;
+                    int offSetY = 0;
+                    toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                    toast.show();
                 }
-                catch (Exception e) {
-                    e.printStackTrace();
+                else {
+                    Insert_User_Data task = new Insert_User_Data();
+                    try {
+                        String res = task.execute(IP_ADDRESS + "/insert_user_data.php", user_id).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    Intent intent = new Intent(getApplicationContext(), DB_snack_get.class);
+                    intent.putExtra("user_id", user_id);
+                    startActivity(intent);
+
+                    // login 버튼을 눌러서 다음 페이지로 갈 때
+                    // 이미 있는 유저면 그 아이디를 가지고 디비 데이터 가져오기 가능
+                    // 신규유저면 그 아이디로 새로 테이블을 만든다
                 }
-
-                Intent intent = new Intent(getApplicationContext(), DB_snack_get.class);
-                intent.putExtra("user_id", mEditText_login.getText().toString());
-                startActivity(intent);
-
-                // login 버튼을 눌러서 다음 페이지로 갈 때
-                // 이미 있는 유저면 그 아이디를 가지고 디비 데이터 가져오기 가능
-                // 신규유저면 그 아이디로 새로 테이블을 만든다
             }
         });
     }

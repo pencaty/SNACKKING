@@ -41,8 +41,6 @@ public class Snack_Info extends AppCompatActivity {
 
     private String have_reviewed = "0";
 
-    private int num = 0; // 1이 되면 review를 한 것이 됨
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,17 +71,7 @@ public class Snack_Info extends AppCompatActivity {
 
         past_data = "";
 
-        settingList();
-        //if(!list.isEmpty()) { // 과거에 리뷰를 남겼다면 list에는 하나의 Snack_Datastruture가 존재할 것.
-/*        if(num == 1) {
-            Button button_review = (Button)findViewById(R.id.button_write_review);
-            have_reviewed = "1";
-            button_review.setText("Revise Review");
-            Snack_DataStructure past_snack = list.get(0);
-            past_data = past_snack.getSnack_taste() +"#"+past_snack.getSnack_cost()+"#"+past_snack.getSnack_keyword_1()+"#"+past_snack.getSnack_keyword_2()+"#"+past_snack.getSnack_keyword_3();
-            // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
-            // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
-        }*/
+        settingList(); // 하고 나면 과거에 리뷰를 남겼다면 list에 하나의 snack_datastructure가 있을 것이고, 남기지 않았다면 아무것도 없다.
 
         button_review.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,15 +107,6 @@ public class Snack_Info extends AppCompatActivity {
         have_reviewed = "0";
 
         settingList();
-        //if(!list.isEmpty()) {
-/*        if(num == 1) {
-            have_reviewed = "1";
-            button_review.setText("Revise Review");
-            Snack_DataStructure past_snack = list.get(0);
-            past_data = past_snack.getSnack_taste() +"#"+past_snack.getSnack_cost()+"#"+past_snack.getSnack_keyword_1()+"#"+past_snack.getSnack_keyword_2()+"#"+past_snack.getSnack_keyword_3();
-            // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
-            // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
-        }*/
 
         button_review.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +138,6 @@ public class Snack_Info extends AppCompatActivity {
         Get_user_individual_data task = new Get_user_individual_data();
         list = new ArrayList<>();
 
-        //task.execute(IP_ADDRESS + "get_user_individual_data.php", user_id, snack_name);
         try {
             mJsonString = task.execute(IP_ADDRESS + "get_user_individual_data.php", user_id, snack_name).get();
         } catch (Exception e) {
@@ -185,11 +163,6 @@ public class Snack_Info extends AppCompatActivity {
 
             progressDialog.dismiss();
             Log.d(TAG, "POST response  - " + result);
-
-            /*if(result != null) {
-                mJsonString = result;
-                showResult();
-            }*/
         }
 
 
@@ -258,9 +231,6 @@ public class Snack_Info extends AppCompatActivity {
         String TAG_KEYWORD2 = "keyword2";
         String TAG_KEYWORD3 = "keyword3";
 
-        System.out.println("json from snack_info");
-        System.out.println(mJsonString);
-
         if(mJsonString != null) {
 
             try {
@@ -283,7 +253,7 @@ public class Snack_Info extends AppCompatActivity {
                     snackdata.setSnack_keyword_1(keyword_1);
                     snackdata.setSnack_keyword_2(keyword_2);
                     snackdata.setSnack_keyword_3(keyword_3);
-                    num = 1;
+
                     list.add(snackdata); // 유저가 각 과자에 매긴 점수가 다 담겨 있는 리스트
 
                     Button button_review = (Button) findViewById(R.id.button_write_review);
@@ -295,6 +265,7 @@ public class Snack_Info extends AppCompatActivity {
                     System.out.println("end of Show_Result in Snack_info");
                     // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
                     // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
+
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);

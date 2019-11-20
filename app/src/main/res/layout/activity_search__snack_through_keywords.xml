@@ -68,25 +68,57 @@
         android:fontFamily="@font/my_font_family"
         android:text="Spicy"
         android:textSize="15dp" />
+
+    <CheckBox
+        android:id="@+id/checkbox_key3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/my_font_family"
+        android:text="Sour"
+        android:textSize="15dp" />
+
+    <CheckBox
+        android:id="@+id/checkbox_key4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/my_font_family"
+        android:text="Bitter"
+        android:textSize="15dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <CheckBox
-            android:id="@+id/checkbox_key3"
+            android:id="@+id/checkbox_key5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/my_font_family"
-            android:text="Sour"
+            android:text="Salty"
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key4"
+            android:id="@+id/checkbox_key6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/my_font_family"
-            android:text="Bitter"
+            android:text="Greasy"
+            android:textSize="15dp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_key7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/my_font_family"
+            android:text="Crispy"
+            android:textSize="15dp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_key8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/my_font_family"
+            android:text="Moisturized"
             android:textSize="15dp" />
     </LinearLayout>
 
