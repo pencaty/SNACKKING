@@ -249,37 +249,38 @@ public class Search_keyword_result extends AppCompatActivity implements View.OnC
         String TAG_KEYWORD1 = "keyword1";
         String TAG_KEYWORD2 = "keyword2";
         String TAG_KEYWORD3 = "keyword3";
+        if(mJsonString != null) {
+            try {
+                JSONObject jsonObject = new JSONObject(mJsonString);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-        try {
-            JSONObject jsonObject = new JSONObject(mJsonString);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+                for (int i = 0; i < jsonArray.length(); i++) {
 
-            for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-                JSONObject item = jsonArray.getJSONObject(i);
+                    String name = item.getString(TAG_NAME);
+                    String taste = item.getString(TAG_TASTE);
+                    String cost = item.getString(TAG_COST);
+                    String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
+                    String keyword_1 = item.getString(TAG_KEYWORD1);
+                    String keyword_2 = item.getString(TAG_KEYWORD2);
+                    String keyword_3 = item.getString(TAG_KEYWORD3);
 
-                String name = item.getString(TAG_NAME);
-                String taste = item.getString(TAG_TASTE);
-                String cost = item.getString(TAG_COST);
-                String number_of_rate = item.getString(TAG_NUMBER_OF_RATE);
-                String keyword_1 = item.getString(TAG_KEYWORD1);
-                String keyword_2 = item.getString(TAG_KEYWORD2);
-                String keyword_3 = item.getString(TAG_KEYWORD3);
+                    Snack_DataStructure snackdata = new Snack_DataStructure();
 
-                Snack_DataStructure snackdata = new Snack_DataStructure();
+                    snackdata.setSnack_name(name);
+                    snackdata.setSnack_taste(taste);
+                    snackdata.setSnack_cost(cost);
+                    snackdata.setSnack_number_of_rate(number_of_rate);
+                    snackdata.setSnack_keyword_1(keyword_1);
+                    snackdata.setSnack_keyword_2(keyword_2);
+                    snackdata.setSnack_keyword_3(keyword_3);
 
-                snackdata.setSnack_name(name);
-                snackdata.setSnack_taste(taste);
-                snackdata.setSnack_cost(cost);
-                snackdata.setSnack_number_of_rate(number_of_rate);
-                snackdata.setSnack_keyword_1(keyword_1);
-                snackdata.setSnack_keyword_2(keyword_2);
-                snackdata.setSnack_keyword_3(keyword_3);
-
-                list.add(snackdata);
+                    list.add(snackdata);
+                }
+            } catch (JSONException e) {
+                Log.d(TAG, "showResult : ", e);
             }
-        } catch (JSONException e) {
-            Log.d(TAG, "showResult : ", e);
         }
     }
 

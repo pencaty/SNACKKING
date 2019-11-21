@@ -91,183 +91,190 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/Linear_keyword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="150dp"
-                android:textSize="20dp"
-                android:text="Selected Tags">
-            </TextView>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <Button
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="150dp"
+                    android:textSize="20dp"
+                    android:text="Selected Tags">
+                </TextView>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:id="@+id/button_search"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            android:layout_weight="10"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"
-                android:id="@+id/button_search"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Text_first_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="16dp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/Text_second_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="16dp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/Text_third_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="16dp">
+                </TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            android:layout_weight="10"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <CheckBox
+                android:id="@+id/checkbox_key1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:fontFamily="@font/my_font_family"
+                android:text="Sweet"
+                android:textSize="15dp" />
+
+            <CheckBox
+                android:id="@+id/checkbox_key2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/my_font_family"
+                android:text="Spicy"
+                android:textSize="15dp" />
+
+            <CheckBox
+                android:id="@+id/checkbox_key3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/my_font_family"
+                android:text="Sour"
+                android:textSize="15dp" />
+
+            <CheckBox
+                android:id="@+id/checkbox_key4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/my_font_family"
+                android:text="Bitter"
                 android:textSize="15dp" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/Text_first_key"
+            android:layout_weight="2">
+            <CheckBox
+                android:id="@+id/checkbox_key5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:fontFamily="@font/my_font_family"
-                android:textSize="16dp">
-            </TextView>
+                android:text="Salty"
+                android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/Text_second_key"
+            <CheckBox
+                android:id="@+id/checkbox_key6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:fontFamily="@font/my_font_family"
-                android:textSize="16dp">
-            </TextView>
+                android:text="Greasy"
+                android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/Text_third_key"
+            <CheckBox
+                android:id="@+id/checkbox_key7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:fontFamily="@font/my_font_family"
-                android:textSize="16dp">
-            </TextView>
+                android:text="Crispy"
+                android:textSize="15dp" />
 
+            <CheckBox
+                android:id="@+id/checkbox_key8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/my_font_family"
+                android:text="Moisturized"
+                android:textSize="15dp" />
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2">
-        <CheckBox
-            android:id="@+id/checkbox_key1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Sweet"
-            android:textSize="15dp" />
-
-        <CheckBox
-            android:id="@+id/checkbox_key2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Spicy"
-            android:textSize="15dp" />
-
-        <CheckBox
-            android:id="@+id/checkbox_key3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Sour"
-            android:textSize="15dp" />
-
-        <CheckBox
-            android:id="@+id/checkbox_key4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Bitter"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2">
-        <CheckBox
-            android:id="@+id/checkbox_key5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Salty"
-            android:textSize="15dp" />
-
-        <CheckBox
-            android:id="@+id/checkbox_key6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Greasy"
-            android:textSize="15dp" />
-
-        <CheckBox
-            android:id="@+id/checkbox_key7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Crispy"
-            android:textSize="15dp" />
-
-        <CheckBox
-            android:id="@+id/checkbox_key8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:fontFamily="@font/my_font_family"
-            android:text="Moisturized"
-            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>

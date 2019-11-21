@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -65,6 +66,8 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
     private TextView tv1;
     private TextView tv2;
     private TextView tv3;
+
+    private LinearLayout ll_key;
 
     private ArrayList<String> keyword_list;
     private ArrayList<TextView> tv_list;
@@ -365,12 +368,15 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
 
     public void search(String charText) { // 검색을 수행하는 메소드
 
+        ll_key = (LinearLayout) findViewById(R.id.Linear_keyword);
+
         list.clear(); // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
         if (charText.length() == 0) {         // 문자 입력이 없을때는 모든 데이터를 보여준다.
             //list.addAll(arraylist);
-
+            ll_key.setVisibility(View.VISIBLE);
         }
         else { // 문자 입력을 할때..
+            ll_key.setVisibility(View.GONE);
             for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
                 if (arraylist.get(i).getSnack_name().toLowerCase().contains(charText)) {              // arraylist의 모든 데이터에 입력받은 단어(charText)가 포함되어 있으면 true를 반환한다.
                     list.add(arraylist.get(i));                    // 검색된 데이터를 리스트에 추가한다.

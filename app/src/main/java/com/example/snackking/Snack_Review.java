@@ -136,7 +136,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         String taste_score = EditTaste.getText().toString();
                         String cost_score = EditCost.getText().toString();
 
-                        System.out.println("past review no");
+                        System.out.println("past review no~~~~~~~~~~~~~");
 
                         double double_taste_score = Double.parseDouble(taste_score);
                         double double_cost_score = Double.parseDouble(cost_score);
@@ -171,6 +171,16 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         if (keyword_list.contains("crispy")) crispy_score = "1";
                         if (keyword_list.contains("moisturized")) moist_score = "1";
 
+                        System.out.println("Snack Review taste score no review ~~");
+                        System.out.println(sweet_score);
+                        System.out.println(spicy_score);
+                        System.out.println(sour_score);
+                        System.out.println(bitter_score);
+                        System.out.println(salty_score);
+                        System.out.println(greasy_score);
+                        System.out.println(crispy_score);
+                        System.out.println(moist_score);
+
                         UpdateKeyScore task_key = new UpdateKeyScore();
 
                         try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
@@ -187,6 +197,11 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         while (keyword_list.size() < 3) {
                             keyword_list.add("-");
                         }
+
+                        System.out.println("Snack_Review first review");
+                        System.out.println(keyword_list.get(0));
+                        System.out.println(keyword_list.get(1));
+                        System.out.println(keyword_list.get(2));
 
                         Review_user_data review_data = new Review_user_data();
                         try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고

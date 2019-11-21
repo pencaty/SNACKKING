@@ -71,110 +71,210 @@
             ></TextView>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/info_snack_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp">
-    </TextView>
-
-    <TextView
-        android:id="@+id/info_snack_taste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp">
-    </TextView>
-
-    <TextView
-        android:id="@+id/info_snack_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp">
-    </TextView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="24"
+        android:src="@drawable/cookies"
+        android:layout_marginBottom="5dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/info_snack_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="15dp">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/Text_first_keyword"
-                android:layout_width="100dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:fontFamily="@font/my_font_family"
-                android:textSize="15dp"
-                android:textAlignment="center">
-            </TextView>
+                android:layout_gravity="center">
 
-            <TextView
-                android:id="@+id/Text_second_keyword"
-                android:layout_width="100dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:text="TASTE : "
+                    >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/info_snack_taste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:text=" / 5"
+                    >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                android:layout_weight="5"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    ></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:fontFamily="@font/my_font_family"
-                android:textSize="15dp"
-                android:textAlignment="center">
-            </TextView>
+                android:layout_gravity="center">
 
-            <TextView
-                android:id="@+id/Text_third_keyword"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:fontFamily="@font/my_font_family"
-                android:textSize="15dp"
-                android:textAlignment="center">
-            </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:text="COST : "
+                    >
+                </TextView>
 
+                <TextView
+                    android:id="@+id/info_snack_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:text=" / 5"
+                    >
+                </TextView>
+            </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ProgressBar
-                android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progress_key1"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:scaleX="100"
-                android:layout_weight="80">
-            </ProgressBar>
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/Text_first_keyword"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:textAlignment="center">
+                </TextView>
 
-            <ProgressBar
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/progress_key2"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:layout_weight="80">
-            </ProgressBar>
+                <TextView
+                    android:id="@+id/Text_second_keyword"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:textAlignment="center">
+                </TextView>
 
-            <ProgressBar
-                android:layout_width="200dp"
+                <TextView
+                    android:id="@+id/Text_third_keyword"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/my_font_family"
+                    android:textSize="15dp"
+                    android:textAlignment="center">
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progress_key3"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:layout_weight="80">
-            </ProgressBar>
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ProgressBar
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progress_key1"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:scaleX="100"
+                    android:layout_weight="80">
+                </ProgressBar>
+
+                <ProgressBar
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progress_key2"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:layout_weight="80">
+                </ProgressBar>
+
+                <ProgressBar
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progress_key3"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:layout_weight="80">
+                </ProgressBar>
+
+            </LinearLayout>
 
         </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="20"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
     </LinearLayout>
 
     <Button
@@ -186,6 +286,16 @@
         android:text="Write Review"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="10"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
+    </LinearLayout>
 
     <Button
         android:layout_margin="2dp"
