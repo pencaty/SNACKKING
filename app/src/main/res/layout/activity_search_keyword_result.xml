@@ -1,22 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".Search_keyword_result">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_search_category_default"/>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_search_category_default"/>
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_search_category_default"/>
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_search_category_default"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:color/holo_blue_bright"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="10"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/button_key_result_back"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/button_key_result_back"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/Text_key_intent"
@@ -25,7 +91,8 @@
             android:padding="5dp"
             android:fontFamily="@font/my_font_family"
             android:textSize="15dp"
-            android:text="Search Keywords :">
+            android:layout_marginRight="5dp"
+            android:text="Keywords :">
         </TextView>
 
         <TextView
@@ -33,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:layout_marginRight="5dp"
             android:fontFamily="@font/my_font_family"
             android:textSize="15dp">
         </TextView>
@@ -42,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:layout_marginRight="5dp"
             android:fontFamily="@font/my_font_family"
             android:textSize="15dp">
         </TextView>

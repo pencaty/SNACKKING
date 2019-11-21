@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    tools:context=".Recommendation"
     android:weightSum="100"
-    tools:context=".Snack_Review">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,6 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@android:drawable/ic_search_category_default"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -46,16 +47,21 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@android:color/holo_blue_bright"/>
+            app:srcCompat="@android:color/holo_blue_bright" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="2"/>
 
     </LinearLayout>
 
@@ -69,14 +75,25 @@
             ></TextView>
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snack name"
-        android:id="@+id/review_snack_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="25dp"
-        android:layout_marginLeft="5dp"/>
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="150dp"
+                android:textSize="20dp"
+                android:text="Selected Tags">
+            </TextView>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,52 +105,48 @@
             ></TextView>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Evaluate taste (1 ~ 5 integer)"
-        android:id="@+id/review_taste_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"
-        android:layout_marginLeft="5dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/review_taste"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"
-        android:inputType="number"
-        android:maxLength="1"
-        android:layout_marginLeft="5dp"/>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
-    </LinearLayout>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Evaluate cost (1 ~ 5 integer)"
-        android:id="@+id/review_cost_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"
-        android:layout_marginLeft="5dp"/>
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/review_cost"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"
-        android:inputType="number"
-        android:maxLength="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/Text_first_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="16dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/Text_second_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="16dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/Text_third_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="16dp">
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -150,7 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
         <CheckBox
-            android:id="@+id/checkbox_review_key1"
+            android:id="@+id/checkbox_key1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -160,7 +173,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_review_key2"
+            android:id="@+id/checkbox_key2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -170,7 +183,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_review_key3"
+            android:id="@+id/checkbox_key3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -180,7 +193,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_review_key4"
+            android:id="@+id/checkbox_key4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -195,7 +208,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
         <CheckBox
-            android:id="@+id/checkbox_review_key5"
+            android:id="@+id/checkbox_key5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -205,7 +218,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_review_key6"
+            android:id="@+id/checkbox_key6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -215,7 +228,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_review_key7"
+            android:id="@+id/checkbox_key7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -225,7 +238,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_review_key8"
+            android:id="@+id/checkbox_key8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -238,7 +251,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        android:layout_weight="20"
+        android:layout_weight="10"
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -248,10 +261,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit Review"
-        android:id="@+id/button_upload_review"
+        android:text="Request Recommendation"
+        android:id="@+id/button_search"
         android:fontFamily="@font/my_font_family"
-        android:textSize="25dp"
+        android:textSize="15dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>

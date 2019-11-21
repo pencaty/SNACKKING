@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -33,7 +34,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Search_Combined extends AppCompatActivity  implements CompoundButton.OnCheckedChangeListener{
+public class Search_Combined extends AppCompatActivity  implements CompoundButton.OnCheckedChangeListener, View.OnClickListener{
 
     private ArrayList<Snack_DataStructure> list;          // 데이터를 넣은 리스트변수
     private ListView listView;          // 검색을 보여줄 리스트변수
@@ -45,6 +46,11 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
     private static String TAG = "snack_arrange";
     public String mJsonString;
     private String user_id;
+
+    //ImageButton btn1;
+    ImageButton btn2;
+    ImageButton btn3;
+    ImageButton btn4;
 
     private int count = 0;
     private CheckBox cb1;
@@ -70,6 +76,9 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
 
         editSearch = (EditText) findViewById(R.id.editSearch);
         listView = (ListView) findViewById(R.id.Search_listView);
+
+        this.InitializeView();
+        this.SetListener();
 
         Intent intent = getIntent();
         user_id = intent.getStringExtra("user_id");
@@ -507,5 +516,46 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
                 Log.d(TAG, "showResult : ", e);
             }
         }
+    }
+
+    public void InitializeView() {
+        //btn1 = findViewById(R.id.imageButton);
+        btn2 = findViewById(R.id.imageButton2);
+        btn3 = findViewById(R.id.imageButton3);
+        btn4 = findViewById(R.id.imageButton4);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            /*case R.id.imageButton1:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;*/
+            case R.id.imageButton2:
+                Intent intent = new Intent(this, Recommendation.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+            case R.id.imageButton3:
+                intent = new Intent(this, Achievement.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+            case R.id.imageButton4:
+                intent = new Intent(this, Setting.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+        }
+    }
+
+    public void SetListener() {
+        //btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
     }
 }

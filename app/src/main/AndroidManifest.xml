@@ -12,13 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Search_Combined"></activity>
-        <activity android:name=".login">
+        <activity android:name=".Search_Combined">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".login">
+
         </activity>
         <activity android:name=".Search_keyword_result" />
         <activity android:name=".Search_Snack_through_keywords" />
@@ -26,6 +28,9 @@
         <activity android:name=".Snack_Info" />
         <activity android:name=".Search_Snack_Data_from_DB" />
         <activity android:name=".DB_snack_get" />
+        <activity android:name=".Recommendation" />
+        <activity android:name=".Achievement" />
+        <activity android:name=".Setting" />
     </application>
 
 </manifest>

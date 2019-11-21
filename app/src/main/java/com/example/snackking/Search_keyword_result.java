@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -29,7 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Search_keyword_result extends AppCompatActivity {
+public class Search_keyword_result extends AppCompatActivity implements View.OnClickListener{
 
     private ArrayList<Snack_DataStructure> list;          // 데이터를 넣은 리스트변수
     private ListView listView;          // 검색을 보여줄 리스트변수
@@ -47,6 +48,11 @@ public class Search_keyword_result extends AppCompatActivity {
     private TextView tv2;
     private TextView tv3;
 
+    //ImageButton btn1;
+    ImageButton btn2;
+    ImageButton btn3;
+    ImageButton btn4;
+
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";
     public String mJsonString;
@@ -57,6 +63,9 @@ public class Search_keyword_result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_keyword_result);
+
+        this.InitializeView();
+        this.SetListener();
 
         Intent intent = getIntent();
         keyword_number = intent.getIntExtra("number", 1);
@@ -274,5 +283,45 @@ public class Search_keyword_result extends AppCompatActivity {
         }
     }
 
+    public void InitializeView() {
+        //btn1 = findViewById(R.id.imageButton);
+        btn2 = findViewById(R.id.imageButton2);
+        btn3 = findViewById(R.id.imageButton3);
+        btn4 = findViewById(R.id.imageButton4);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            /*case R.id.imageButton1:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;*/
+            case R.id.imageButton2:
+                Intent intent = new Intent(this, Recommendation.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+            case R.id.imageButton3:
+                intent = new Intent(this, Achievement.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+            case R.id.imageButton4:
+                intent = new Intent(this, Setting.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+        }
+    }
+
+    public void SetListener() {
+        //btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+    }
 
 }

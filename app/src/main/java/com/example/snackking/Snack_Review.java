@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Snack_Review extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class Snack_Review extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "Insert_data";
@@ -54,12 +55,20 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private CheckBox cb7;
     private CheckBox cb8;
 
+    //ImageButton btn1;
+    ImageButton btn2;
+    ImageButton btn3;
+    ImageButton btn4;
+
     private ArrayList<String> keyword_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snack_review);
+
+        this.InitializeView();
+        this.SetListener();
 
         Intent intent = getIntent();
 
@@ -695,5 +704,46 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 return new String("Error: " + e.getMessage());
             }
         }
+    }
+
+    public void InitializeView() {
+        //btn1 = findViewById(R.id.imageButton);
+        btn2 = findViewById(R.id.imageButton2);
+        btn3 = findViewById(R.id.imageButton3);
+        btn4 = findViewById(R.id.imageButton4);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            /*case R.id.imageButton1:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;*/
+            case R.id.imageButton2:
+                Intent intent = new Intent(this, Recommendation.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+            case R.id.imageButton3:
+                intent = new Intent(this, Achievement.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+            case R.id.imageButton4:
+                intent = new Intent(this, Setting.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                this.finish();
+                break;
+        }
+    }
+
+    public void SetListener() {
+        //btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
     }
 }
