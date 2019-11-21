@@ -20,11 +20,15 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
     LinearLayout lay3;
     LinearLayout lay4;
 
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         this.InitializeView();
         this.SetListener();
@@ -46,18 +50,21 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.imageButton1:
                 Intent intent = new Intent(this, Search_Combined.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton2:
                 intent = new Intent(this, Recommendation.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton3:
                 intent = new Intent(this, Achievement.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();

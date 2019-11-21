@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListAdapter_achievement extends BaseAdapter {
+public class ListAdapter_Achievement extends BaseAdapter {
     private ArrayList<AchievementData> achievementDataList = new ArrayList();
 
-    public ListAdapter_achievement(/*ArrayList<AchievementData> data*/) {
+    public ListAdapter_Achievement(/*ArrayList<AchievementData> data*/) {
 
     }
 

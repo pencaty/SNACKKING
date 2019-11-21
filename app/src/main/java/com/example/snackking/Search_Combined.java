@@ -129,7 +129,7 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
                     while(keyword_list.size() < 3) {
                         keyword_list.add("-");
                     }
-                    Intent intent = new Intent(getApplicationContext(), Search_keyword_result.class);
+                    Intent intent = new Intent(getApplicationContext(), Search_Keyword_Result.class);
                     intent.putExtra(("number"), count);
                     intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
                     intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
@@ -236,7 +236,7 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
                         keyword_list.add("-");
                     }
 
-                    Intent intent = new Intent(getApplicationContext(), Search_keyword_result.class);
+                    Intent intent = new Intent(getApplicationContext(), Search_Keyword_Result.class);
                     intent.putExtra(("number"), count);
                     intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
                     intent.putExtra(("second"), keyword_list.get(1).toLowerCase());

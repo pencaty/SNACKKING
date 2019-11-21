@@ -24,10 +24,6 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     $key3=$_POST['key3'];
     $have_reviewed = $_POST['have_reviewed']; // 1이면 리뷰를 단 적 있음 -> update 해야함. 0이면 리뷰를 단 적 없음 -> insert 해야함
 
-    if(empty($sweet) && empty($spicy) && empty($sour) && empty($bitter)) {
-        $errMSG = "맛 점수를 입력하세요.";
-    }
-
     //$get_past_data = $con->prepare('select * from'.$name);
 
 

@@ -15,14 +15,14 @@
         <activity android:name=".Search_Combined">
 
         </activity>
-        <activity android:name=".login">
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Search_keyword_result" />
+        <activity android:name=".Search_Keyword_Result" />
         <activity android:name=".Snack_Review" />
         <activity android:name=".Snack_Info" />
         <activity android:name=".Recommendation" />

@@ -53,7 +53,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 $third_index = -1;
 
                 $max = 0;
-                for($i=0; $i<4; $i++) { // 가장 큰 값 찾기
+                for($i=0; $i<8; $i++) { // 가장 큰 값 찾기
                     if($score_array[$i] > $max) {
                         $first_index = $i;
                         $max = $score_array[$i];
@@ -61,7 +61,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 }
 
                 $max = 0;
-                for($i=0; $i<4; $i++) { // 가장 큰 값 찾기
+                for($i=0; $i<8; $i++) { // 가장 큰 값 찾기
                     if($score_array[$i] > $max && $i != $first_index) {
                         $second_index = $i;
                         $max = $score_array[$i];
@@ -69,7 +69,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 }
 
                 $max = 0;
-                for($i=0; $i<4; $i++) { // 가장 큰 값 찾기
+                for($i=0; $i<8; $i++) { // 가장 큰 값 찾기
                     if($score_array[$i] > $max && $i != $first_index && $i != $second_index) {
                         $third_index = $i;
                         $max = $score_array[$i];
@@ -150,7 +150,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 $update_score->execute();
                 break;*/
 
-                $update_score = $con->prepare('UPDATE Snack_Score SET Keyword_One = :keyword1, Keyword_Two = :keyword2, Keyword_Three = :keyword3, Sweet = :sweet, Spicy = :spicy, Sour = :sour, Bitter = :bitter WHERE Name = :name');
+                $update_score = $con->prepare('UPDATE Snack_Score SET Keyword_One = :keyword1, Keyword_Two = :keyword2, Keyword_Three = :keyword3, Sweet = :sweet, Spicy = :spicy, Sour = :sour, Bitter = :bitter, Salty = :salty, Greasy = :greasy, Crispy = :crispy, Moisturized = :moist WHERE Name = :name');
                 $update_score->bindParam(':name', $name);
                 $update_score->bindParam(':keyword1', $keyword_one);
                 $update_score->bindParam(':keyword2', $keyword_two);
@@ -159,6 +159,10 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 $update_score->bindParam(':spicy', $spicy);
                 $update_score->bindParam(':sour', $sour);
                 $update_score->bindParam(':bitter', $bitter);
+                $update_score->bindParam(':salty', $salty);
+                $update_score->bindParam(':greasy', $greasy);
+                $update_score->bindParam(':crispy', $crispy);
+                $update_score->bindParam(':moist', $moist);
                 $update_score->execute();
                 break;
             }

@@ -17,12 +17,17 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
     //ImageButton btn3;
     ImageButton btn4;
 
+    private String user_id;
+
     Switch sw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievement);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         sw =  (Switch) findViewById(R.id.switch1);
 
@@ -51,12 +56,14 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()) {
             case R.id.imageButton1:
                 Intent intent = new Intent(this, Search_Combined.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton2:
                 intent = new Intent(this, Recommendation.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
@@ -69,6 +76,7 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
                 */
             case R.id.imageButton4:
                 intent = new Intent(this, Setting.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
@@ -87,9 +95,9 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
 
         if(!sw.isChecked()) {
             ListView listview;
-            ListAdapter_achievement adapter;
+            ListAdapter_Achievement adapter;
 
-            adapter = new ListAdapter_achievement();
+            adapter = new ListAdapter_Achievement();
 
             listview = (ListView) findViewById(R.id.listview1);
             listview.setAdapter(adapter);
@@ -108,9 +116,9 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
         }
         else {
             ListView listview;
-            ListAdapter_achievement adapter;
+            ListAdapter_Achievement adapter;
 
-            adapter = new ListAdapter_achievement();
+            adapter = new ListAdapter_Achievement();
 
             listview = (ListView) findViewById(R.id.listview1);
             listview.setAdapter(adapter);

@@ -31,10 +31,15 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
     private CheckBox cb7;
     private CheckBox cb8;
 
+    private String user_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
 
         this.InitializeView();
         this.SetListener();
@@ -54,7 +59,7 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                     /*while(keyword_list.size() < 3) {
                         keyword_list.add("-");
                     }
-                    Intent intent = new Intent(getApplicationContext(), Search_keyword_result.class);
+                    Intent intent = new Intent(getApplicationContext(), Search_Keyword_Result.class);
                     intent.putExtra(("number"), count);
                     intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
                     intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
@@ -87,6 +92,7 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.imageButton1:
                 Intent intent = new Intent(this, Search_Combined.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
@@ -98,12 +104,14 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                 break;*/
             case R.id.imageButton3:
                 intent = new Intent(this, Achievement.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton4:
                 intent = new Intent(this, Setting.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();

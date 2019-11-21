@@ -20,7 +20,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "Insert_data";
@@ -61,7 +61,7 @@ public class login extends AppCompatActivity {
                     intent.putExtra("user_id", user_id);
                     startActivity(intent);
 
-                    // login 버튼을 눌러서 다음 페이지로 갈 때
+                    // Login 버튼을 눌러서 다음 페이지로 갈 때
                     // 이미 있는 유저면 그 아이디를 가지고 디비 데이터 가져오기 가능
                     // 신규유저면 그 아이디로 새로 테이블을 만든다
                 }
@@ -76,7 +76,7 @@ public class login extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(login.this,
+            progressDialog = ProgressDialog.show(Login.this,
                     "Please Wait", null, true, true);
         }
 

@@ -176,7 +176,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         ProgressBar pb2 =(ProgressBar)findViewById(R.id.progress_key2);
         ProgressBar pb3 =(ProgressBar)findViewById(R.id.progress_key3);
 
-        setting_snack_List(); // 과자 키워드의 progress bar를 만들기 위해 정보를 가졍는 장치.
+        setting_snack_List(); // 과자 키워드의 progress bar를 만들기 위해 정보를 가져오는 장치.
         Snack_DataStructure score_snack = snack_list.get(0);
         if(score_snack.getSnack_keyword_1() != null) first_key.setText(score_snack.getSnack_keyword_1());
         if(score_snack.getSnack_keyword_2() != null) second_key.setText(score_snack.getSnack_keyword_2());
@@ -343,7 +343,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         String TAG_KEYWORD3 = "keyword3";
 
         if(mJsonString != null) {
-
             try {
                 JSONObject jsonObject = new JSONObject(mJsonString);
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);

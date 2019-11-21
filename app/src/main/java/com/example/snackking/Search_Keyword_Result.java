@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,7 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Search_keyword_result extends AppCompatActivity implements View.OnClickListener{
+public class Search_Keyword_Result extends AppCompatActivity implements View.OnClickListener{
 
     private ArrayList<Snack_DataStructure> list;          // 데이터를 넣은 리스트변수
     private ListView listView;          // 검색을 보여줄 리스트변수
@@ -168,7 +166,7 @@ public class Search_keyword_result extends AppCompatActivity implements View.OnC
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(Search_keyword_result.this,
+            progressDialog = ProgressDialog.show(Search_Keyword_Result.this,
                     "Please Wait", null, true, true);
         }
 
