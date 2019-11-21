@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Recommendation"
     android:weightSum="100"
+    android:fontFamily="@font/my_font_family"
     android:orientation="vertical">
 
     <LinearLayout
@@ -163,7 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
         <CheckBox
-            android:id="@+id/checkbox_key1"
+            android:id="@+id/checkbox_recom_key1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -173,7 +174,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key2"
+            android:id="@+id/checkbox_recom_key2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -183,7 +184,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key3"
+            android:id="@+id/checkbox_recom_key3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -193,7 +194,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key4"
+            android:id="@+id/checkbox_recom_key4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -208,7 +209,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
         <CheckBox
-            android:id="@+id/checkbox_key5"
+            android:id="@+id/checkbox_recom_key5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -218,7 +219,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key6"
+            android:id="@+id/checkbox_recom_key6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -228,7 +229,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key7"
+            android:id="@+id/checkbox_recom_key7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -238,7 +239,7 @@
             android:textSize="15dp" />
 
         <CheckBox
-            android:id="@+id/checkbox_key8"
+            android:id="@+id/checkbox_recom_key8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
@@ -262,7 +263,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Request Recommendation"
-        android:id="@+id/button_search"
+        android:id="@+id/button_recommend"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"
         android:layout_gravity="center"/>

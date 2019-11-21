@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Achievement"
     android:orientation="vertical"
+    android:fontFamily="@font/my_font_family"
     android:weightSum="100">
 
     <LinearLayout

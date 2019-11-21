@@ -23,11 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Search_keyword_result" />
-        <activity android:name=".Search_Snack_through_keywords" />
         <activity android:name=".Snack_Review" />
         <activity android:name=".Snack_Info" />
-        <activity android:name=".Search_Snack_Data_from_DB" />
-        <activity android:name=".DB_snack_get" />
         <activity android:name=".Recommendation" />
         <activity android:name=".Achievement" />
         <activity android:name=".Setting" />
