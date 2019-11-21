@@ -11,6 +11,10 @@ public class Snack_DataStructure {
     private String snack_keyword_2;
     private String snack_keyword_3;
 
+    private String snack_keyword_1_score;
+    private String snack_keyword_2_score;
+    private String snack_keyword_3_score;
+
     public String getSnack_name() {
         return snack_name;
     }
@@ -30,6 +34,14 @@ public class Snack_DataStructure {
     }
     public String getSnack_keyword_3() {
         return snack_keyword_3;
+    }
+
+    public String getSnack_keyword_1_score() { return snack_keyword_1_score; }
+    public String getSnack_keyword_2_score() {
+        return snack_keyword_2_score;
+    }
+    public String getSnack_keyword_3_score() {
+        return snack_keyword_3_score;
     }
 
     public void setSnack_name(String snack_name) {
@@ -53,5 +65,15 @@ public class Snack_DataStructure {
     }
     public void setSnack_keyword_3(String snack_keyword_3) {
         this.snack_keyword_3 = snack_keyword_3;
+    }
+
+    public void setSnack_keyword_1_score(String snack_keyword_1_score) {
+        this.snack_keyword_1_score = snack_keyword_1_score;
+    }
+    public void setSnack_keyword_2_score(String snack_keyword_2_score) {
+        this.snack_keyword_2_score = snack_keyword_2_score;
+    }
+    public void setSnack_keyword_3_score(String snack_keyword_3_score) {
+        this.snack_keyword_3_score = snack_keyword_3_score;
     }
 }

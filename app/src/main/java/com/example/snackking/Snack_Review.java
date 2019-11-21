@@ -272,13 +272,13 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         toast.setGravity(Gravity.CENTER, offSetX, offSetY);
                         toast.show();
                     }
-                    else if(count == 0){ // 키워드를 1개 이상 고르지 않으면 버튼이 비활성화되므로 필요없는 부분이긴 하다.
+                    /*else if(count == 0){ // 키워드를 1개 이상 고르지 않으면 버튼이 비활성화되므로 필요없는 부분이긴 하다.
                         Toast toast = Toast.makeText(getApplicationContext(), "Please choose at least one keyword", Toast.LENGTH_SHORT);
                         int offSetX = 0;
                         int offSetY = 0;
                         toast.setGravity(Gravity.CENTER, offSetX, offSetY);
                         toast.show();
-                    }
+                    }*/
                     else{
                         String taste_score = EditTaste.getText().toString();
                         String cost_score = EditCost.getText().toString();
