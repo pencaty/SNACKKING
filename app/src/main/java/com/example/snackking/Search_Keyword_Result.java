@@ -113,14 +113,6 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
                 startActivity(intent);
             }
         });
-
-        Button button_key_result_back = (Button)findViewById(R.id.button_key_result_back);
-        button_key_result_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
       public void search() { // 검색을 수행하는 메소드

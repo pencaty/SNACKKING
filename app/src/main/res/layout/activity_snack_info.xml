@@ -270,7 +270,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        android:layout_weight="20"
+        android:layout_weight="50"
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -286,26 +286,5 @@
         android:text="Write Review"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
-    </LinearLayout>
-
-    <Button
-        android:layout_margin="2dp"
-        android:id="@+id/button_info_back"
-        android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"/>
-
 
 </LinearLayout>

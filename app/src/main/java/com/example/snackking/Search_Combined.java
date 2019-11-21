@@ -233,7 +233,7 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
                 }
                 else {
                     while(keyword_list.size() < 3) {
-                        keyword_list.add("-");
+                        keyword_list.add(" ");
                     }
 
                     Intent intent = new Intent(getApplicationContext(), Search_Keyword_Result.class);

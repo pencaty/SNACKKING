@@ -74,7 +74,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         snack_number_of_rate = intent.getStringExtra("number");
 
         Button button_review = (Button)findViewById(R.id.button_write_review);
-        Button button_info_back = (Button)findViewById(R.id.button_info_back);
 
         // user_id에 해당하는 테이블에 접속해서 현재 과자에 이미 리뷰를 남겼다면 버튼(review_write_review)의 텍스트를 '리뷰 수정'으로 바꾼다
         // 이미 리뷰를 남겼다면 have_reviewed = 1로 바꾸고, taste, cost, 키워드 선택한 것들을 하나로 저장하여 Snack_Review로 넘기자.
@@ -146,13 +145,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
                 startActivity(review_intent);
             }
         });
-
-        button_info_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     @Override
@@ -160,7 +152,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         super.onResume();
 
         Button button_review = (Button)findViewById(R.id.button_write_review);
-        Button button_info_back = (Button)findViewById(R.id.button_info_back);
 
         past_data = "";
         have_reviewed = "0";
@@ -234,13 +225,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
                 startActivity(review_intent);
             }
         });
-
-        button_info_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
 
@@ -275,7 +259,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
             progressDialog.dismiss();
             Log.d(TAG, "POST response  - " + result);
         }
-
 
         @Override
         protected String doInBackground(String... params) {
