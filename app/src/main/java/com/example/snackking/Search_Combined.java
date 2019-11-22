@@ -539,18 +539,21 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
                 break;*/
             case R.id.imageButton2:
                 Intent intent = new Intent(this, Recommendation.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton3:
                 intent = new Intent(this, Achievement.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton4:
                 intent = new Intent(this, Setting.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();

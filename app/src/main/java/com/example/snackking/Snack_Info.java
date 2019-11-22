@@ -502,17 +502,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
                     snackdata.setSnack_keyword_1_score(keyword1_score);
                     snackdata.setSnack_keyword_2_score(keyword2_score);
                     snackdata.setSnack_keyword_3_score(keyword3_score);
-
-                    System.out.println("end of SNack info");
-                    System.out.println(keyword_1);
-                    System.out.println(keyword_2);
-                    System.out.println(keyword_3);
-                    System.out.println(keyword1_score);
-                    System.out.println(keyword2_score);
-                    System.out.println(keyword3_score);
-                    System.out.println("end of SNack info");
-
-
                     snack_list.add(snackdata);
                 }
             } catch (JSONException e) {
