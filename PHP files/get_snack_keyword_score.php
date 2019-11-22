@@ -36,13 +36,14 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
 
                 array_push($data,
                     array('taste' => $row['Taste'], 'cost' => $row['Cost'], 'keyword1' => $row['Keyword_One'], 'keyword2' => $row['Keyword_Two'], 'keyword3' => $row['Keyword_Three'], 'keyword1_score' => $row[$row['Keyword_One']], 'keyword2_score' => $second_score, 'keyword3_score' => $third_score));
+
+                header('Content-Type: application/json; charset=utf8');
+                $json = json_encode(array("snack_json"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+                echo $json;
+
                 break;
             }
         }
-
-        header('Content-Type: application/json; charset=utf8');
-        $json = json_encode(array("snack_json"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
-        echo $json;
     }
 }
 ?>

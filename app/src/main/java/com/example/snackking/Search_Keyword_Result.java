@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -45,6 +46,7 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
     private TextView tv1;
     private TextView tv2;
     private TextView tv3;
+    private TextView no_result;
 
     //ImageButton btn1;
     ImageButton btn2;
@@ -56,6 +58,8 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
     public String mJsonString;
 
     private String user_id;
+
+    private Switch switch_sort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,7 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
         tv1 = (TextView)findViewById(R.id.Text_first_key_intent);
         tv2 = (TextView)findViewById(R.id.Text_second_key_intent);
         tv3 = (TextView)findViewById(R.id.Text_third_key_intent);
+        no_result = (TextView)findViewById(R.id.Text_key_no_result);
         tv1.setText(first_keyword);
         if(second_keyword != null) tv2.setText(second_keyword);
         if(third_keyword != null) tv3.setText(third_keyword);
@@ -88,6 +93,8 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
 
         list = new ArrayList<>(); // 리스트를 생성한다.
 
+        switch_sort =  (Switch) findViewById(R.id.switch_sort);
+
         settingList(); // 검색에 사용할 데이터을 미리 저장한다.   --> 여기서 과자 이름 데이터를 넣어야함.
 
         arraylist = new ArrayList<Snack_DataStructure>(); // 리스트의 모든 데이터를 arraylist에 복사한다.// list 복사본을 만든다.
@@ -97,6 +104,23 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
         listView.setAdapter(adapter); // 리스트뷰에 아답터를 연결한다.
 
         search();
+
+        switch_sort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!switch_sort.isChecked()) switch_sort.setText("Taste");
+                else switch_sort.setText("Cost");
+                settingList();
+
+                arraylist = new ArrayList<Snack_DataStructure>(); // 리스트의 모든 데이터를 arraylist에 복사한다.// list 복사본을 만든다.
+                arraylist.addAll(list);
+
+                adapter = new Search_Adapter(list, getApplicationContext()); // 리스트에 연동될 아답터를 생성한다.
+                listView.setAdapter(adapter); // 리스트뷰에 아답터를 연결한다.
+
+                search();
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,9 +155,10 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
                 list.add(arraylist.get(i));    // 검색된 데이터를 리스트에 추가한다.
             }
         }
-        for(int i=0; i<list.size(); i++) {
-            System.out.println(list.get(i).getSnack_name());
-        }
+
+        if(list.size() == 0) no_result.setVisibility(View.VISIBLE);
+        else no_result.setVisibility(View.GONE);
+
         adapter.notifyDataSetChanged(); // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
     }
 
@@ -142,7 +167,9 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
         GetData task = new GetData();
 
         try {
-            mJsonString = task.execute(IP_ADDRESS + "/get_snack_data.php", "").get();
+            if(!switch_sort.isChecked()) mJsonString = task.execute(IP_ADDRESS + "/get_snack_order_by_taste.php", "").get();
+            else mJsonString = task.execute(IP_ADDRESS + "/get_snack_order_by_cost.php", "").get();
+            //mJsonString = task.execute(IP_ADDRESS + "/get_snack_data.php", "").get();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -225,7 +252,6 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
 
                 return null;
             }
-
         }
     }
 
@@ -239,8 +265,12 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
         String TAG_KEYWORD1 = "keyword1";
         String TAG_KEYWORD2 = "keyword2";
         String TAG_KEYWORD3 = "keyword3";
+
+        list.clear();
+
         if(mJsonString != null) {
             try {
+
                 JSONObject jsonObject = new JSONObject(mJsonString);
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
@@ -289,18 +319,21 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
                 break;*/
             case R.id.imageButton2:
                 Intent intent = new Intent(this, Recommendation.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton3:
                 intent = new Intent(this, Achievement.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
             case R.id.imageButton4:
                 intent = new Intent(this, Setting.class);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 this.finish();

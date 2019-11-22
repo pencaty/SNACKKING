@@ -42,7 +42,7 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
     private static String TAG = "snack_arrange";
     public String mJsonString;
 
-    Switch sw;
+    private Switch sw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,9 +168,6 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
 
         Get_review_num task = new Get_review_num();
 
-        System.out.println("achievement settinglist");
-        System.out.println(user_id);
-
         try {
             mJsonString = task.execute(IP_ADDRESS + "get_review_num_for_achievement.php", user_id).get();
         } catch (Exception e) {
@@ -257,9 +254,6 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
 
         String TAG_JSON="snack_json";
         String TAG_NUMBER = "number";
-
-        System.out.println("achievement show result");
-        System.out.println(mJsonString);
 
         if(mJsonString != null) {
             try {
