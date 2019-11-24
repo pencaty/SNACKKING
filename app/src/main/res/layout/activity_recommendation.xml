@@ -273,7 +273,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:text="Additional request?"/>
+        android:text="Additional request?"
+        android:textSize="20dp"/>
 
     <EditText
         android:id="@+id/edittext_recommend_comment"
@@ -281,7 +282,8 @@
         android:layout_height="wrap_content"
         android:maxLength="50"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:textSize="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

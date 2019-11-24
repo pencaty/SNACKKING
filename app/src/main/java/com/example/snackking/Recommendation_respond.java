@@ -68,7 +68,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
     private Chatroom_DataStructure request;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // 다양한 유저들의 request를 보고 그 중 추천해줄 수 있는 것들은 추천해주기
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation_respond);
 
@@ -128,17 +128,19 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
                 String thi = request.getkey3();
 
                 tv1.setText(fir);
-                if (sec != null) tv2.setText(sec);
-                if (thi != null) tv3.setText(thi);
+                if (sec != null || !sec.equals(" ")) tv2.setText(sec);
+                if (thi != null || !thi.equals(" ")) tv3.setText(thi);
 
                 keyword_list = new ArrayList<>();
                 keyword_list.add(fir.toLowerCase());
-                if (sec != null) keyword_list.add(sec.toLowerCase());
-                if (thi != null) keyword_list.add(thi.toLowerCase());
+                if (sec != null || !sec.equals(" ")) keyword_list.add(sec.toLowerCase());
+                if (thi != null || !thi.equals(" ")) keyword_list.add(thi.toLowerCase());
 
                 keyword_number = 1;
-                if (sec != null) keyword_number++;
-                if (thi != null) keyword_number++;
+                if (sec != null || !sec.equals(" ")) keyword_number++;
+                if (thi != null || !thi.equals(" ")) keyword_number++;
+
+                text_comment.setText(request.getcomment());
 
                 listView = (ListView) findViewById(R.id.listview_keyword_respond);
 
@@ -157,10 +159,6 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) { // recommend_(request.getuser()) 에 user_id와 list.get(position).getSnack_name() 추가
-                        System.out.println("print test");
-                        System.out.println(list.get(position).getSnack_name());
-                        System.out.println(user_id);
-                        System.out.println(request.getuser());
                         // answer_to_request.php 실행 (request, user_id, snack)에 (request.getuser(), user_id, list.get(position).getSnack_name())
 
                         Insert_recommend task = new Insert_recommend();
@@ -204,17 +202,19 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
                             String thi = request.getkey3();
 
                             tv1.setText(fir);
-                            if (sec != null) tv2.setText(sec);
-                            if (thi != null) tv3.setText(thi);
+                            if (sec != null || !sec.equals(" ")) tv2.setText(sec);
+                            if (thi != null && !thi.equals(" ")) tv3.setText(thi);
 
                             keyword_list = new ArrayList<>();
                             keyword_list.add(fir.toLowerCase());
-                            if (sec != null) keyword_list.add(sec.toLowerCase());
-                            if (thi != null) keyword_list.add(thi.toLowerCase());
+                            if (sec != null || !sec.equals(" ")) keyword_list.add(sec.toLowerCase());
+                            if (thi != null && !thi.equals(" ")) keyword_list.add(thi.toLowerCase());
 
                             keyword_number = 1;
                             if (sec != null && !sec.equals(" ")) keyword_number++;
                             if (thi != null && !thi.equals(" ")) keyword_number++;
+
+                            text_comment.setText(request.getcomment());
 
                             listView = (ListView) findViewById(R.id.listview_keyword_respond);
 
