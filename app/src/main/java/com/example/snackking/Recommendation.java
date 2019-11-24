@@ -353,6 +353,11 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                         keyword_list.add(" ");
                     }
 
+                    System.out.println("half way comes");
+                    System.out.println(keyword_list.get(0));
+                    System.out.println(keyword_list.get(1));
+                    System.out.println(keyword_list.get(2));
+
                     Request_recommend review_data = new Request_recommend();
 
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고

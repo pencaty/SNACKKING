@@ -25,8 +25,8 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
             $new_chatroom_data = $con->prepare('INSERT INTO Chatroom(user_id, Keyword_One, Keyword_Two, Keyword_Three, Comment) VALUES(:user_id, :key1, :key2, :key3, :comment)');
             $new_chatroom_data->bindParam(':user_id', $user_id);
             $new_chatroom_data->bindParam(':key1', $keyword1);
-            $new_chatroom_data->bindParam(':key2', $keyword1);
-            $new_chatroom_data->bindParam(':key3', $keyword2);
+            $new_chatroom_data->bindParam(':key2', $keyword2);
+            $new_chatroom_data->bindParam(':key3', $keyword3);
             $new_chatroom_data->bindParam(':comment', $comment);
 
             if($new_chatroom_data->execute()) {
@@ -38,12 +38,7 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
 
             $create_individual_recommend_table = $con->prepare('CREATE TABLE recommend_'.$user_id.' (
                 id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                Name VARCHAR(45),
-                Taste INT(10) UNSIGNED DEFAULT 1,
-                Cost INT(10) UNSIGNED DEFAULT 1,
-                Keyword_One VARCHAR(45), 
-                Keyword_Two VARCHAR(45),
-                Keyword_Three VARCHAR(45)
+                Name VARCHAR(45)
                 )');
 
             if($create_individual_recommend_table->execute()) {
