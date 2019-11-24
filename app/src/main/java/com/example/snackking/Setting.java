@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Setting extends AppCompatActivity implements View.OnClickListener {
@@ -20,6 +21,8 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
     LinearLayout lay3;
     LinearLayout lay4;
 
+    TextView tb_name;
+
     private String user_id;
 
     @Override
@@ -32,6 +35,8 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
 
         this.InitializeView();
         this.SetListener();
+
+        tb_name.setText(user_id);
     }
 
     public void InitializeView() {
@@ -44,6 +49,8 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
         lay2 = findViewById(R.id.select);
         lay3 = findViewById(R.id.app);
         lay4 = findViewById(R.id.customer);
+
+        tb_name = findViewById(R.id.text_user_name);
     }
 
     public void onClick(View view) {

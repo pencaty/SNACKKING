@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/get_snack_order_by_cost.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/get_snack_order_by_taste.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_chatroom_data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/make_individual_recommend.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Recommendation_response_result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_recommendation_response_result.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_snack_keyword_score.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_snack_keyword_score.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Achievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Achievement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Keyword_Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Search_Keyword_Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_search_keyword_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_search_keyword_result.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Recommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Recommendation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_recommendation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_recommendation.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,8 @@
       <workItem from="1574223296119" duration="1553000" />
       <workItem from="1574249572319" duration="19181000" />
       <workItem from="1574354162070" duration="4076000" />
-      <workItem from="1574435247287" duration="5631000" />
+      <workItem from="1574435247287" duration="6243000" />
+      <workItem from="1574572841512" duration="2904000" />
     </task>
     <servers />
   </component>

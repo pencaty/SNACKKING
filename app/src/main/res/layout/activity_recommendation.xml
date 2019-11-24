@@ -259,11 +259,64 @@
             ></TextView>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="10"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Additional request?"/>
+
+    <EditText
+        android:id="@+id/edittext_recommend_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="50"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="20"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
+    </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Request Recommendation"
         android:id="@+id/button_recommend"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="10"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respond to Recommendation Request"
+        android:id="@+id/button_recommend_respond"
         android:fontFamily="@font/my_font_family"
         android:textSize="15dp"
         android:layout_gravity="center"/>
