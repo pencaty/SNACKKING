@@ -375,10 +375,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
                         // 이제 유저 테이블에 새로운 값, 키워드를 저장
                         Review_user_data review_data = new Review_user_data();
-                        System.out.println("Snack_review test");
-                        for (int i = 0; i < 3; i++)
-                            System.out.println(keyword_list.get(i));
-                        System.out.println("Snack_review test");
+
                         try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
                             String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "1").get();
                             // have_reviewed는 항상 1이므로 그냥 1을 넣음

@@ -18,8 +18,8 @@ public class Recommendation_response_result extends AppCompatActivity implements
     private String user_id;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) { // recommend_user_Id table을 가져와서 안에 있는 데이터를 전부 보여주기
+        super.onCreate(savedInstanceState);              // + accept 버튼 누르면 recommend_user_table 삭제하고, chatroom에서 user_Id 있는 줄 삭제
         setContentView(R.layout.activity_recommendation_response_result);
 
         Intent intent = getIntent();

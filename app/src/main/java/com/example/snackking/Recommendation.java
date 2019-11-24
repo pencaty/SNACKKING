@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -44,6 +45,8 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
     private CheckBox cb7;
     private CheckBox cb8;
 
+    private EditText commt;
+
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";
     public String mJsonString;
@@ -74,34 +77,13 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
         }
         else { // request를 보낸 적이 없음. --> 현재 페이지에서 request를 보내거나 다른 사람의 request에 대답할 수 있도록
 
-            Button button_recommend = (Button) findViewById(R.id.button_recommend);
-            Button button_respond = (Button) findViewById(R.id.button_recommend_respond);
+            Button button_recommend = (Button) findViewById(R.id.button_recommend); // chatroom table에 추가, recommend_user_id table 만들기
+            Button button_respond = (Button) findViewById(R.id.button_recommend_respond); // recommend를 요청한 것들을 보여주기 + skip 버튼 페이지로 이동
 
-            button_recommend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) { // 누르면 Chatroom에 내용이 추가되고, user_id를 이용한 table이 생김
-                    if (count == 0) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Select at least one keyword", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
-                    } else {
-                    /*while(keyword_list.size() < 3) {
-                        keyword_list.add("-");
-                    }
-                    Intent intent = new Intent(getApplicationContext(), Search_Keyword_Result.class);
-                    intent.putExtra(("number"), count);
-                    intent.putExtra(("first"), keyword_list.get(0).toLowerCase());
-                    intent.putExtra(("second"), keyword_list.get(1).toLowerCase());
-                    intent.putExtra(("third"), keyword_list.get(2).toLowerCase());
-                    intent.putExtra("user_id", user_id);
-                    startActivity(intent);*/
-                    }
-                }
-            });
+            button_recommend.setOnClickListener(this);
+            button_respond.setOnClickListener(this);
+
         }
-
     }
 
     private void settingList(){ // 검색에 사용될 데이터를 리스트에 추가한다.
@@ -232,6 +214,86 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    class Request_recommend extends AsyncTask<String, Void, String> {
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(Recommendation.this,
+                    "Please Wait", null, true, true);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            Log.d(TAG, "POST response  - " + result);
+            finish();
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            //snack_name, taste_score, cost_score, sweet_score, spicy_score, sour_score, bitter_score).get();
+            String user_id = (String)params[1];
+            String key1 = (String)params[2];
+            String key2 = (String)params[3];
+            String key3 = (String)params[4];
+            String comment = (String)params[5];
+
+            String serverURL = (String)params[0];
+            String postParameters = "user_id=" + user_id + "&keyword_1=" + key1 + "&keyword_2=" + key2 + "&keyword_3=" + key3 + "&comment=" + comment;
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString();
+
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                return new String("Error: " + e.getMessage());
+            }
+        }
+    }
+
     public void InitializeView() {
         btn1 = findViewById(R.id.imageButton1);
         //btn2 = findViewById(R.id.imageButton2);
@@ -246,6 +308,8 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
         cb6 = (CheckBox)findViewById(R.id.checkbox_recom_key6);
         cb7 = (CheckBox)findViewById(R.id.checkbox_recom_key7);
         cb8 = (CheckBox)findViewById(R.id.checkbox_recom_key8);
+
+        commt = (EditText)findViewById(R.id.edittext_recommend_comment);
     }
 
     public void onClick(View view) {
@@ -276,6 +340,33 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
+
+            case R.id.button_recommend:
+                if (count == 0) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Select at least one keyword", Toast.LENGTH_SHORT);
+                    int offSetX = 0;
+                    int offSetY = 0;
+                    toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                    toast.show();
+                } else { // make_individual_recommend.php로 연결 (user_id, keyword_1, keyword_2, keyword_3, comment)
+                    while(keyword_list.size() < 3) {
+                        keyword_list.add(" ");
+                    }
+
+                    Request_recommend review_data = new Request_recommend();
+
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = review_data.execute(IP_ADDRESS + "/make_individual_recommend.php", user_id, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), commt.getText().toString()).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Intent send_intent = new Intent(getApplicationContext(), Recommendation_response_result.class);
+                    send_intent.putExtra("user_id", user_id);
+                    startActivity(send_intent);
+                    this.finish();
+                    break;
+                }
+
         }
     }
 

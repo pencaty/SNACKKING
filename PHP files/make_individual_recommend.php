@@ -47,10 +47,10 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 )');
 
             if($create_individual_recommend_table->execute()) {
-                $successMSG = $successMSG + "각 유저 추천 테이블 생성했습니다";
+                $successMSG = "각 유저 추천 테이블 생성했습니다";
             }
             else {
-                $errMSG = $errMSG + "각 유저 추천 테이블 생성 실패";
+                $errMSG = "각 유저 추천 테이블 생성 실패";
             }
 
         }
