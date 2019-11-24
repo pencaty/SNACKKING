@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/get_individual_responses.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Recommendation_Adapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Response_DataStructure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/recommendation_snack_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/make_individual_recommend.php" beforeDir="false" afterPath="$PROJECT_DIR$/make_individual_recommend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Recommendation_response_result.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Recommendation_response_result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_recommendation_response_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_recommendation_response_result.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +72,7 @@
       <workItem from="1574249572319" duration="19181000" />
       <workItem from="1574354162070" duration="4076000" />
       <workItem from="1574435247287" duration="6243000" />
-      <workItem from="1574572841512" duration="5492000" />
+      <workItem from="1574572841512" duration="9437000" />
     </task>
     <servers />
   </component>

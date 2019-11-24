@@ -90,7 +90,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="150dp"
                 android:textSize="20dp"
-                android:text="Selected Tags">
+                android:text="Received Recommendation">
             </TextView>
 
         </LinearLayout>
@@ -106,47 +106,50 @@
             ></TextView>
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/Text_recom_no_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="16dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:text="No Results">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="80"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/Text_first_key"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/my_font_family"
-                android:textSize="16dp">
-            </TextView>
-
-            <TextView
-                android:id="@+id/Text_second_key"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="@font/my_font_family"
-                android:textSize="16dp">
-            </TextView>
-
-            <TextView
-                android:id="@+id/Text_third_key"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="@font/my_font_family"
-                android:textSize="16dp">
-            </TextView>
-
-        </LinearLayout>
-
+        <ListView
+            android:id="@+id/listview_respond"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#999999"
+            android:dividerHeight="1dp">
+        </ListView>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        android:layout_weight="20"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></TextView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept"
+        android:gravity="center"
+        android:layout_gravity="center">
+    </Button>
 
 </LinearLayout>

@@ -37,8 +37,8 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
             }
 
             $create_individual_recommend_table = $con->prepare('CREATE TABLE recommend_'.$user_id.' (
-                id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                Name VARCHAR(45)
+                User VARCHAR(45) PRIMARY KEY,
+                Snack VARCHAR(45)
                 )');
 
             if($create_individual_recommend_table->execute()) {
