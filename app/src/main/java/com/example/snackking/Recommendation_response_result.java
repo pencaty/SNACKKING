@@ -196,7 +196,7 @@ public class Recommendation_response_result extends AppCompatActivity implements
                     response.setuser(respond_user);
                     response.setsnack(respond_snack);
 
-                    snack_respond_list.add(response); // 나중에 snack_datastructure로 바꾸면?
+                    snack_respond_list.add(response); // 나중에 snack_datastructure로 바꾸면 snack_info로 연결할 수 있을듯?
 
                     System.out.println(response.getsnack());
                     System.out.println(response.getuser());
@@ -248,6 +248,21 @@ public class Recommendation_response_result extends AppCompatActivity implements
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
+            case R.id.button_accept: // recommend_user_id table 삭제, chatroom에서 user_id가 있는 줄 삭제
+                // delete_accepted_request.php 에 연결 (user_id)
+
+                Accept_request task = new Accept_request();
+                try {
+                    String res = task.execute(IP_ADDRESS + "/delete_accepted_request.php", user_id).get();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                intent = new Intent(this, Recommendation.class);
+                intent.putExtra("user_id", user_id);
+                startActivity(intent);
+                this.finish();
+
         }
     }
 
@@ -256,6 +271,83 @@ public class Recommendation_response_result extends AppCompatActivity implements
         //btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
+        but_accept.setOnClickListener(this);
 
+    }
+
+    class Accept_request extends AsyncTask<String, Void, String> {
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(Recommendation_response_result.this,
+                    "Please Wait", null, true, true);
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            Log.d(TAG, "POST response  - " + result);
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String user = (String)params[1];
+
+            String serverURL = (String)params[0];
+            String postParameters = "user=" + user;
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString();
+
+            } catch (Exception e) {
+                Log.d(TAG, "InsertData: Error ", e);
+                return new String("Error: " + e.getMessage());
+            }
+        }
     }
 }
