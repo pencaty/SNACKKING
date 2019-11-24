@@ -3,6 +3,8 @@ package com.example.snackking;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -24,6 +26,10 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
     TextView tb_name;
 
     private String user_id;
+
+    private Toast toast;
+    private int offSetX = 0;
+    private int offSetY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,16 +83,14 @@ public class Setting extends AppCompatActivity implements View.OnClickListener {
                 this.finish();
                 break;
             case R.id.edit:
-                Toast.makeText(getApplicationContext(), "Implementation in progress", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.select:
-                Toast.makeText(getApplicationContext(), "Implementation in progress", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.app:
-                Toast.makeText(getApplicationContext(), "Implementation in progress", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.customer:
-                Toast.makeText(getApplicationContext(), "Implementation in progress", Toast.LENGTH_SHORT).show();
+                toast = Toast.makeText(getApplicationContext(), "Implementation in progress", Toast.LENGTH_SHORT);
+                offSetX = 0;
+                offSetY = 0;
+                toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                toast.show();
                 break;
                 /*
             case R.id.imageButton4:

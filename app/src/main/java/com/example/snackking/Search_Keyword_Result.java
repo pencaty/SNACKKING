@@ -139,7 +139,7 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
         });
     }
 
-      public void search() { // 검색을 수행하는 메소드
+  public void search() { // 검색을 수행하는 메소드
 
         list.clear();
         // 키워드 검색 --> keyword_list에 최대 3개 들어있음

@@ -16,7 +16,7 @@ if ($stmt->rowCount() > 0) {
         extract($row);
 
         array_push($data,
-            array('request_id'=>$user_id));
+            array('request_id'=>$user_id, 'key1'=>$Keyword_One, 'key2'=>$Keyword_Two, 'key3'=>$Keyword_Three, 'comment'=>$Comment));
     }
 
     header('Content-Type: application/json; charset=utf8');

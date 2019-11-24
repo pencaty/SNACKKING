@@ -30,10 +30,13 @@ import java.util.ArrayList;
 
 public class Recommendation extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    ImageButton btn1;
-    //ImageButton btn2;
-    ImageButton btn3;
-    ImageButton btn4;
+    private ImageButton btn1;
+    //private ImageButton btn2;
+    private ImageButton btn3;
+    private ImageButton btn4;
+
+    private Button button_recommend;
+    private Button button_respond;
 
     private int count = 0;
     private CheckBox cb1;
@@ -77,8 +80,8 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
         }
         else { // request를 보낸 적이 없음. --> 현재 페이지에서 request를 보내거나 다른 사람의 request에 대답할 수 있도록
 
-            Button button_recommend = (Button) findViewById(R.id.button_recommend); // chatroom table에 추가, recommend_user_id table 만들기
-            Button button_respond = (Button) findViewById(R.id.button_recommend_respond); // recommend를 요청한 것들을 보여주기 + skip 버튼 페이지로 이동
+            button_recommend = (Button) findViewById(R.id.button_recommend); // chatroom table에 추가, recommend_user_id table 만들기
+            button_respond = (Button) findViewById(R.id.button_recommend_respond); // recommend를 요청한 것들을 보여주기 + skip 버튼 페이지로 이동
 
             button_recommend.setOnClickListener(this);
             button_respond.setOnClickListener(this);
@@ -205,8 +208,6 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                     String comment = item.getString(TAG_COMMENT);*/
 
                     request_id_list.add(request_id);
-                    System.out.println("request id");
-                    System.out.println(request_id);
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);
@@ -341,22 +342,18 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                 this.finish();
                 break;
 
-            case R.id.button_recommend:
+            case R.id.button_recommend: // keyword에 해당하는 과자 추천을 request할 때
                 if (count == 0) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Select at least one keyword", Toast.LENGTH_SHORT);
                     int offSetX = 0;
                     int offSetY = 0;
                     toast.setGravity(Gravity.CENTER, offSetX, offSetY);
                     toast.show();
+                    break;
                 } else { // make_individual_recommend.php로 연결 (user_id, keyword_1, keyword_2, keyword_3, comment)
                     while(keyword_list.size() < 3) {
                         keyword_list.add(" ");
                     }
-
-                    System.out.println("half way comes");
-                    System.out.println(keyword_list.get(0));
-                    System.out.println(keyword_list.get(1));
-                    System.out.println(keyword_list.get(2));
 
                     Request_recommend review_data = new Request_recommend();
 
@@ -371,7 +368,12 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                     this.finish();
                     break;
                 }
-
+            case R.id.button_recommend_respond: // 다른 사람들의 request에 대답할 때
+                Intent send_intent = new Intent(getApplicationContext(), Recommendation_respond.class);
+                send_intent.putExtra("user_id", user_id);
+                startActivity(send_intent);
+                this.finish();
+                break;
         }
     }
 
