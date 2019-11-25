@@ -1,4 +1,4 @@
-<h2>JAVA Files explanation</h2>
+<h2>JAVA Files Explanations</h2>
 
 - <b>Login</b>
   - <b>Login.java</b> : The first page of the application. The users have to enter id in order to use the application.
