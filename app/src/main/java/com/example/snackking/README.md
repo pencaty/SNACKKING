@@ -9,9 +9,9 @@
 - <b>Search System</b>
   - <b>Search_Adapter.java</b> : The result of search should be shown on Listview. This file is a template for each element(snack).
   - <b>Search_Combined.java</b> : This file contains two search methods: using name and using keywords. The result of search using name is shown right after the user writes down some letters in textbox.
-  - <b>Search_Keyword_Result.java</b> : Show the result of search using keywords. 
+  - <b>Search_Keyword_Result.java</b> : Show the result of search using keywords. The result can be sorted by two standard: taste and cost.
   - <b>Snack_Info.java</b> : The page for detailed information (score and distribution for taste/cost) of each snack.
-  - <b>Snack_Review.java</b> :Tthe page where the users can leave review (rate taste/cost and choose keywords (min 1, max 3).
+  - <b>Snack_Review.java</b> :Tthe page where the users can leave review (rate taste/cost and choose keywords (min 1, max 3)).
 
 - <b>Structure for recommendation system</b>
   - <b>Response_DataStructure.java</b> : In order to bring data (user_id and selected snack) at once. It is used when bringing other users' recommendation.
