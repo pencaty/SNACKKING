@@ -358,7 +358,10 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
                     Request_recommend review_data = new Request_recommend();
 
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = review_data.execute(IP_ADDRESS + "/make_individual_recommend.php", user_id, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), commt.getText().toString()).get();
+                        String comment = commt.getText().toString();
+                        if(comment == null || comment.equals(" ") || comment.equals("")) comment = "None";
+                        //String res = review_data.execute(IP_ADDRESS + "/make_individual_recommend.php", user_id, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), commt.getText().toString()).get();
+                        String res = review_data.execute(IP_ADDRESS + "/make_individual_recommend.php", user_id, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), comment).get();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

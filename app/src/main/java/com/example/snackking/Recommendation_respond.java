@@ -52,6 +52,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
     private Search_Adapter adapter;      // 리스트뷰에 연결할 아답터
     private TextView text_no_request;
+    private TextView text_additional;
     private TextView text_comment;
     private LinearLayout linear_respond;
     private ListView lv_respond;
@@ -84,6 +85,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
         if(chat_list == null || chat_list.size() == 0) { //Chatroom의 size가 0일 때
             text_no_request.setVisibility(View.VISIBLE);
+            text_additional.setVisibility(View.GONE);
             linear_respond.setVisibility(View.GONE);
             text_comment.setVisibility(View.GONE);
             lv_respond.setVisibility(View.GONE);
@@ -91,6 +93,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
         }
         else {
             text_no_request.setVisibility(View.GONE);
+            text_additional.setVisibility(View.VISIBLE);
             linear_respond.setVisibility(View.VISIBLE);
             text_comment.setVisibility(View.VISIBLE);
             lv_respond.setVisibility(View.VISIBLE);
@@ -117,6 +120,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
             if(index == chat_list.size()) {
                 text_no_request.setVisibility(View.VISIBLE);
+                text_additional.setVisibility(View.GONE);
                 linear_respond.setVisibility(View.GONE);
                 text_comment.setVisibility(View.GONE);
                 lv_respond.setVisibility(View.GONE);
@@ -170,8 +174,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
                         do { // 여기서부터는 skip 버튼의 내용 그대로
                             index++;
-                            System.out.println(index);
-                            System.out.println("index");
+
                             if(index == chat_list.size()) break;
 
                             request = chat_list.get(index);
@@ -191,6 +194,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
                         if(index == chat_list.size()) {
                             text_no_request.setVisibility(View.VISIBLE);
+                            text_additional.setVisibility(View.GONE);
                             linear_respond.setVisibility(View.GONE);
                             text_comment.setVisibility(View.GONE);
                             lv_respond.setVisibility(View.GONE);
@@ -244,6 +248,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
         // 키워드 검색 --> keyword_list에 최대 3개 들어있음
         // 키워드를 하나의 list처럼 주고, 모든 과자 돌면서 각 키워드의 지분을 더한 후 ~% 이상이면 list에 add.
         int number_of_key_have;
+        int total_num = 0;
         for(int i = 0;i < arraylist.size(); i++) {            // 리스트의 모든 데이터를 검색한다.
             number_of_key_have = 0;
             if(keyword_list.contains(arraylist.get(i).getSnack_keyword_1().toLowerCase())) number_of_key_have++;
@@ -252,6 +257,12 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
             if(number_of_key_have == keyword_number){
                 list.add(arraylist.get(i));    // 검색된 데이터를 리스트에 추가한다.
+                total_num++;
+            }
+        }
+        if(total_num == 0) {
+            for(int i = 0; i < arraylist.size(); i++) {
+                list.add(arraylist.get(i));
             }
         }
 
@@ -726,6 +737,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
         btn4 = findViewById(R.id.imageButton3);
 
         text_no_request = findViewById(R.id.Text_no_request);
+        text_additional = findViewById(R.id.Text_additional);
         linear_respond = findViewById(R.id.linear_key_request);
 
         text_comment = findViewById(R.id.Text_show_comment);
@@ -790,6 +802,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
                 if(index == chat_list.size()) {
                     text_no_request.setVisibility(View.VISIBLE);
+                    text_additional.setVisibility(View.GONE);
                     linear_respond.setVisibility(View.GONE);
                     text_comment.setVisibility(View.GONE);
                     lv_respond.setVisibility(View.GONE);
@@ -812,6 +825,8 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
                     keyword_number = 1;
                     if (sec != null && !sec.equals(" ")) keyword_number++;
                     if (thi != null && !thi.equals(" ")) keyword_number++;
+
+                    text_comment.setText(request.getcomment());
 
                     listView = (ListView) findViewById(R.id.listview_keyword_respond);
 
