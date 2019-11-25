@@ -8,7 +8,7 @@
 
  XML files are in SNACKKING/app/src/main/res/layout. These files are used to design user interface for the android application. For the detailed explanation, please refer to below explanations.
 
-
+<br><br>
 <h2>XML Files Explanations</h2>
 
 - <b>Login</b>
