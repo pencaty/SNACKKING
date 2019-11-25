@@ -64,15 +64,15 @@ public class Recommendation_response_result extends AppCompatActivity implements
         adapter = new Recommendation_Adapter(snack_respond_list, this);
         lv_respond.setAdapter(adapter);
 
-        if(snack_respond_list != null) {
+        if(snack_respond_list != null) { // 사람들의 추천 과자가 있다면 그 결과와 accept 버튼 보이게
             recom_no_result.setVisibility(View.GONE);
             lv_respond.setVisibility(View.VISIBLE);
-            but_accept.setVisibility(View.VISIBLE);
+            but_accept.setText("Accept");
         }
-        else {
+        else { // 사람들의 추천 과자가 아직 없다면 'no result'라는 문구가 보이게 + cancel 버튼을 통해 request 취소 가능하도록
             recom_no_result.setVisibility(View.VISIBLE);
             lv_respond.setVisibility(View.GONE);
-            but_accept.setVisibility(View.GONE);
+            but_accept.setText("Cancel");  // cancel 버튼의 역할을 accept와 동일하므로 text만 바꾸자
         }
 
         adapter.notifyDataSetChanged();
@@ -197,9 +197,6 @@ public class Recommendation_response_result extends AppCompatActivity implements
                     response.setsnack(respond_snack);
 
                     snack_respond_list.add(response); // 나중에 snack_datastructure로 바꾸면 snack_info로 연결할 수 있을듯?
-
-                    System.out.println(response.getsnack());
-                    System.out.println(response.getuser());
                 }
             } catch (JSONException e) {
                 Log.d(TAG, "showResult : ", e);

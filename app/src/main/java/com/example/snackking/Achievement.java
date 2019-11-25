@@ -119,7 +119,7 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
 
     private void CheckState() {
 
-        if(!sw.isChecked()) {
+        if(!sw.isChecked()) { // incompleted인 achievement만 보여주기
             ListView listview;
             ListAdapter_Achievement adapter;
 
@@ -128,19 +128,21 @@ public class Achievement extends AppCompatActivity implements View.OnClickListen
             listview = (ListView) findViewById(R.id.listview1);
             listview.setAdapter(adapter);
 
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 1", "Leave more than 1 review", review_num + " / 1", Integer.parseInt(review_num), 1);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 2", "Leave more than 3 reviews", review_num + " / 3", Integer.parseInt(review_num), 3);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 3", "Leave more than 5 reviews", review_num + " / 5", Integer.parseInt(review_num), 5);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 4", "Leave more than 10 reviews", review_num + " / 10", Integer.parseInt(review_num), 10);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 5", "Leave more than 20 reviews", review_num + " / 20", Integer.parseInt(review_num), 20);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 6", "Leave more than 30 reviews", review_num + " / 30", Integer.parseInt(review_num), 30);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 7", "Leave more than 50 reviews", review_num + " / 50", Integer.parseInt(review_num), 50);
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 8", "Leave more than 100 reviews", review_num + " / 100", Integer.parseInt(review_num), 100);
+            int review_num_int = Integer.parseInt(review_num);
+
+            if(review_num_int < 1) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 1", "Leave more than 1 review", review_num + " / 1", Integer.parseInt(review_num), 1);
+            if(review_num_int < 3) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 2", "Leave more than 3 reviews", review_num + " / 3", Integer.parseInt(review_num), 3);
+            if(review_num_int < 5) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 3", "Leave more than 5 reviews", review_num + " / 5", Integer.parseInt(review_num), 5);
+            if(review_num_int < 10) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 4", "Leave more than 10 reviews", review_num + " / 10", Integer.parseInt(review_num), 10);
+            if(review_num_int < 20) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 5", "Leave more than 20 reviews", review_num + " / 20", Integer.parseInt(review_num), 20);
+            if(review_num_int < 30) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 6", "Leave more than 30 reviews", review_num + " / 30", Integer.parseInt(review_num), 30);
+            if(review_num_int < 50) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 7", "Leave more than 50 reviews", review_num + " / 50", Integer.parseInt(review_num), 50);
+            if(review_num_int < 100) adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 8", "Leave more than 100 reviews", review_num + " / 100", Integer.parseInt(review_num), 100);
             /*adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 9", "Leave more than 1 review", "15 / 90", 15, 90);
             adapter.addItem(ContextCompat.getDrawable(this, R.drawable.prize), "Review Master 10", "Leave more than 1 review", "15 / 100", 15, 100);*/
 
         }
-        else {
+        else { // 달성한 achievement만 보여주기
             ListView listview;
             ListAdapter_Achievement adapter;
 
