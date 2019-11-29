@@ -233,18 +233,17 @@
                 android:layout_gravity="center">
 
                 <ProgressBar
-                    android:layout_width="170dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/progress_key1"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
-                    android:scaleX="100"
                     android:layout_weight="80">
                 </ProgressBar>
 
                 <ProgressBar
-                    android:layout_width="170dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/progress_key2"
                     style="@android:style/Widget.ProgressBar.Horizontal"
@@ -254,7 +253,7 @@
                 </ProgressBar>
 
                 <ProgressBar
-                    android:layout_width="170dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/progress_key3"
                     style="@android:style/Widget.ProgressBar.Horizontal"

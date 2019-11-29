@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5da6c10c-5879-478e-819d-6f0a399d6c57" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_snack_keyword_score.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_snack_keyword_score.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/example/snackking/Snack_Info.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +75,7 @@
       <workItem from="1574572841512" duration="11792000" />
       <workItem from="1574599654886" duration="6704000" />
       <workItem from="1574689734074" duration="4383000" />
+      <workItem from="1575027028744" duration="184000" />
     </task>
     <servers />
   </component>

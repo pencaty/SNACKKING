@@ -95,9 +95,19 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         if(score_snack.getSnack_keyword_2() != null) second_key.setText(score_snack.getSnack_keyword_2());
         if(score_snack.getSnack_keyword_3() != null) third_key.setText(score_snack.getSnack_keyword_3());
 
-        pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
+        /*pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));  // 전체 투표한 사람 수를 최대로
         pb2.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
-        pb3.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
+        pb3.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));*/
+
+        System.out.println(Integer.parseInt(score_snack.getSnack_number_of_rate()));
+        System.out.println(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
+        System.out.println(Integer.parseInt(score_snack.getSnack_keyword_2_score()));
+        System.out.println(Integer.parseInt(score_snack.getSnack_keyword_3_score()));
+
+
+        pb1.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));  // 전체 투표한 사람 수를 최대로
+        pb2.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));
+        pb3.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));
 
         pb1.setVisibility(View.VISIBLE);
         pb2.setVisibility(View.VISIBLE);
@@ -173,9 +183,16 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         if(score_snack.getSnack_keyword_2() != null) second_key.setText(score_snack.getSnack_keyword_2());
         if(score_snack.getSnack_keyword_3() != null) third_key.setText(score_snack.getSnack_keyword_3());
 
-        pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
+        /*pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));  // 전체 투표한 사람 수를 최대로
         pb2.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
-        pb3.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
+        pb3.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));*/
+
+        System.out.println(Integer.parseInt(score_snack.getSnack_number_of_rate()));
+        System.out.println("test print");
+
+        pb1.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));  // 전체 투표한 사람 수를 최대로
+        pb2.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));
+        pb3.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));
 
         pb1.setVisibility(View.VISIBLE);
         pb2.setVisibility(View.VISIBLE);
@@ -375,9 +392,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(snack_name);
-        System.out.println(mJsonString);
-        System.out.println("milkcrunky");
 
         show_snack_Result();
     }
@@ -468,6 +482,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         String TAG_JSON="snack_json";
         String TAG_TASTE = "taste";
         String TAG_COST = "cost";
+        String TAG_NUMBER = "number";
         String TAG_KEYWORD1 = "keyword1";
         String TAG_KEYWORD2 = "keyword2";
         String TAG_KEYWORD3 = "keyword3";
@@ -486,6 +501,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
 
                     String taste = item.getString(TAG_TASTE);
                     String cost = item.getString(TAG_COST);
+                    String number_of_people = item.getString(TAG_NUMBER);
                     String keyword_1 = item.getString(TAG_KEYWORD1);
                     String keyword_2 = item.getString(TAG_KEYWORD2);
                     String keyword_3 = item.getString(TAG_KEYWORD3);
@@ -497,6 +513,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
                     snack_list = new ArrayList<>();
                     snackdata.setSnack_taste(taste);
                     snackdata.setSnack_cost(cost);
+                    snackdata.setSnack_number_of_rate(number_of_people);
                     snackdata.setSnack_keyword_1(keyword_1);
                     snackdata.setSnack_keyword_2(keyword_2);
                     snackdata.setSnack_keyword_3(keyword_3);
