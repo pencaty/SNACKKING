@@ -9,12 +9,15 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="25"
+        android:scaleType="fitCenter"
+        android:layout_margin="5dp"
         android:src="@drawable/cookies" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="75"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <TextView
@@ -22,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="Name"
+            android:textSize="20dp"
             android:layout_weight="40"/>
 
         <TextView
@@ -29,14 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="30"
+            android:textSize="18dp"
             android:text="Description"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="30"
+            android:gravity="center"
             android:orientation="horizontal">
-
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -46,11 +51,12 @@
                 android:layout_weight="80" />
 
             <TextView
-             android:id="@+id/textNumber"
-             android:layout_width="0dp"
-             android:layout_height="match_parent"
-             android:text="Number"
-             android:layout_weight="20" />
+                android:id="@+id/textNumber"
+                android:layout_width="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
+                android:text="Number"
+                android:layout_weight="20" />
 
         </LinearLayout>
     </LinearLayout>

@@ -40,14 +40,27 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
     private String snack_number_of_rate;
     private String user_id;
 
+    private Button button_review;
+    private TextView first_key;
+    private TextView second_key;
+    private TextView third_key;
+    private TextView participate;
+    private TextView info_snack_name;
+    private TextView info_snack_taste;
+    private TextView info_snack_cost;
+
+    private ProgressBar pb1;
+    private ProgressBar pb2;
+    private ProgressBar pb3;
+
     private String past_data;
 
     private String have_reviewed = "0";
 
-    //ImageButton btn1;
-    ImageButton btn2;
-    ImageButton btn3;
-    ImageButton btn4;
+    //private ImageButton btn1;
+    private ImageButton btn2;
+    private ImageButton btn3;
+    private ImageButton btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +70,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         this.InitializeView();
         this.SetListener();
 
-        TextView info_snack_name = (TextView)findViewById(R.id.info_snack_name);
-        TextView info_snack_taste = (TextView)findViewById(R.id.info_snack_taste);
-        TextView info_snack_cost = (TextView)findViewById(R.id.info_snack_cost);
-
-        TextView first_key = (TextView)findViewById(R.id.Text_first_keyword);
-        TextView second_key = (TextView)findViewById(R.id.Text_second_keyword);
-        TextView third_key = (TextView)findViewById(R.id.Text_third_keyword);
-
         Intent intent = getIntent();
 
         user_id = intent.getStringExtra("user_id");
@@ -72,8 +77,6 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         snack_taste = intent.getStringExtra("taste");
         snack_cost = intent.getStringExtra("cost");
         snack_number_of_rate = intent.getStringExtra("number");
-
-        Button button_review = (Button)findViewById(R.id.button_write_review);
 
         // user_id에 해당하는 테이블에 접속해서 현재 과자에 이미 리뷰를 남겼다면 버튼(review_write_review)의 텍스트를 '리뷰 수정'으로 바꾼다
         // 이미 리뷰를 남겼다면 have_reviewed = 1로 바꾸고, taste, cost, 키워드 선택한 것들을 하나로 저장하여 Snack_Review로 넘기자.
@@ -85,25 +88,17 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
 
         past_data = "";
 
-        ProgressBar pb1 =(ProgressBar)findViewById(R.id.progress_key1);
-        ProgressBar pb2 =(ProgressBar)findViewById(R.id.progress_key2);
-        ProgressBar pb3 =(ProgressBar)findViewById(R.id.progress_key3);
-
         setting_snack_List(); // 과자 키워드의 progress bar를 만들기 위해 정보를 가져오는 장치.
         Snack_DataStructure score_snack = snack_list.get(0);
         if(score_snack.getSnack_keyword_1() != null) first_key.setText(score_snack.getSnack_keyword_1());
         if(score_snack.getSnack_keyword_2() != null) second_key.setText(score_snack.getSnack_keyword_2());
         if(score_snack.getSnack_keyword_3() != null) third_key.setText(score_snack.getSnack_keyword_3());
 
-        /*pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));  // 전체 투표한 사람 수를 최대로
+        /*pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));  // 첫번째 키워드를 최대로
         pb2.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
         pb3.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));*/
 
-        System.out.println(Integer.parseInt(score_snack.getSnack_number_of_rate()));
-        System.out.println(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
-        System.out.println(Integer.parseInt(score_snack.getSnack_keyword_2_score()));
-        System.out.println(Integer.parseInt(score_snack.getSnack_keyword_3_score()));
-
+        participate.setText(score_snack.getSnack_number_of_rate() + " people participated!");
 
         pb1.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));  // 전체 투표한 사람 수를 최대로
         pb2.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));
@@ -161,21 +156,11 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
     protected void onResume(){
         super.onResume();
 
-        Button button_review = (Button)findViewById(R.id.button_write_review);
+        this.InitializeView();
+        this.SetListener();
 
         past_data = "";
         have_reviewed = "0";
-
-        TextView first_key = (TextView)findViewById(R.id.Text_first_keyword);
-        TextView second_key = (TextView)findViewById(R.id.Text_second_keyword);
-        TextView third_key = (TextView)findViewById(R.id.Text_third_keyword);
-
-        TextView info_snack_taste = (TextView)findViewById(R.id.info_snack_taste);
-        TextView info_snack_cost = (TextView)findViewById(R.id.info_snack_cost);
-
-        ProgressBar pb1 =(ProgressBar)findViewById(R.id.progress_key1);
-        ProgressBar pb2 =(ProgressBar)findViewById(R.id.progress_key2);
-        ProgressBar pb3 =(ProgressBar)findViewById(R.id.progress_key3);
 
         setting_snack_List(); // 과자 키워드의 progress bar를 만들기 위해 정보를 가져오는 장치.
         Snack_DataStructure score_snack = snack_list.get(0);
@@ -183,12 +168,11 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         if(score_snack.getSnack_keyword_2() != null) second_key.setText(score_snack.getSnack_keyword_2());
         if(score_snack.getSnack_keyword_3() != null) third_key.setText(score_snack.getSnack_keyword_3());
 
-        /*pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));  // 전체 투표한 사람 수를 최대로
+        /*pb1.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));  // 첫번째 키워드를 최대로
         pb2.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));
         pb3.setMax(Integer.parseInt(score_snack.getSnack_keyword_1_score()));*/
 
-        System.out.println(Integer.parseInt(score_snack.getSnack_number_of_rate()));
-        System.out.println("test print");
+        participate.setText(score_snack.getSnack_number_of_rate() + " people participated!");
 
         pb1.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));  // 전체 투표한 사람 수를 최대로
         pb2.setMax(Integer.parseInt(score_snack.getSnack_number_of_rate()));
@@ -371,8 +355,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
                     button_review.setText("Revise Review");
                     Snack_DataStructure past_snack = list.get(0); //이 과자에 대해 리뷰했다면 list에는 하나밖에 없고, 리뷰하지 않았다면 텅 빈 list이다
                     past_data = past_snack.getSnack_taste() + "#" + past_snack.getSnack_cost() + "#" + past_snack.getSnack_keyword_1() + "#" + past_snack.getSnack_keyword_2() + "#" + past_snack.getSnack_keyword_3();
-                    System.out.println(past_data);
-                    System.out.println("end of Show_Result in Snack_info");
+
                     // 과거 taste, cost, keyword1,2,3 에 대해 입력했던 값을 Snack_Review로 전달하기 위해.
                     // -> Snack_Review에서 past_data를 split("#")을 하면 각각의 데이터를 얻을 수 있다.
 
@@ -533,6 +516,20 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         btn2 = findViewById(R.id.imageButton2);
         btn3 = findViewById(R.id.imageButton3);
         btn4 = findViewById(R.id.imageButton4);
+
+        button_review = (Button)findViewById(R.id.button_write_review);
+        first_key = (TextView)findViewById(R.id.Text_first_keyword);
+        second_key = (TextView)findViewById(R.id.Text_second_keyword);
+        third_key = (TextView)findViewById(R.id.Text_third_keyword);
+        participate = (TextView)findViewById(R.id.Text_participation);
+
+        info_snack_name = (TextView)findViewById(R.id.info_snack_name);
+        info_snack_taste = (TextView)findViewById(R.id.info_snack_taste);
+        info_snack_cost = (TextView)findViewById(R.id.info_snack_cost);
+
+        pb1 = (ProgressBar)findViewById(R.id.progress_key1);
+        pb2 = (ProgressBar)findViewById(R.id.progress_key2);
+        pb3 = (ProgressBar)findViewById(R.id.progress_key3);
     }
 
     public void onClick(View view) {

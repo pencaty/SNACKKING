@@ -62,12 +62,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
     </LinearLayout>
 
     <TextView
@@ -81,32 +77,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Evaluate taste (1 ~ 5 integer)"
+        android:text="Evaluate taste (1 ~ 5)"
         android:id="@+id/review_taste_name"
         android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"
+        android:textSize="18dp"
         android:layout_marginLeft="5dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/review_taste"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"
-        android:inputType="number"
-        android:maxLength="1"
-        android:layout_marginLeft="5dp"/>
+        android:layout_weight="5">
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -162,31 +150,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Evaluate cost (1 ~ 5 integer)"
+        android:text="Evaluate cost (1 ~ 5)"
         android:id="@+id/review_cost_name"
         android:fontFamily="@font/my_font_family"
-        android:textSize="10dp"
+        android:textSize="18dp"
         android:layout_marginLeft="5dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/review_cost"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="15dp"
-        android:inputType="number"
-        android:maxLength="1"/>
+        android:layout_weight="5">
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -240,13 +221,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="15">
     </LinearLayout>
 
     <LinearLayout
@@ -341,12 +318,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="20"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="15">
     </LinearLayout>
 
     <Button

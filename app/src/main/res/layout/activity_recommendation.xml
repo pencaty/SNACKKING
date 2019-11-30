@@ -68,12 +68,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
     </LinearLayout>
 
     <LinearLayout
@@ -98,12 +94,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
     </LinearLayout>
 
     <LinearLayout
@@ -116,7 +108,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/Text_first_key"
+                android:id="@+id/Text_first_key_recom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -126,7 +118,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/Text_second_key"
+                android:id="@+id/Text_second_key_recom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -136,7 +128,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/Text_third_key"
+                android:id="@+id/Text_third_key_recom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -151,12 +143,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
     </LinearLayout>
 
     <LinearLayout
@@ -251,22 +239,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
     </LinearLayout>
 
     <TextView
@@ -280,19 +254,15 @@
         android:id="@+id/edittext_recommend_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="50"
+        android:maxLength="30"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="15dp"/>
+        android:textSize="18dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="20"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="20">
     </LinearLayout>
 
     <Button
@@ -306,12 +276,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
     </LinearLayout>
 
     <Button

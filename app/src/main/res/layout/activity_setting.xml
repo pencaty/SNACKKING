@@ -63,7 +63,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="5">
     </LinearLayout>
 
     <ImageView
@@ -80,6 +80,7 @@
         android:id="@+id/text_user_name"
         android:text="User_001"
         android:gravity="center_vertical|center_horizontal"
+        android:textSize="20dp"
         android:layout_marginBottom="5dp"/>
 
     <TextView
@@ -88,7 +89,14 @@
         android:layout_weight="5"
         android:text="Review Master 1"
         android:layout_marginBottom="5dp"
+        android:textSize="20dp"
         android:gravity="center_vertical|center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,6 +116,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:layout_margin="5dp"
                 android:src="@drawable/edit"/>
 
             <TextView
@@ -115,6 +125,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="Edit Profile"
+                android:textSize="20dp"
                 android:gravity="center_vertical|center_horizontal"/>
 
         </LinearLayout>
@@ -131,6 +142,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:layout_margin="5dp"
                 android:src="@drawable/prize"/>
 
             <TextView
@@ -138,8 +151,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="Select Achievement Badge"
+                android:textSize="20dp"
                 android:gravity="center_vertical|center_horizontal"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -154,6 +167,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:layout_margin="5dp"
                 android:src="@drawable/setting"/>
 
             <TextView
@@ -161,6 +176,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="App Setting"
+                android:textSize="20dp"
                 android:gravity="center_vertical|center_horizontal"/>
 
         </LinearLayout>
@@ -177,6 +193,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:layout_margin="5dp"
                 android:src="@drawable/phone"/>
 
             <TextView
@@ -184,6 +202,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="Customer Service"
+                android:textSize="20dp"
                 android:gravity="center_vertical|center_horizontal"/>
 
         </LinearLayout>

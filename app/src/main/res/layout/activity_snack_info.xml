@@ -64,18 +64,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="10"
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></TextView>
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
     </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="30"
+        android:layout_weight="35"
         android:src="@drawable/cookies"
         android:layout_marginBottom="5dp"/>
 
@@ -90,7 +86,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:fontFamily="@font/my_font_family"
-            android:textSize="18dp">
+            android:textSize="20dp">
         </TextView>
 
     </LinearLayout>
@@ -104,6 +100,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -121,9 +118,8 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp"
-                    android:text="TASTE : "
-                    >
+                    android:textSize="18dp"
+                    android:text="TASTE : ">
                 </TextView>
 
                 <TextView
@@ -132,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp">
+                    android:textSize="18dp">
                 </TextView>
 
                 <TextView
@@ -140,20 +136,15 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:fontFamily="@font/my_font_family"
-                    android:textSize="14dp"
-                    android:text=" / 5"
-                    >
+                    android:textSize="18dp"
+                    android:text=" / 5">
                 </TextView>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                android:layout_weight="5"
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    ></TextView>
+                android:layout_height="wrap_content"
+                android:layout_weight="5">
             </LinearLayout>
 
             <LinearLayout
@@ -166,9 +157,8 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp"
-                    android:text="COST : "
-                    >
+                    android:textSize="18dp"
+                    android:text="COST : ">
                 </TextView>
 
                 <TextView
@@ -177,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp">
+                    android:textSize="18dp">
                 </TextView>
 
                 <TextView
@@ -185,102 +175,122 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:fontFamily="@font/my_font_family"
-                    android:textSize="14dp"
-                    android:text=" / 5"
-                    >
+                    android:textSize="18dp"
+                    android:text=" / 5">
                 </TextView>
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
-                <TextView
-                    android:id="@+id/Text_first_keyword"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp"
-                    android:textAlignment="center">
-                </TextView>
-
-                <TextView
-                    android:id="@+id/Text_second_keyword"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp"
-                    android:textAlignment="center">
-                </TextView>
-
-                <TextView
-                    android:id="@+id/Text_third_keyword"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/my_font_family"
-                    android:textSize="15dp"
-                    android:textAlignment="center">
-                </TextView>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
-
-                <ProgressBar
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progress_key1"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_weight="80">
-                </ProgressBar>
-
-                <ProgressBar
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progress_key2"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_weight="80">
-                </ProgressBar>
-
-                <ProgressBar
-                    android:layout_width="140dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progress_key3"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_weight="80">
-                </ProgressBar>
-
-            </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:layout_weight="50"
-        <TextView
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ></TextView>
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/Text_first_keyword"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="18dp"
+                android:textAlignment="center">
+            </TextView>
+
+            <TextView
+                android:id="@+id/Text_second_keyword"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="18dp"
+                android:textAlignment="center">
+            </TextView>
+
+            <TextView
+                android:id="@+id/Text_third_keyword"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="18dp"
+                android:textAlignment="center">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center">
+
+            <ProgressBar
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress_key1"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_weight="80">
+            </ProgressBar>
+
+            <ProgressBar
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress_key2"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_weight="80">
+            </ProgressBar>
+
+            <ProgressBar
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress_key3"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_weight="80">
+            </ProgressBar>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Text_participation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/my_font_family"
+        android:textSize="15dp"
+        android:text=" people participated!">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="15">
     </LinearLayout>
 
     <Button

@@ -37,8 +37,6 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private String snack_cost;
     private String snack_number_of_rate;
 
-    private EditText EditTaste;
-    private EditText EditCost;
     private TextView Text_SnackName;
 
     private String have_reviewed;
@@ -70,6 +68,9 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private ImageButton btn_cost3;;
     private ImageButton btn_cost4;
     private ImageButton btn_cost5;
+
+    private String taste_score = "4"; // 기본값으로 4를 주자
+    private String cost_score = "4";
 
 
     private ArrayList<String> keyword_list;
@@ -106,9 +107,6 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         cb7.setOnCheckedChangeListener(this);
         cb8.setOnCheckedChangeListener(this);
 
-        EditTaste = (EditText)findViewById(R.id.review_taste);
-        EditCost = (EditText)findViewById(R.id.review_cost);
-
         snack_name = intent.getStringExtra("name");
         snack_taste = intent.getStringExtra("taste");
         snack_cost = intent.getStringExtra("cost");
@@ -129,111 +127,158 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             button_upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String standard = "12345";
-                    if(EditTaste.getText().toString() == null || EditCost.getText().toString() == null) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
+                    double double_taste_score = Double.parseDouble(taste_score);
+                    double double_cost_score = Double.parseDouble(cost_score);
+                    double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
+
+                    String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score) / (double_number_of_rate + 1));
+                    String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score) / (double_number_of_rate + 1));
+
+                    UpdateData task = new UpdateData();
+
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    else if (!standard.contains(EditTaste.getText().toString()) || !standard.contains(EditCost.getText().toString())) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost between 1 and 5", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
+
+                    String sweet_score = "0";
+                    String spicy_score = "0";
+                    String sour_score = "0";
+                    String bitter_score = "0";
+                    String salty_score = "0";
+                    String greasy_score = "0";
+                    String crispy_score = "0";
+                    String moist_score = "0";
+
+                    if (keyword_list.contains("sweet")) sweet_score = "1";
+                    if (keyword_list.contains("spicy")) spicy_score = "1";
+                    if (keyword_list.contains("sour")) sour_score = "1";
+                    if (keyword_list.contains("bitter")) bitter_score = "1";
+                    if (keyword_list.contains("salty")) salty_score = "1";
+                    if (keyword_list.contains("greasy")) greasy_score = "1";
+                    if (keyword_list.contains("crispy")) crispy_score = "1";
+                    if (keyword_list.contains("moisturized")) moist_score = "1";
+
+                    UpdateKeyScore task_key = new UpdateKeyScore();
+
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-/*                    else if(count == 0){ // 키워드를 1개 이상 고르지 않으면 버튼이 비활성화되므로 필요없는 부분이긴 하다.
-                        Toast toast = Toast.makeText(getApplicationContext(), "Please choose at least one keyword", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
-                    }*/
-                    else {
-                        String taste_score = EditTaste.getText().toString();
-                        String cost_score = EditCost.getText().toString();
 
-                        if(taste_score == null || cost_score == null || taste_score.equals("") || cost_score.equals("")) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost", Toast.LENGTH_SHORT);
-                            int offSetX = 0;
-                            int offSetY = 0;
-                            toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                            toast.show();
-                        }
-                        else {
+                    // keyword 별 개수 가장 많은 순으로 3개를 Keyword_One, Two, Three에 넣자.
+                    // --> UpdateKeyScore 관련 php에서 모두 다 끝난 후 하는 것으로.
 
-                            double double_taste_score = Double.parseDouble(taste_score);
-                            double double_cost_score = Double.parseDouble(cost_score);
-                            double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
+                    // 이제 유저 개개인 테이블에 과자, 점수, 키워드를 저장   .
 
-                            String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score) / (double_number_of_rate + 1));
-                            String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score) / (double_number_of_rate + 1));
-
-                            UpdateData task = new UpdateData();
-
-                            try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                                String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                            String sweet_score = "0";
-                            String spicy_score = "0";
-                            String sour_score = "0";
-                            String bitter_score = "0";
-                            String salty_score = "0";
-                            String greasy_score = "0";
-                            String crispy_score = "0";
-                            String moist_score = "0";
-
-                            if (keyword_list.contains("sweet")) sweet_score = "1";
-                            if (keyword_list.contains("spicy")) spicy_score = "1";
-                            if (keyword_list.contains("sour")) sour_score = "1";
-                            if (keyword_list.contains("bitter")) bitter_score = "1";
-                            if (keyword_list.contains("salty")) salty_score = "1";
-                            if (keyword_list.contains("greasy")) greasy_score = "1";
-                            if (keyword_list.contains("crispy")) crispy_score = "1";
-                            if (keyword_list.contains("moisturized")) moist_score = "1";
-
-                            UpdateKeyScore task_key = new UpdateKeyScore();
-
-                            try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                                String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                            // keyword 별 개수 가장 많은 순으로 3개를 Keyword_One, Two, Three에 넣자.
-                            // --> UpdateKeyScore 관련 php에서 모두 다 끝난 후 하는 것으로.
-
-                            // 이제 유저 개개인 테이블에 과자, 점수, 키워드를 저장   .
-
-                            while (keyword_list.size() < 3) {
-                                keyword_list.add("-");
-                            }
-
-                            Review_user_data review_data = new Review_user_data();
-                            try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                                String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "0").get();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            Toast toast = Toast.makeText(getApplicationContext(), "The review is uploaded", Toast.LENGTH_SHORT);
-                            int offSetX = 0;
-                            int offSetY = 0;
-                            toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                            toast.show();
-                        }
+                    while (keyword_list.size() < 3) {
+                        keyword_list.add("-");
                     }
+
+                    Review_user_data review_data = new Review_user_data();
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "0").get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Toast toast = Toast.makeText(getApplicationContext(), "The review is uploaded", Toast.LENGTH_SHORT);
+                    int offSetX = 0;
+                    int offSetY = 0;
+                    toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                    toast.show();
                 }
             });
         }
         else { // 과거의 리뷰를 단 적이 있는 경우
             final String[] past_rate = past_data.split("#"); // 앞에서부터 순서대로 과거의 taste, cost, keyword1, keyword2, keyword3이 들어감
-            EditTaste.setText(past_rate[0]);
-            EditCost.setText(past_rate[1]);
+
+            switch (past_rate[0]) {
+                case "1":
+                    btn_taste1.setImageResource(R.drawable.yellow_star);
+                    btn_taste2.setImageResource(R.drawable.basic_star);
+                    btn_taste3.setImageResource(R.drawable.basic_star);
+                    btn_taste4.setImageResource(R.drawable.basic_star);
+                    btn_taste5.setImageResource(R.drawable.basic_star);
+                    taste_score = "1";
+                    break;
+                case "2":
+                    btn_taste1.setImageResource(R.drawable.yellow_star);
+                    btn_taste2.setImageResource(R.drawable.yellow_star);
+                    btn_taste3.setImageResource(R.drawable.basic_star);
+                    btn_taste4.setImageResource(R.drawable.basic_star);
+                    btn_taste5.setImageResource(R.drawable.basic_star);
+                    taste_score = "2";
+                    break;
+                case "3":
+                    btn_taste1.setImageResource(R.drawable.yellow_star);
+                    btn_taste2.setImageResource(R.drawable.yellow_star);
+                    btn_taste3.setImageResource(R.drawable.yellow_star);
+                    btn_taste4.setImageResource(R.drawable.basic_star);
+                    btn_taste5.setImageResource(R.drawable.basic_star);
+                    taste_score = "3";
+                    break;
+                case "4":
+                    btn_taste1.setImageResource(R.drawable.yellow_star);
+                    btn_taste2.setImageResource(R.drawable.yellow_star);
+                    btn_taste3.setImageResource(R.drawable.yellow_star);
+                    btn_taste4.setImageResource(R.drawable.yellow_star);
+                    btn_taste5.setImageResource(R.drawable.basic_star);
+                    taste_score = "4";
+                    break;
+                case "5":
+                    btn_taste1.setImageResource(R.drawable.yellow_star);
+                    btn_taste2.setImageResource(R.drawable.yellow_star);
+                    btn_taste3.setImageResource(R.drawable.yellow_star);
+                    btn_taste4.setImageResource(R.drawable.yellow_star);
+                    btn_taste5.setImageResource(R.drawable.yellow_star);
+                    taste_score = "5";
+                    break;
+            }
+
+            switch(past_rate[1]){
+                case "1":
+                    btn_cost1.setImageResource(R.drawable.yellow_star);
+                    btn_cost2.setImageResource(R.drawable.basic_star);
+                    btn_cost3.setImageResource(R.drawable.basic_star);
+                    btn_cost4.setImageResource(R.drawable.basic_star);
+                    btn_cost5.setImageResource(R.drawable.basic_star);
+                    cost_score = "1";
+                    break;
+                case "2":
+                    btn_cost1.setImageResource(R.drawable.yellow_star);
+                    btn_cost2.setImageResource(R.drawable.yellow_star);
+                    btn_cost3.setImageResource(R.drawable.basic_star);
+                    btn_cost4.setImageResource(R.drawable.basic_star);
+                    btn_cost5.setImageResource(R.drawable.basic_star);
+                    cost_score = "2";
+                    break;
+                case "3":
+                    btn_cost1.setImageResource(R.drawable.yellow_star);
+                    btn_cost2.setImageResource(R.drawable.yellow_star);
+                    btn_cost3.setImageResource(R.drawable.yellow_star);
+                    btn_cost4.setImageResource(R.drawable.basic_star);
+                    btn_cost5.setImageResource(R.drawable.basic_star);
+                    cost_score = "3";
+                    break;
+                case "4":
+                    btn_cost1.setImageResource(R.drawable.yellow_star);
+                    btn_cost2.setImageResource(R.drawable.yellow_star);
+                    btn_cost3.setImageResource(R.drawable.yellow_star);
+                    btn_cost4.setImageResource(R.drawable.yellow_star);
+                    btn_cost5.setImageResource(R.drawable.basic_star);
+                    cost_score = "4";
+                    break;
+                case "5":
+                    btn_cost1.setImageResource(R.drawable.yellow_star);
+                    btn_cost2.setImageResource(R.drawable.yellow_star);
+                    btn_cost3.setImageResource(R.drawable.yellow_star);
+                    btn_cost4.setImageResource(R.drawable.yellow_star);
+                    btn_cost5.setImageResource(R.drawable.yellow_star);
+                    cost_score = "5";
+                    break;
+            }
 
             final ArrayList<String> past_key;
             past_key = new ArrayList<>();
@@ -300,123 +345,85 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             button_upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String standard = "12345";
-                    if(EditTaste.getText().toString() == null || EditCost.getText().toString() == null) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
+                    double double_taste_score = Double.parseDouble(taste_score);
+                    double double_cost_score = Double.parseDouble(cost_score);
+                    double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
+
+                    String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score - Double.parseDouble(past_rate[0])) / double_number_of_rate);
+                    String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score - Double.parseDouble(past_rate[1])) / double_number_of_rate);
+                    // 이미 과거에 리뷰를 했던 것이므로 double_number_of_rate 은 1 증가하지 않고,
+                    // 분자에선 새로운 값으로 바꾸는 것이므로 기존의 값을 빼줘야 한다
+
+                    UpdateData task = new UpdateData();
+
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate)).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    else if (!standard.contains(EditTaste.getText().toString()) || !standard.contains(EditCost.getText().toString())) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost between 1 and 5", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
+
+                    String sweet_score = "0";
+                    String spicy_score = "0";
+                    String sour_score = "0";
+                    String bitter_score = "0";
+                    String salty_score = "0";
+                    String greasy_score = "0";
+                    String crispy_score = "0";
+                    String moist_score = "0";
+
+                    if (keyword_list.contains("sweet")) sweet_score = "1";
+                    if (keyword_list.contains("spicy")) spicy_score = "1";
+                    if (keyword_list.contains("sour")) sour_score = "1";
+                    if (keyword_list.contains("bitter")) bitter_score = "1";
+                    if (keyword_list.contains("salty")) salty_score = "1";
+                    if (keyword_list.contains("greasy")) greasy_score = "1";
+                    if (keyword_list.contains("crispy")) crispy_score = "1";
+                    if (keyword_list.contains("moisturized")) moist_score = "1";
+
+
+                    if (past_key.contains("sweet"))
+                        sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
+                    if (past_key.contains("spicy"))
+                        spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
+                    if (past_key.contains("sour"))
+                        sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
+                    if (past_key.contains("bitter"))
+                        bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
+                    if (past_key.contains("salty"))
+                        salty_score = String.valueOf(Integer.parseInt(salty_score) - 1);
+                    if (past_key.contains("greasy"))
+                        greasy_score = String.valueOf(Integer.parseInt(greasy_score) - 1);
+                    if (past_key.contains("crispy"))
+                        crispy_score = String.valueOf(Integer.parseInt(crispy_score) - 1);
+                    if (past_key.contains("moisturized"))
+                        moist_score = String.valueOf(Integer.parseInt(moist_score) - 1);
+
+                    UpdateKeyScore task_key = new UpdateKeyScore();
+
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    /*else if(count == 0){ // 키워드를 1개 이상 고르지 않으면 버튼이 비활성화되므로 필요없는 부분이긴 하다.
-                        Toast toast = Toast.makeText(getApplicationContext(), "Please choose at least one keyword", Toast.LENGTH_SHORT);
-                        int offSetX = 0;
-                        int offSetY = 0;
-                        toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                        toast.show();
-                    }*/
-                    else{
-                        String taste_score = EditTaste.getText().toString();
-                        String cost_score = EditCost.getText().toString();
 
-                        if(taste_score == null || cost_score == null) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Please rate taste&cost", Toast.LENGTH_SHORT);
-                            int offSetX = 0;
-                            int offSetY = 0;
-                            toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                            toast.show();
-                        }
-
-                        else {
-                            double double_taste_score = Double.parseDouble(taste_score);
-                            double double_cost_score = Double.parseDouble(cost_score);
-                            double double_number_of_rate = Double.parseDouble(snack_number_of_rate);
-
-                            String average_taste = String.format("%.2f", (Double.parseDouble(snack_taste) * double_number_of_rate + double_taste_score - Double.parseDouble(past_rate[0])) / double_number_of_rate);
-                            String average_cost = String.format("%.2f", (Double.parseDouble(snack_cost) * double_number_of_rate + double_cost_score - Double.parseDouble(past_rate[1])) / double_number_of_rate);
-                            // 이미 과거에 리뷰를 했던 것이므로 double_number_of_rate 은 1 증가하지 않고,
-                            // 분자에선 새로운 값으로 바꾸는 것이므로 기존의 값을 빼줘야 한다
-
-                            UpdateData task = new UpdateData();
-
-                            try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                                String res = task.execute(IP_ADDRESS + "/update_score.php", snack_name, average_taste, average_cost, Double.toString(double_number_of_rate + 1)).get();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-
-                            String sweet_score = "0";
-                            String spicy_score = "0";
-                            String sour_score = "0";
-                            String bitter_score = "0";
-                            String salty_score = "0";
-                            String greasy_score = "0";
-                            String crispy_score = "0";
-                            String moist_score = "0";
-
-                            if (keyword_list.contains("sweet")) sweet_score = "1";
-                            if (keyword_list.contains("spicy")) spicy_score = "1";
-                            if (keyword_list.contains("sour")) sour_score = "1";
-                            if (keyword_list.contains("bitter")) bitter_score = "1";
-                            if (keyword_list.contains("salty")) salty_score = "1";
-                            if (keyword_list.contains("greasy")) greasy_score = "1";
-                            if (keyword_list.contains("crispy")) crispy_score = "1";
-                            if (keyword_list.contains("moisturized")) moist_score = "1";
-
-
-                            if (past_key.contains("sweet"))
-                                sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
-                            if (past_key.contains("spicy"))
-                                spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
-                            if (past_key.contains("sour"))
-                                sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
-                            if (past_key.contains("bitter"))
-                                bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
-                            if (past_key.contains("salty"))
-                                salty_score = String.valueOf(Integer.parseInt(salty_score) - 1);
-                            if (past_key.contains("greasy"))
-                                greasy_score = String.valueOf(Integer.parseInt(greasy_score) - 1);
-                            if (past_key.contains("crispy"))
-                                crispy_score = String.valueOf(Integer.parseInt(crispy_score) - 1);
-                            if (past_key.contains("moisturized"))
-                                moist_score = String.valueOf(Integer.parseInt(moist_score) - 1);
-
-                            UpdateKeyScore task_key = new UpdateKeyScore();
-
-                            try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                                String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                            while (keyword_list.size() < 3) {
-                                keyword_list.add("-");
-                            }
-
-                            // 이제 유저 테이블에 새로운 값, 키워드를 저장
-                            Review_user_data review_data = new Review_user_data();
-
-                            try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                                String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "1").get();
-                                // have_reviewed는 항상 1이므로 그냥 1을 넣음
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            Toast toast = Toast.makeText(getApplicationContext(), "The review is revised", Toast.LENGTH_SHORT);
-                            int offSetX = 0;
-                            int offSetY = 0;
-                            toast.setGravity(Gravity.CENTER, offSetX, offSetY);
-                            toast.show();
-                        }
+                    while (keyword_list.size() < 3) {
+                        keyword_list.add("-");
                     }
+
+                    // 이제 유저 테이블에 새로운 값, 키워드를 저장
+                    Review_user_data review_data = new Review_user_data();
+
+                    try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
+                        String res = review_data.execute(IP_ADDRESS + "/review_user_data.php", user_id, snack_name, taste_score, cost_score, keyword_list.get(0), keyword_list.get(1), keyword_list.get(2), "1").get();
+                        // have_reviewed는 항상 1이므로 그냥 1을 넣음
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Toast toast = Toast.makeText(getApplicationContext(), "The review is revised", Toast.LENGTH_SHORT);
+                    int offSetX = 0;
+                    int offSetY = 0;
+                    toast.setGravity(Gravity.CENTER, offSetX, offSetY);
+                    toast.show();
                 }
             });
         }
@@ -799,6 +806,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste3.setImageResource(R.drawable.basic_star);
                 btn_taste4.setImageResource(R.drawable.basic_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
+                taste_score = "1";
                 break;
             case R.id.button_taste2:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -806,6 +814,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste3.setImageResource(R.drawable.basic_star);
                 btn_taste4.setImageResource(R.drawable.basic_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
+                taste_score = "2";
                 break;
             case R.id.button_taste3:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -813,6 +822,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste3.setImageResource(R.drawable.yellow_star);
                 btn_taste4.setImageResource(R.drawable.basic_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
+                taste_score = "3";
                 break;
             case R.id.button_taste4:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -820,6 +830,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste3.setImageResource(R.drawable.yellow_star);
                 btn_taste4.setImageResource(R.drawable.yellow_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
+                taste_score = "4";
                 break;
             case R.id.button_taste5:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -827,6 +838,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste3.setImageResource(R.drawable.yellow_star);
                 btn_taste4.setImageResource(R.drawable.yellow_star);
                 btn_taste5.setImageResource(R.drawable.yellow_star);
+                taste_score = "5";
                 break;
             case R.id.button_cost1:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -834,6 +846,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost3.setImageResource(R.drawable.basic_star);
                 btn_cost4.setImageResource(R.drawable.basic_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
+                cost_score = "1";
                 break;
             case R.id.button_cost2:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -841,6 +854,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost3.setImageResource(R.drawable.basic_star);
                 btn_cost4.setImageResource(R.drawable.basic_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
+                cost_score = "2";
                 break;
             case R.id.button_cost3:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -848,6 +862,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost3.setImageResource(R.drawable.yellow_star);
                 btn_cost4.setImageResource(R.drawable.basic_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
+                cost_score = "3";
                 break;
             case R.id.button_cost4:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -855,6 +870,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost3.setImageResource(R.drawable.yellow_star);
                 btn_cost4.setImageResource(R.drawable.yellow_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
+                cost_score = "4";
                 break;
             case R.id.button_cost5:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -862,6 +878,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost3.setImageResource(R.drawable.yellow_star);
                 btn_cost4.setImageResource(R.drawable.yellow_star);
                 btn_cost5.setImageResource(R.drawable.yellow_star);
+                cost_score = "5";
                 break;
         }
     }

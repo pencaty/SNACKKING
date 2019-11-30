@@ -52,9 +52,9 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
     private Search_Adapter adapter;      // 리스트뷰에 연결할 아답터
     private TextView text_no_request;
-    private TextView text_additional;
-    private TextView text_comment;
     private LinearLayout linear_respond;
+    private LinearLayout linear_additional;
+    private TextView text_comment;
     private ListView lv_respond;
     private Button but_skip;
 
@@ -85,17 +85,15 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
         if(chat_list == null || chat_list.size() == 0) { //Chatroom의 size가 0일 때
             text_no_request.setVisibility(View.VISIBLE);
-            text_additional.setVisibility(View.GONE);
             linear_respond.setVisibility(View.GONE);
-            text_comment.setVisibility(View.GONE);
+            linear_additional.setVisibility(View.GONE);
             lv_respond.setVisibility(View.GONE);
             but_skip.setVisibility(View.GONE);
         }
         else {
             text_no_request.setVisibility(View.GONE);
-            text_additional.setVisibility(View.VISIBLE);
             linear_respond.setVisibility(View.VISIBLE);
-            text_comment.setVisibility(View.VISIBLE);
+            linear_additional.setVisibility(View.VISIBLE);
             lv_respond.setVisibility(View.VISIBLE);
             but_skip.setVisibility(View.VISIBLE);
 
@@ -120,9 +118,8 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
             if(index == chat_list.size()) {
                 text_no_request.setVisibility(View.VISIBLE);
-                text_additional.setVisibility(View.GONE);
                 linear_respond.setVisibility(View.GONE);
-                text_comment.setVisibility(View.GONE);
+                linear_additional.setVisibility(View.GONE);
                 lv_respond.setVisibility(View.GONE);
                 but_skip.setVisibility(View.GONE);
             }
@@ -194,9 +191,8 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
                         if(index == chat_list.size()) {
                             text_no_request.setVisibility(View.VISIBLE);
-                            text_additional.setVisibility(View.GONE);
                             linear_respond.setVisibility(View.GONE);
-                            text_comment.setVisibility(View.GONE);
+                            linear_additional.setVisibility(View.GONE);
                             lv_respond.setVisibility(View.GONE);
                             but_skip.setVisibility(View.GONE);
                         }
@@ -237,9 +233,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
                     }
                 });
             }
-
         }
-
     }
 
     public void search() { // 검색을 수행하는 메소드
@@ -265,9 +259,6 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
                 list.add(arraylist.get(i));
             }
         }
-
-        /*if(list.size() == 0) no_result.setVisibility(View.VISIBLE);
-        else no_result.setVisibility(View.GONE);*/
 
         adapter.notifyDataSetChanged(); // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
     }
@@ -737,10 +728,10 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
         btn4 = findViewById(R.id.imageButton3);
 
         text_no_request = findViewById(R.id.Text_no_request);
-        text_additional = findViewById(R.id.Text_additional);
-        linear_respond = findViewById(R.id.linear_key_request);
-
         text_comment = findViewById(R.id.Text_show_comment);
+        linear_respond = findViewById(R.id.linear_key_request);
+        linear_additional = findViewById(R.id.linear_additional_request);
+
         lv_respond = findViewById(R.id.listview_keyword_respond);
         but_skip = findViewById(R.id.button_skip);
 
@@ -802,9 +793,8 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
                 if(index == chat_list.size()) {
                     text_no_request.setVisibility(View.VISIBLE);
-                    text_additional.setVisibility(View.GONE);
                     linear_respond.setVisibility(View.GONE);
-                    text_comment.setVisibility(View.GONE);
+                    linear_additional.setVisibility(View.GONE);
                     lv_respond.setVisibility(View.GONE);
                     but_skip.setVisibility(View.GONE);
                 }

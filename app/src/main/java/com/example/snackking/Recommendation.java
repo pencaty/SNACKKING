@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -47,6 +48,11 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
     private CheckBox cb6;
     private CheckBox cb7;
     private CheckBox cb8;
+
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+    private ArrayList<TextView> tv_list;
 
     private EditText commt;
 
@@ -310,6 +316,15 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
         cb7 = (CheckBox)findViewById(R.id.checkbox_recom_key7);
         cb8 = (CheckBox)findViewById(R.id.checkbox_recom_key8);
 
+        tv_list = new ArrayList<>();
+
+        tv1 = (TextView)findViewById(R.id.Text_first_key_recom);
+        tv2 = (TextView)findViewById(R.id.Text_second_key_recom);
+        tv3 = (TextView)findViewById(R.id.Text_third_key_recom);
+        tv_list.add(tv1);
+        tv_list.add(tv2);
+        tv_list.add(tv3);
+
         commt = (EditText)findViewById(R.id.edittext_recommend_comment);
     }
 
@@ -401,38 +416,50 @@ public class Recommendation extends AppCompatActivity implements View.OnClickLis
 
         keyword_list = new ArrayList<>();
 
+        for(int i = 0; i < 3; i++) {
+            tv_list.get(i).setText("");
+        }
+
         count = 0;
         if(cb1.isChecked()) {
             count++;
             keyword_list.add(cb1.getText().toString());
+            tv_list.get(count-1).setText(cb1.getText().toString());
         }
         if(cb2.isChecked()) {
             count++;
             keyword_list.add(cb2.getText().toString());
+            tv_list.get(count-1).setText(cb2.getText().toString());
         }
         if(cb3.isChecked()) {
             count++;
             keyword_list.add(cb3.getText().toString());
+            tv_list.get(count-1).setText(cb3.getText().toString());
         }
         if(cb4.isChecked()) {
             count++;
             keyword_list.add(cb4.getText().toString());
+            tv_list.get(count-1).setText(cb4.getText().toString());
         }
         if(cb5.isChecked()) {
             count++;
             keyword_list.add(cb5.getText().toString());
+            tv_list.get(count-1).setText(cb5.getText().toString());
         }
         if(cb6.isChecked()) {
             count++;
             keyword_list.add(cb6.getText().toString());
+            tv_list.get(count-1).setText(cb6.getText().toString());
         }
         if(cb7.isChecked()) {
             count++;
             keyword_list.add(cb7.getText().toString());
+            tv_list.get(count-1).setText(cb7.getText().toString());
         }
         if(cb8.isChecked()) {
             count++;
             keyword_list.add(cb8.getText().toString());
+            tv_list.get(count-1).setText(cb8.getText().toString());
         }
 
         if(count == 3){
