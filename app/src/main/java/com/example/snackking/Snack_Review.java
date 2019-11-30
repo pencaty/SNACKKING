@@ -55,10 +55,22 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private CheckBox cb7;
     private CheckBox cb8;
 
-    //ImageButton btn1;
-    ImageButton btn2;
-    ImageButton btn3;
-    ImageButton btn4;
+    //private ImageButton btn1;
+    private ImageButton btn2;
+    private ImageButton btn3;
+    private ImageButton btn4;
+
+    private ImageButton btn_taste1;
+    private ImageButton btn_taste2;
+    private ImageButton btn_taste3;
+    private ImageButton btn_taste4;
+    private ImageButton btn_taste5;
+    private ImageButton btn_cost1;
+    private ImageButton btn_cost2;
+    private ImageButton btn_cost3;;
+    private ImageButton btn_cost4;
+    private ImageButton btn_cost5;
+
 
     private ArrayList<String> keyword_list;
 
@@ -740,6 +752,17 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         btn2 = findViewById(R.id.imageButton2);
         btn3 = findViewById(R.id.imageButton3);
         btn4 = findViewById(R.id.imageButton4);
+
+        btn_taste1 = findViewById(R.id.button_taste1);
+        btn_taste2 = findViewById(R.id.button_taste2);
+        btn_taste3 = findViewById(R.id.button_taste3);
+        btn_taste4 = findViewById(R.id.button_taste4);
+        btn_taste5 = findViewById(R.id.button_taste5);
+        btn_cost1 = findViewById(R.id.button_cost1);
+        btn_cost2 = findViewById(R.id.button_cost2);
+        btn_cost3 = findViewById(R.id.button_cost3);
+        btn_cost4 = findViewById(R.id.button_cost4);
+        btn_cost5 = findViewById(R.id.button_cost5);
     }
 
     public void onClick(View view) {
@@ -769,6 +792,77 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 overridePendingTransition(0, 0);
                 this.finish();
                 break;
+
+            case R.id.button_taste1:
+                btn_taste1.setImageResource(R.drawable.yellow_star);
+                btn_taste2.setImageResource(R.drawable.basic_star);
+                btn_taste3.setImageResource(R.drawable.basic_star);
+                btn_taste4.setImageResource(R.drawable.basic_star);
+                btn_taste5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_taste2:
+                btn_taste1.setImageResource(R.drawable.yellow_star);
+                btn_taste2.setImageResource(R.drawable.yellow_star);
+                btn_taste3.setImageResource(R.drawable.basic_star);
+                btn_taste4.setImageResource(R.drawable.basic_star);
+                btn_taste5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_taste3:
+                btn_taste1.setImageResource(R.drawable.yellow_star);
+                btn_taste2.setImageResource(R.drawable.yellow_star);
+                btn_taste3.setImageResource(R.drawable.yellow_star);
+                btn_taste4.setImageResource(R.drawable.basic_star);
+                btn_taste5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_taste4:
+                btn_taste1.setImageResource(R.drawable.yellow_star);
+                btn_taste2.setImageResource(R.drawable.yellow_star);
+                btn_taste3.setImageResource(R.drawable.yellow_star);
+                btn_taste4.setImageResource(R.drawable.yellow_star);
+                btn_taste5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_taste5:
+                btn_taste1.setImageResource(R.drawable.yellow_star);
+                btn_taste2.setImageResource(R.drawable.yellow_star);
+                btn_taste3.setImageResource(R.drawable.yellow_star);
+                btn_taste4.setImageResource(R.drawable.yellow_star);
+                btn_taste5.setImageResource(R.drawable.yellow_star);
+                break;
+            case R.id.button_cost1:
+                btn_cost1.setImageResource(R.drawable.yellow_star);
+                btn_cost2.setImageResource(R.drawable.basic_star);
+                btn_cost3.setImageResource(R.drawable.basic_star);
+                btn_cost4.setImageResource(R.drawable.basic_star);
+                btn_cost5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_cost2:
+                btn_cost1.setImageResource(R.drawable.yellow_star);
+                btn_cost2.setImageResource(R.drawable.yellow_star);
+                btn_cost3.setImageResource(R.drawable.basic_star);
+                btn_cost4.setImageResource(R.drawable.basic_star);
+                btn_cost5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_cost3:
+                btn_cost1.setImageResource(R.drawable.yellow_star);
+                btn_cost2.setImageResource(R.drawable.yellow_star);
+                btn_cost3.setImageResource(R.drawable.yellow_star);
+                btn_cost4.setImageResource(R.drawable.basic_star);
+                btn_cost5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_cost4:
+                btn_cost1.setImageResource(R.drawable.yellow_star);
+                btn_cost2.setImageResource(R.drawable.yellow_star);
+                btn_cost3.setImageResource(R.drawable.yellow_star);
+                btn_cost4.setImageResource(R.drawable.yellow_star);
+                btn_cost5.setImageResource(R.drawable.basic_star);
+                break;
+            case R.id.button_cost5:
+                btn_cost1.setImageResource(R.drawable.yellow_star);
+                btn_cost2.setImageResource(R.drawable.yellow_star);
+                btn_cost3.setImageResource(R.drawable.yellow_star);
+                btn_cost4.setImageResource(R.drawable.yellow_star);
+                btn_cost5.setImageResource(R.drawable.yellow_star);
+                break;
         }
     }
 
@@ -777,5 +871,15 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
+        btn_taste1.setOnClickListener(this);
+        btn_taste2.setOnClickListener(this);
+        btn_taste3.setOnClickListener(this);
+        btn_taste4.setOnClickListener(this);
+        btn_taste5.setOnClickListener(this);
+        btn_cost1.setOnClickListener(this);
+        btn_cost2.setOnClickListener(this);
+        btn_cost3.setOnClickListener(this);
+        btn_cost4.setOnClickListener(this);
+        btn_cost5.setOnClickListener(this);
     }
 }
