@@ -11,60 +11,74 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="65dp"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_search_category_default"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_share"/>
+            <ImageView
+                android:id="@+id/imageButton1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:srcCompat="@android:drawable/ic_search_category_default"/>
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/star_big_off"/>
+            <ImageView
+                android:id="@+id/imageButton2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:srcCompat="@android:drawable/ic_menu_share"/>
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_manage"/>
+            <ImageView
+                android:id="@+id/imageButton3"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:srcCompat="@android:drawable/star_big_off"/>
 
+            <ImageView
+                android:id="@+id/imageButton4"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:srcCompat="@android:drawable/ic_menu_manage"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:color/holo_orange_dark" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                app:srcCompat="@android:color/white"/>
+
+        </LinearLayout>
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:color/holo_blue_bright"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5">
+        android:layout_height="2dp"
+        android:layout_weight="2">
     </LinearLayout>
 
     <TextView
@@ -82,149 +96,170 @@
         android:layout_weight="10">
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Evaluate taste (1 ~ 5)"
-        android:id="@+id/review_taste_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="18dp"
-        android:layout_marginLeft="5dp"/>
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="5">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_weight="10"
         android:orientation="horizontal">
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_taste1"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_taste2"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_taste3"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_taste4"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_taste5"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/basic_star">
-        </ImageButton>
-    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Taste Rating"
+                android:id="@+id/review_taste_name"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="24dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_taste1"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_taste2"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_taste3"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_taste4"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_taste5"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1">
+
+            </ImageView>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10">
-    </LinearLayout>
+        android:layout_height="40dp"
+        android:layout_weight="10"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Evaluate cost (1 ~ 5)"
-        android:id="@+id/review_cost_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="18dp"
-        android:layout_marginLeft="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost Rating"
+                android:id="@+id/review_cost_name"
+                android:fontFamily="@font/my_font_family"
+                android:textSize="24dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_cost1"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_cost2"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_cost3"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_cost4"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/button_cost5"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:scaleType="fitCenter"
+                android:src="@drawable/basic_star">
+            </ImageButton>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1">
+
+            </ImageView>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_cost1"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_cost2"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_cost3"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_cost4"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/yellow_star">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_cost5"
-            android:layout_weight="1"
-            android:background="#00ff0000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/basic_star">
-        </ImageButton>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="15">
     </LinearLayout>
 
     <LinearLayout

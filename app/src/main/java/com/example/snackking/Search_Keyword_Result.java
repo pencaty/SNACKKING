@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -49,9 +50,9 @@ public class Search_Keyword_Result extends AppCompatActivity implements View.OnC
     private TextView no_result;
 
     //ImageButton btn1;
-    ImageButton btn2;
-    ImageButton btn3;
-    ImageButton btn4;
+    ImageView btn2;
+    ImageView btn3;
+    ImageView btn4;
 
     private static String IP_ADDRESS = "http://snack.dothome.co.kr/";
     private static String TAG = "snack_arrange";

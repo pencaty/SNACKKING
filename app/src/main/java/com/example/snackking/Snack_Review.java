@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,9 +55,9 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private CheckBox cb8;
 
     //private ImageButton btn1;
-    private ImageButton btn2;
-    private ImageButton btn3;
-    private ImageButton btn4;
+    private ImageView btn2;
+    private ImageView btn3;
+    private ImageView btn4;
 
     private ImageButton btn_taste1;
     private ImageButton btn_taste2;

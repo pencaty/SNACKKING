@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +32,10 @@ import java.util.ArrayList;
 
 public class Recommendation extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private ImageButton btn1;
+    private ImageView btn1;
     //private ImageButton btn2;
-    private ImageButton btn3;
-    private ImageButton btn4;
+    private ImageView btn3;
+    private ImageView btn4;
 
     private Button button_recommend;
     private Button button_respond;

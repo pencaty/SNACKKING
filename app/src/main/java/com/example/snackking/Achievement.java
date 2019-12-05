@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 
@@ -29,10 +30,10 @@ import java.util.ArrayList;
 
 public class Achievement extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton btn1;
-    ImageButton btn2;
-    //ImageButton btn3;
-    ImageButton btn4;
+    ImageView btn1;
+    ImageView btn2;
+    //ImageView btn3;
+    ImageView btn4;
 
     private String user_id;
 

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,10 +34,10 @@ import java.util.ArrayList;
 
 public class Recommendation_respond extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton btn1;
+    private ImageView btn1;
     //private ImageButton btn2;
-    private ImageButton btn3;
-    private ImageButton btn4;
+    private ImageView btn3;
+    private ImageView btn4;
 
     private ArrayList<Snack_DataStructure> list;          // 데이터를 넣은 리스트변수
     private ArrayList<Snack_DataStructure> arraylist;

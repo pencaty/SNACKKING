@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.content.Intent;
@@ -58,9 +59,9 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
     private String have_reviewed = "0";
 
     //private ImageButton btn1;
-    private ImageButton btn2;
-    private ImageButton btn3;
-    private ImageButton btn4;
+    private ImageView btn2;
+    private ImageView btn3;
+    private ImageView btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

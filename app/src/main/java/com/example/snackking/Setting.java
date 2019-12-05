@@ -7,15 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Setting extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton btn1;
-    ImageButton btn2;
-    ImageButton btn3;
+    ImageView btn1;
+    ImageView btn2;
+    ImageView btn3;
     //ImageButton btn4;
 
     LinearLayout lay1;

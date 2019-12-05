@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -49,9 +50,9 @@ public class Search_Combined extends AppCompatActivity  implements CompoundButto
     private String user_id;
 
     //ImageButton btn1;
-    ImageButton btn2;
-    ImageButton btn3;
-    ImageButton btn4;
+    ImageView btn2;
+    ImageView btn3;
+    ImageView btn4;
 
     private int count = 0;
     private CheckBox cb1;
