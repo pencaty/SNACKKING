@@ -13,6 +13,11 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
     $user_id=$_POST['user_id'];
     $snack_name=$_POST['snack'];
 
+    $keyword1=$_POST['keyword_1'];
+    $keyword2=$_POST['keyword_2'];
+    $keyword3=$_POST['keyword_3'];
+    $comment=$_POST['comment'];
+
     if(empty($user_id)) {
         $errMSG = "아이디를 입력하세요.";
     }
@@ -23,6 +28,22 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
         $stmt->bindParam(':user', $user_id);
         $stmt->bindParam(':snack', $snack_name);
         $stmt->execute();
+
+        $request_store_table = $con->prepare('INSERT INTO Request_History(Requester, Respondent, Snack, Keyword_One, Keyword_Two, Keyword_Three, Comment) VALUES(:request, :user_id, :snack, :key1, :key2, :key3, :comment)');
+        $request_store_table->bindParam(':request', $request);
+        $request_store_table->bindParam(':user_id', $user_id);
+        $request_store_table->bindParam(':snack', $snack_name);
+        $request_store_table->bindParam(':key1', $keyword1);
+        $request_store_table->bindParam(':key2', $keyword2);
+        $request_store_table->bindParam(':key3', $keyword3);
+        $request_store_table->bindParam(':comment', $comment);
+
+        if($request_store_table->execute()) {
+            $successMSG = "Request 정보 저장 완료";
+        }
+        else {
+            $errMSG = "Request 정보 저장 에러";
+        }
     }
 }
 ?>

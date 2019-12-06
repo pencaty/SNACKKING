@@ -165,7 +165,7 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
 
                         Insert_recommend task = new Insert_recommend();
                         try {
-                            String res = task.execute(IP_ADDRESS + "/answer_to_request.php", request.getuser(), user_id, list.get(position).getSnack_name()).get();
+                            String res = task.execute(IP_ADDRESS + "/answer_to_request.php", request.getuser(), user_id, list.get(position).getSnack_name(), request.getkey1(), request.getkey2(), request.getkey3(), request.getcomment()).get();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -672,8 +672,13 @@ public class Recommendation_respond extends AppCompatActivity implements View.On
             String user = (String)params[2];
             String snack = (String)params[3];
 
+            String key1 = (String)params[4];
+            String key2 = (String)params[5];
+            String key3 = (String)params[6];
+            String comment = (String)params[7];
+
             String serverURL = (String)params[0];
-            String postParameters = "request=" + request + "&user_id=" + user + "&snack=" + snack;
+            String postParameters = "request=" + request + "&user_id=" + user + "&snack=" + snack + "&keyword_1=" + key1 + "&keyword_2=" + key2 + "&keyword_3" + key3 + "&comment=" + comment;
 
             try {
 

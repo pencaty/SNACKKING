@@ -48,6 +48,20 @@ if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $andr
                 $errMSG = "각 유저 추천 테이블 생성 실패";
             }
 
+            $request_store_table = $con->prepare('INSERT INTO Request_History(Requester, Keyword_One, Keyword_Two, Keyword_Three, Comment) VALUES(:user_id, :key1, :key2, :key3, :comment)');
+            $request_store_table->bindParam(':user_id', $user_id);
+            $request_store_table->bindParam(':key1', $keyword1);
+            $request_store_table->bindParam(':key2', $keyword2);
+            $request_store_table->bindParam(':key3', $keyword3);
+            $request_store_table->bindParam(':comment', $comment);
+
+            if($request_store_table->execute()) {
+                $successMSG = "유저의 request 저장 완료";
+            }
+            else {
+                $errMSG = "유저의 request 저장 에러";
+            }
+
         }
         catch(PDOException $e) {
             die("Database error: " . $e->getMessage());
