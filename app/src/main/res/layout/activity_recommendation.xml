@@ -190,7 +190,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:fontFamily="@font/my_font_family"
-            android:text="Sour"
+            android:text="Bland"
             android:textSize="15dp" />
 
         <CheckBox
@@ -200,7 +200,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:fontFamily="@font/my_font_family"
-            android:text="Bitter"
+            android:text="Nutty"
             android:textSize="15dp" />
     </LinearLayout>
 
