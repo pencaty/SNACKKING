@@ -70,8 +70,8 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private ImageButton btn_cost4;
     private ImageButton btn_cost5;
 
-    private String taste_score = "4"; // 기본값으로 4를 주자
-    private String cost_score = "4";
+    private String taste_score = "0"; // 기본값으로 4를 주자
+    private String cost_score = "0";
 
 
     private ArrayList<String> keyword_list;
@@ -498,14 +498,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             cb8.setEnabled(true);
         }
 
-        final Button button_upload = (Button)findViewById(R.id.button_upload_review);
-        if (count > 0) {
-            // 키워드를 1개 이상 선택하면 버튼 활성화
-            button_upload.setEnabled(true);
-        }
-        else {
-            button_upload.setEnabled(false);
-        }
+        ButtonActivate();
 
     }
 
@@ -808,6 +801,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste4.setImageResource(R.drawable.basic_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
                 taste_score = "1";
+                ButtonActivate();
                 break;
             case R.id.button_taste2:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -816,6 +810,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste4.setImageResource(R.drawable.basic_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
                 taste_score = "2";
+                ButtonActivate();
                 break;
             case R.id.button_taste3:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -824,6 +819,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste4.setImageResource(R.drawable.basic_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
                 taste_score = "3";
+                ButtonActivate();
                 break;
             case R.id.button_taste4:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -832,6 +828,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste4.setImageResource(R.drawable.yellow_star);
                 btn_taste5.setImageResource(R.drawable.basic_star);
                 taste_score = "4";
+                ButtonActivate();
                 break;
             case R.id.button_taste5:
                 btn_taste1.setImageResource(R.drawable.yellow_star);
@@ -840,6 +837,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_taste4.setImageResource(R.drawable.yellow_star);
                 btn_taste5.setImageResource(R.drawable.yellow_star);
                 taste_score = "5";
+                ButtonActivate();
                 break;
             case R.id.button_cost1:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -848,6 +846,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost4.setImageResource(R.drawable.basic_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
                 cost_score = "1";
+                ButtonActivate();
                 break;
             case R.id.button_cost2:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -856,6 +855,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost4.setImageResource(R.drawable.basic_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
                 cost_score = "2";
+                ButtonActivate();
                 break;
             case R.id.button_cost3:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -864,6 +864,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost4.setImageResource(R.drawable.basic_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
                 cost_score = "3";
+                ButtonActivate();
                 break;
             case R.id.button_cost4:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -872,6 +873,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost4.setImageResource(R.drawable.yellow_star);
                 btn_cost5.setImageResource(R.drawable.basic_star);
                 cost_score = "4";
+                ButtonActivate();
                 break;
             case R.id.button_cost5:
                 btn_cost1.setImageResource(R.drawable.yellow_star);
@@ -880,6 +882,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 btn_cost4.setImageResource(R.drawable.yellow_star);
                 btn_cost5.setImageResource(R.drawable.yellow_star);
                 cost_score = "5";
+                ButtonActivate();
                 break;
         }
     }
@@ -899,5 +902,16 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         btn_cost3.setOnClickListener(this);
         btn_cost4.setOnClickListener(this);
         btn_cost5.setOnClickListener(this);
+    }
+
+    public void ButtonActivate() {
+        final Button button_upload = (Button)findViewById(R.id.button_upload_review);
+        if (count > 0 && !taste_score.equals("0") && !cost_score.equals("0")) {
+            // 키워드를 1개 이상 선택하면 버튼 활성화
+            button_upload.setEnabled(true);
+        }
+        else {
+            button_upload.setEnabled(false);
+        }
     }
 }
