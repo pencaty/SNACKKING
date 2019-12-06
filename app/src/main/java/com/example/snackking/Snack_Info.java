@@ -1,15 +1,16 @@
 package com.example.snackking;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.ProgressDialog;
-import android.icu.text.SymbolTable;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
     private TextView info_snack_name;
     private TextView info_snack_taste;
     private TextView info_snack_cost;
+    private ImageView info_snack_image;
 
     private ProgressBar pb1;
     private ProgressBar pb2;
@@ -79,6 +81,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         snack_cost = intent.getStringExtra("cost");
         snack_number_of_rate = intent.getStringExtra("number");
 
+
         // user_id에 해당하는 테이블에 접속해서 현재 과자에 이미 리뷰를 남겼다면 버튼(review_write_review)의 텍스트를 '리뷰 수정'으로 바꾼다
         // 이미 리뷰를 남겼다면 have_reviewed = 1로 바꾸고, taste, cost, 키워드 선택한 것들을 하나로 저장하여 Snack_Review로 넘기자.
         // 리뷰 페이지에 접속했을 때 과거의 데이터가 그대로 보이도록.
@@ -86,6 +89,16 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         info_snack_name.setText(snack_name);
         info_snack_taste.setText(snack_taste);
         info_snack_cost.setText(snack_cost);
+
+        info_snack_image = (ImageView) findViewById(R.id.info_snack_image);
+
+        Resources res = getResources();
+        String name_snack = snack_name.replace(" ", "_").toLowerCase();
+        if (name_snack == "karto") {
+            name_snack = "karto";
+        }
+        int resID = res.getIdentifier(name_snack, "drawable", getPackageName());
+        info_snack_image.setImageResource(resID);
 
         past_data = "";
 
