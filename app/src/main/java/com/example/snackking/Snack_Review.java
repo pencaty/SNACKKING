@@ -145,8 +145,8 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
                     String sweet_score = "0";
                     String spicy_score = "0";
-                    String sour_score = "0";
-                    String bitter_score = "0";
+                    String bland_score = "0";
+                    String nutty_score = "0";
                     String salty_score = "0";
                     String greasy_score = "0";
                     String crispy_score = "0";
@@ -154,8 +154,8 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
                     if (keyword_list.contains("sweet")) sweet_score = "1";
                     if (keyword_list.contains("spicy")) spicy_score = "1";
-                    if (keyword_list.contains("sour")) sour_score = "1";
-                    if (keyword_list.contains("bitter")) bitter_score = "1";
+                    if (keyword_list.contains("bland")) bland_score = "1";
+                    if (keyword_list.contains("nutty")) nutty_score = "1";
                     if (keyword_list.contains("salty")) salty_score = "1";
                     if (keyword_list.contains("greasy")) greasy_score = "1";
                     if (keyword_list.contains("crispy")) crispy_score = "1";
@@ -164,7 +164,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                     UpdateKeyScore task_key = new UpdateKeyScore();
 
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
+                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, bland_score, nutty_score, salty_score, greasy_score, crispy_score, moist_score).get();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -296,11 +296,11 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                 cb2.setChecked(true);
                 count ++;
             }
-            if(past_key.contains("sour")) {
+            if(past_key.contains("bland")) {
                 cb3.setChecked(true);
                 count ++;
             }
-            if(past_key.contains("bitter")) {
+            if(past_key.contains("nutty")) {
                 cb4.setChecked(true);
                 count ++;
             }
@@ -365,8 +365,8 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
                     String sweet_score = "0";
                     String spicy_score = "0";
-                    String sour_score = "0";
-                    String bitter_score = "0";
+                    String bland_score = "0";
+                    String nutty_score = "0";
                     String salty_score = "0";
                     String greasy_score = "0";
                     String crispy_score = "0";
@@ -374,8 +374,8 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
                     if (keyword_list.contains("sweet")) sweet_score = "1";
                     if (keyword_list.contains("spicy")) spicy_score = "1";
-                    if (keyword_list.contains("sour")) sour_score = "1";
-                    if (keyword_list.contains("bitter")) bitter_score = "1";
+                    if (keyword_list.contains("bland")) bland_score = "1";
+                    if (keyword_list.contains("nutty")) nutty_score = "1";
                     if (keyword_list.contains("salty")) salty_score = "1";
                     if (keyword_list.contains("greasy")) greasy_score = "1";
                     if (keyword_list.contains("crispy")) crispy_score = "1";
@@ -386,10 +386,10 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                         sweet_score = String.valueOf(Integer.parseInt(sweet_score) - 1);
                     if (past_key.contains("spicy"))
                         spicy_score = String.valueOf(Integer.parseInt(spicy_score) - 1);
-                    if (past_key.contains("sour"))
-                        sour_score = String.valueOf(Integer.parseInt(sour_score) - 1);
-                    if (past_key.contains("bitter"))
-                        bitter_score = String.valueOf(Integer.parseInt(bitter_score) - 1);
+                    if (past_key.contains("bland"))
+                        bland_score = String.valueOf(Integer.parseInt(bland_score) - 1);
+                    if (past_key.contains("nutty"))
+                        nutty_score = String.valueOf(Integer.parseInt(nutty_score) - 1);
                     if (past_key.contains("salty"))
                         salty_score = String.valueOf(Integer.parseInt(salty_score) - 1);
                     if (past_key.contains("greasy"))
@@ -402,7 +402,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
                     UpdateKeyScore task_key = new UpdateKeyScore();
 
                     try { // 데이터베이스에 업데이트를 끝날 때까지 기다리려고
-                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, sour_score, bitter_score, salty_score, greasy_score, crispy_score, moist_score).get();
+                        String res = task_key.execute(IP_ADDRESS + "/update_snack.php", snack_name, sweet_score, spicy_score, bland_score, nutty_score, salty_score, greasy_score, crispy_score, moist_score).get();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -615,15 +615,15 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
             String name = (String)params[1];
             String sweet = (String) params[2];
             String spicy = (String)params[3];
-            String sour = (String)params[4];
-            String bitter = (String)params[5];
+            String bland = (String)params[4];
+            String nutty = (String)params[5];
             String salty = (String) params[6];
             String greasy = (String)params[7];
             String crispy = (String)params[8];
             String moist = (String)params[9];
 
             String serverURL = (String)params[0];
-            String postParameters = "name=" + name + "&sweet=" + sweet + "&spicy=" + spicy + "&sour=" + sour + "&bitter=" + bitter + "&salty=" + salty + "&greasy=" + greasy + "&crispy=" + crispy + "&moist=" + moist;
+            String postParameters = "name=" + name + "&sweet=" + sweet + "&spicy=" + spicy + "&bland=" + bland + "&nutty=" + nutty + "&salty=" + salty + "&greasy=" + greasy + "&crispy=" + crispy + "&moist=" + moist;
 
             try {
 
@@ -695,7 +695,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
 
         @Override
         protected String doInBackground(String... params) {
-            //snack_name, taste_score, cost_score, sweet_score, spicy_score, sour_score, bitter_score).get();
+            //snack_name, taste_score, cost_score, sweet_score, spicy_score, bland_score, nutty_score).get();
             String user_id = (String)params[1];
             String name = (String)params[2];
             String taste = (String)params[3];
