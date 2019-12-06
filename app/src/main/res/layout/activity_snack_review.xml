@@ -81,14 +81,30 @@
         android:layout_weight="2">
     </LinearLayout>
 
-    <TextView
+    <ImageView
+        android:id="@+id/review_snack_image"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="35"
+        android:src="@drawable/cookies" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snack name"
-        android:id="@+id/review_snack_name"
-        android:fontFamily="@font/my_font_family"
-        android:textSize="25dp"
-        android:layout_marginLeft="5dp"/>
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/review_snack_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:fontFamily="@font/my_font_family"
+            android:textSize="20dp">
+        </TextView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -293,7 +309,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:fontFamily="@font/my_font_family"
-            android:text="Sour"
+            android:text="Bland"
             android:textSize="15dp" />
 
         <CheckBox
@@ -303,7 +319,7 @@
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:fontFamily="@font/my_font_family"
-            android:text="Bitter"
+            android:text="Nutty"
             android:textSize="15dp" />
     </LinearLayout>
 

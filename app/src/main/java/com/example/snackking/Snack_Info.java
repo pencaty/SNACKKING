@@ -90,6 +90,7 @@ public class Snack_Info extends AppCompatActivity implements View.OnClickListene
         info_snack_taste.setText(snack_taste);
         info_snack_cost.setText(snack_cost);
 
+        // Change cookie icon to real image
         info_snack_image = (ImageView) findViewById(R.id.info_snack_image);
 
         Resources res = getResources();

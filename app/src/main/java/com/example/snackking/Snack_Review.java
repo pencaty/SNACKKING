@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
     private String snack_number_of_rate;
 
     private TextView Text_SnackName;
+    private ImageView review_snack_image;
 
     private String have_reviewed;
     private String past_data;
@@ -118,6 +120,17 @@ public class Snack_Review extends AppCompatActivity implements CompoundButton.On
         user_id = intent.getStringExtra("user_id");
 
         Text_SnackName.setText(snack_name);
+
+        // Change cookie icon to real image
+        review_snack_image = (ImageView) findViewById(R.id.review_snack_image);
+
+        Resources res = getResources();
+        String name_snack = snack_name.replace(" ", "_").toLowerCase();
+        if (name_snack == "karto") {
+            name_snack = "karto";
+        }
+        int resID = res.getIdentifier(name_snack, "drawable", getPackageName());
+        review_snack_image.setImageResource(resID);
 
         final Button button_upload = (Button)findViewById(R.id.button_upload_review);
 
