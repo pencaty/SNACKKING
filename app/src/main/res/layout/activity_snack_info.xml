@@ -311,12 +311,13 @@
     <Button
         android:layout_margin="2dp"
         android:id="@+id/button_write_review"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_weight="2"
         android:layout_height="wrap_content"
         android:text="Write Review"
         android:fontFamily="@font/my_font_family"
         android:background="@drawable/btn_border"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
