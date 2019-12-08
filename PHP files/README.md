@@ -21,9 +21,9 @@
 
 - <b>Recommendation system</b>
   - <b>get_chatroom_data.php</b> : Bring all requests (with keywords) from database (Chatroom table)
-  - <b>make_individual_recommend.php</b> : If the user is not requesting recommendation, his/her request (with keywords and comments) is added to database (his/her request is added to Chatroom table and recommmend_(user id) table is created)
+  - <b>make_individual_recommend.php</b> : If the user is not requesting recommendation, his/her request (with keywords and comments) is added to database (his/her request is added to Chatroom table and recommmend_(user id) table is created) + The request is also added to 'Request_History' database in order to save all history about request.
   - <b>get_individual_response.php</b> : Bring all responses the user received (from recommend_(user id) table)
-  - <b>answer_to_request.php</b> : If the user did not answer to the particular request, his/her answer is stored in the database (recommend_(user id) table)
+  - <b>answer_to_request.php</b> : If the user did not answer to the particular request, his/her answer is stored in the database (recommend_(user id) table) + The response is also added to 'Request_History' database in order to save all history about request.
   - <b>delete_accepted_request.php</b> : After the user clicks 'Accept' button, recommend_(user id) table is deleted and the related row in Chatroom table is also deleted
   - <b>get_snack_data</b> : This file is also used in recommendation system, but it is already explained in 'Search system' part.
   
