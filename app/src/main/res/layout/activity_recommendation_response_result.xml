@@ -149,6 +149,8 @@
         android:layout_height="wrap_content"
         android:text="Accept"
         android:gravity="center"
+        android:textSize="25dp"
+        android:background="@drawable/btn_border"
         android:layout_gravity="center">
     </Button>
 
