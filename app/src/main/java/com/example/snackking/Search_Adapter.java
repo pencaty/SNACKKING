@@ -1,10 +1,12 @@
 package com.example.snackking;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -50,7 +52,7 @@ public class Search_Adapter extends BaseAdapter {
             viewHolder.label_keyword1 = (TextView) convertView.findViewById((R.id.label_snack_keyword_1));
             viewHolder.label_keyword2 = (TextView) convertView.findViewById((R.id.label_snack_keyword_2));
             viewHolder.label_keyword3 = (TextView) convertView.findViewById((R.id.label_snack_keyword_3));
-
+            viewHolder.label_image = (ImageView) convertView.findViewById((R.id.result_snack_image));
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
@@ -64,9 +66,17 @@ public class Search_Adapter extends BaseAdapter {
         viewHolder.label_keyword2.setText(list.get(position).getSnack_keyword_2());
         viewHolder.label_keyword3.setText(list.get(position).getSnack_keyword_3());
 
+        Resources res = context.getResources();
+        String name_snack = list.get(position).getSnack_name().replace(" ", "_").toLowerCase();
+        if (name_snack == "karto") {
+            name_snack = "karto";
+        }
+        int resID = res.getIdentifier(name_snack, "drawable", context.getPackageName());
+        viewHolder.label_image.setImageResource(resID);
 
         return convertView;
     }
+
 
     class ViewHolder{
         public TextView label_name;
@@ -75,6 +85,7 @@ public class Search_Adapter extends BaseAdapter {
         public TextView label_keyword1;
         public TextView label_keyword2;
         public TextView label_keyword3;
+        public ImageView label_image;
     }
 
 }
