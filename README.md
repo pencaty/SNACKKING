@@ -19,6 +19,9 @@
  
  PHP files are in SNACKKING/PHP files. These files are used to connect the android application with database and server and manage the data in database. For the detailed explanation, please refer to README.md file in that folder.
  
+ [Marvel Prototype](https://marvelapp.com/5ci14a7) <br>
+ [Final Video](https://www.youtube.com/watch?v=oCpJWz9oc3Q)
+ 
 <br><br>
 <h2>JAVA Files Explanations</h2>
 
