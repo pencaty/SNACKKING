@@ -1,5 +1,14 @@
 # SNACKKING
  
+ <h2>Brief Overview</h2>
+<p>SNACKKING is a project for KAIST CS473(Interoduction to Social Computing).</p>
+ 
+ <h2>Collaborators</h2>
+  <p><a href="https://github.com/pencaty">Changgeon Ko</a><br>
+  <a href="https://github.com/CubeDo">Chanyoung Chung</a><br> </p>
+ 
+ <h2>File Overview</h2>
+ 
  We used three kinds of code: Java, PHP, and XML files.
  
  Java files are in SNACKKING/app/src/main/java/com/example/snackking. These files are used to operate the android application. For the detailed explanation, please refer to below explanations.
