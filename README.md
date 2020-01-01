@@ -2,10 +2,12 @@
  
  <h2>Brief Overview</h2>
 <p>SNACKKING is a project for KAIST CS473(Interoduction to Social Computing).</p>
+<br>
  
  <h2>Collaborators</h2>
   <p><a href="https://github.com/pencaty">Changgeon Ko</a><br>
   <a href="https://github.com/CubeDo">Chanyoung Chung</a><br> </p>
+ <br>
  
  <h2>File Overview</h2>
  
