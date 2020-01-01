@@ -1,7 +1,7 @@
 # SNACKKING
  
  <h2>Brief Overview</h2>
-<p>SNACKKING is a project for KAIST CS473(Interoduction to Social Computing).</p>
+<p>SNACKKING is a project for KAIST CS473(Interoduction to Social Computing). This application can provide snack information with keywords&reviews and support user-user recommendation service. We used Marvel to make design prototype, and Android Studio to develop actual application. Detailed explanations are in our reports.</p>
 <br>
  
  <h2>Collaborators</h2>
@@ -9,7 +9,7 @@
   <a href="https://github.com/CubeDo">Chanyoung Chung</a><br> </p>
  <br>
  
- <h2>File Overview</h2>
+ <h2>Files Overview</h2>
  
  We used three kinds of code: Java, PHP, and XML files.
  
